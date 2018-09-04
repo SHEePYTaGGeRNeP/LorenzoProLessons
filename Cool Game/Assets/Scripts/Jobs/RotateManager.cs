@@ -25,7 +25,7 @@ namespace Jobs
         private void Start()
         {
             this._transforms = new TransformAccessArray(0, -1);
-            this.Spawn(3);
+            this.Spawn(3);            
         }
 
         private void Update()

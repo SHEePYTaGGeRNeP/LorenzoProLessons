@@ -9,7 +9,7 @@ namespace Jobs
         public float deltaTime;
     
         public void Execute(int index, TransformAccess transform)
-        {
+        {            
             Vector3 newRotation = new Vector3(transform.rotation.x, 
                 transform.rotation.y + (this.rotateSpeed /* * this.deltaTime*/),
                 transform.rotation.z);
