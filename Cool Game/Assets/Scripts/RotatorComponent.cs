@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.Entities;
 using UnityEngine;
 
-public class Rotator : MonoBehaviour
+public class RotatorComponent : MonoBehaviour
 {
 
 	[SerializeField]
@@ -16,7 +16,7 @@ public class RotatorSystem : ComponentSystem
 {
 	private struct Filter
 	{
-		public Rotator Rotator { get; set; }
+		public RotatorComponent Rotator { get; set; }
 		public Transform Transform { get; set; }
 	}
 
