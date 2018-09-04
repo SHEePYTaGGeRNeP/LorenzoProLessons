@@ -1,9 +1,9 @@
-[Ll]ibrary/
-[Tt]emp/
-[Oo]bj/
-[Bb]uild/
-[Bb]uilds/
-Assets/AssetStoreTools*
+Cool Game/[Ll]ibrary/
+Cool Game/[Tt]emp/
+Cool Game/[Oo]bj/
+Cool Game/[Bb]uild/
+Cool Game/[Bb]uilds/
+Cool Game/Assets/AssetStoreTools*
 
 # Visual Studio cache directory
 .vs/
