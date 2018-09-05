@@ -9,16 +9,13 @@ namespace ECS_Pure
 {
     public class RotatorSystemPure : JobComponentSystem
     {
-        struct RotateJob : IJobProcessComponentData<TransformAccess, RotatorPure>
+        struct RotateJob : IJobProcessComponentData<RotationPure, RotatorPure>
         {
             public float deltaTime;
 
-            public void Execute(ref TransformAccess transform, [ReadOnly] ref RotatorPure rotator)
+            public void Execute(ref RotationPure rotation, [ReadOnly] ref RotatorPure rotator)
             {
-                Vector3 newRotation = new Vector3(transform.rotation.x, 
-                    transform.rotation.y + (rotator.speed * this.deltaTime),
-                    transform.rotation.z);
-                transform.rotation = Quaternion.Euler(newRotation);
+                rotation.y += rotator.speed * this.deltaTime;
             }
         }
 
@@ -28,7 +25,7 @@ namespace ECS_Pure
             {
                 deltaTime = Time.deltaTime
             };
-            JobHandle rotateHandle = rotateJob.Schedule(this, 1, inputDeps);
+            JobHandle rotateHandle = rotateJob.Schedule(this, 4, inputDeps);
 
             return rotateHandle;
 

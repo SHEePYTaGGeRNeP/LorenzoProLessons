@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Unity.Entities;
+﻿using Unity.Entities;
 using UnityEngine;
 
 namespace ECS_Hybrid
@@ -23,6 +21,10 @@ namespace ECS_Hybrid
 
         protected override void OnUpdate()
         {
+            // We can immediately see a first optimization.
+            // We know delta time is the same between all rotators,
+            // so we can simply keep it in a local variable 
+            // to get better performance.
             float deltaTime = Time.deltaTime;
             foreach (var e in this.GetEntities<Filter>())
             {
