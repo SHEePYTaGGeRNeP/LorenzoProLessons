@@ -2,12 +2,13 @@
 using UnityEngine.TestTools;
 using NUnit.Framework;
 using System.Collections;
+using Jobs;
+using UnityEngine.Jobs;
 
 namespace Tests
 {
     public class NewTestScript
     {
-        
         [Test]
         public void NewTestScriptSimplePasses()
         {
@@ -28,11 +29,14 @@ namespace Tests
         public void TestQuaternion()
         {
             Vector3 expected = new Vector3(0, 10, 0);
+            Vector3 expected2 = new Vector3(0, 10, 0);
+            Assert.IsTrue(expected.Equals(expected2));
+            Assert.AreEqual(expected, expected2);
             Quaternion q = Quaternion.Euler(expected);
+            Debug.Log($"q {q.eulerAngles}");
+            Debug.Log($"e {expected}");
+            Assert.AreEqual(expected, q.eulerAngles);
 
-            Assert.IsTrue(expected.Equals(q.eulerAngles));
         }
-        
     }
-
 }

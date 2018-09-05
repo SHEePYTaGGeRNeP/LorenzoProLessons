@@ -4,10 +4,10 @@ using UnityEngine.Jobs;
 
 namespace Jobs
 {
-    public class RotateManager : MonoBehaviour
+    public class MagicManager : MonoBehaviour
     {
         private TransformAccessArray _transforms;
-        private RotatorJob _rotatorJob;
+        private MagicJob _magicJob;
         private JobHandle _rotatorHandle;
 
         [SerializeField]
@@ -35,13 +35,13 @@ namespace Jobs
             if (Input.GetKeyDown("space"))
                 this.Spawn(1);
 
-            this._rotatorJob = new RotatorJob()
+            this._magicJob = new MagicJob()
             {
                 deltaTime = Time.deltaTime,
                 rotateSpeed = this._speed
             };
 
-            this._rotatorHandle = this._rotatorJob.Schedule(this._transforms);
+            this._rotatorHandle = this._magicJob.Schedule(this._transforms);
 
             JobHandle.ScheduleBatchedJobs();
 
