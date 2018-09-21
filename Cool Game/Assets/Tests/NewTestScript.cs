@@ -13,6 +13,8 @@ namespace Tests
         public void NewTestScriptSimplePasses()
         {
             // Use the Assert class to test conditions.
+            Assert.IsTrue(true);
+            Assert.AreEqual(1,1);
         }
 
         // A UnityTest behaves like a coroutine in PlayMode
@@ -33,10 +35,9 @@ namespace Tests
             Assert.IsTrue(expected.Equals(expected2));
             Assert.AreEqual(expected, expected2);
             Quaternion q = Quaternion.Euler(expected);
-            Debug.Log($"q {q.eulerAngles}");
-            Debug.Log($"e {expected}");
+            //Debug.Log($"q {q.eulerAngles}");
+            //Debug.Log($"e {expected}");
             Assert.AreEqual(expected, q.eulerAngles);
-
         }
     }
 }
