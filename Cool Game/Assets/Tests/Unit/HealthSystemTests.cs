@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections;
+using System.Runtime.Remoting.Channels;
 using System.Runtime.Remoting.Messaging;
+using System.Text;
+using Helpers.Classes;
 using NUnit.Framework;
 using Unit;
 using UnityEngine;
@@ -14,7 +17,7 @@ namespace Tests.Unit
         private const int _DEFAULT_DAMAGE_AND_HEALING = 10;
 
         private static HealthSystem CreateDefaultHealthSystem() => new HealthSystem(_DEFAULT_START_HP);
-        
+
         [Test]
         public void Can_Create()
         {
@@ -28,19 +31,19 @@ namespace Tests.Unit
             HealthSystem hs = CreateDefaultHealthSystem();
             hs.Heal(_DEFAULT_DAMAGE_AND_HEALING);
             Assert.AreEqual(_DEFAULT_START_HP, hs.CurrentHitPoints);
-            hs = new HealthSystem(_DEFAULT_START_HP, _DEFAULT_START_HP- _DEFAULT_DAMAGE_AND_HEALING);
-            hs.Heal(_DEFAULT_DAMAGE_AND_HEALING +_DEFAULT_START_HP);
+            hs = new HealthSystem(_DEFAULT_START_HP, _DEFAULT_START_HP - _DEFAULT_DAMAGE_AND_HEALING);
+            hs.Heal(_DEFAULT_DAMAGE_AND_HEALING + _DEFAULT_START_HP);
             Assert.AreEqual(_DEFAULT_START_HP, hs.CurrentHitPoints);
         }
 
         [Test]
         public void Heal_Increase_Hp()
         {
-            HealthSystem hs = new HealthSystem(_DEFAULT_START_HP, _DEFAULT_START_HP- _DEFAULT_DAMAGE_AND_HEALING);
+            HealthSystem hs = new HealthSystem(_DEFAULT_START_HP, _DEFAULT_START_HP - _DEFAULT_DAMAGE_AND_HEALING);
             hs.Heal(_DEFAULT_DAMAGE_AND_HEALING);
             Assert.AreEqual(_DEFAULT_START_HP, hs.CurrentHitPoints);
         }
-        
+
         [Test]
         public void Heal_Zero_RetainsHP()
         {
@@ -55,7 +58,7 @@ namespace Tests.Unit
         {
             HealthSystem hs = CreateDefaultHealthSystem();
             const int negativeHp = -10;
-            Assert.Throws<UnityEngine.Assertions.AssertionException>(() => hs.Heal(negativeHp));
+            Assert.Throws<NegativeInputException>(() => hs.Heal(negativeHp));
         }
 
         [Test]
@@ -65,15 +68,15 @@ namespace Tests.Unit
             hs.Damage(_DEFAULT_DAMAGE_AND_HEALING);
             Assert.AreEqual(_DEFAULT_START_HP - _DEFAULT_DAMAGE_AND_HEALING, hs.CurrentHitPoints);
         }
-        
+
         [Test]
         public void Damage_Negative_ThrowsAssertException()
         {
-            HealthSystem hs = CreateDefaultHealthSystem();;
+            HealthSystem hs = CreateDefaultHealthSystem();
             const int negativeDamage = -10;
-            Assert.Throws<UnityEngine.Assertions.AssertionException>(() => hs.Damage(negativeDamage));
+            Assert.Throws<NegativeInputException>(() => hs.Damage(negativeDamage));
         }
-        
+
         [Test]
         public void Damage_Zero_RetainsHP()
         {
@@ -82,8 +85,8 @@ namespace Tests.Unit
             hs.Damage(zeroDamage);
             Assert.AreEqual(_DEFAULT_START_HP, hs.CurrentHitPoints);
         }
-        
-        
+
+
         [Test]
         public void HealthCannotBe_BelowZero()
         {
@@ -92,8 +95,28 @@ namespace Tests.Unit
             hs.Damage(damage);
             Assert.AreEqual(0, hs.CurrentHitPoints);
         }
-        
-        
-        
+
+        [Test]
+        public void Event_Works()
+        {
+            HealthSystem hs = CreateDefaultHealthSystem();
+            StringBuilder sb = new StringBuilder();
+            bool event1Raised, event2Raised;
+            event1Raised = event2Raised = false;
+            hs.OnDamage += (sender, args) =>
+            {
+                event1Raised = true;
+                sb.AppendLine($"Event1 Raised damage: {args.Change} hp: {args.CurrentHitPoints}");
+            };
+            hs.OnDamageDel += (damage, hp) =>
+            {
+                event2Raised = true;
+                sb.AppendLine($"Event2 Raised damage: {damage} hp: {hp}");
+            };
+            hs.Damage(_DEFAULT_DAMAGE_AND_HEALING);
+            Assert.IsTrue(event1Raised);
+            Assert.IsTrue(event2Raised);
+            Debug.Log(sb.ToString());
+        }
     }
 }

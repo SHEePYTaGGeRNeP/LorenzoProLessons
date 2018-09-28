@@ -4,8 +4,7 @@ using Unit;
 namespace Tests.Unit
 {
     public class CreatureTests
-    {
-        
+    {      
         
         [Test]
         public void Can_Create()
@@ -13,5 +12,7 @@ namespace Tests.Unit
             Creature c = new Creature(10,10);
             Assert.IsNotNull(c);
         }
+        
+        
     }
 }

@@ -1,6 +1,8 @@
 {
     "name": "CoolGame",
-    "references": ["Unity.Entities"],
+    "references": [
+        "Unity.Entities"
+    ],
     "optionalUnityReferences": [],
     "includePlatforms": [],
     "excludePlatforms": [],
