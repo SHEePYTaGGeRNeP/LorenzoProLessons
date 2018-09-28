@@ -4,12 +4,24 @@ using UnityEngine;
 
 namespace Unit
 {
+    [Serializable]
     public class HealthSystem
     {
-        public int MaxHitPoints { get; private set; }
-        public int CurrentHitPoints { get; private set; }
+        [SerializeField]
+        private int _maxHitPoints;
+        public int MaxHitPoints { get { return this._maxHitPoints; } }
+
+        [SerializeField]
+        private int _currentHitPoints;
+        public int CurrentHitPoints
+        {
+            get { return this._currentHitPoints; }
+            private set { this._currentHitPoints = value; }
+        }
 
         public event EventHandler<HealthChangeEventArgs> OnDamage;
+        public event EventHandler<HealthChangeEventArgs> OnHealing;
+
         public class HealthChangeEventArgs : EventArgs
         {
             public int Change { get; }
@@ -23,6 +35,7 @@ namespace Unit
         }
 
         public delegate void DamageDelegate(int damage, int currentHp);
+
         public event DamageDelegate OnDamageDel;
 
 
@@ -30,7 +43,7 @@ namespace Unit
         {
             if (startAndMaxHp < 0)
                 throw new NegativeInputException(nameof(startAndMaxHp));
-            this.MaxHitPoints = startAndMaxHp;
+            this._maxHitPoints = startAndMaxHp;
             this.CurrentHitPoints = startAndMaxHp;
         }
 
@@ -40,7 +53,7 @@ namespace Unit
                 throw new NegativeInputException(nameof(maxHitPoints));
             if (currentHitPoints < 0)
                 throw new NegativeInputException(nameof(currentHitPoints));
-            this.MaxHitPoints = maxHitPoints;
+            this._maxHitPoints = maxHitPoints;
             this.CurrentHitPoints = currentHitPoints;
         }
 
@@ -49,6 +62,7 @@ namespace Unit
             if (healing < 0)
                 throw new NegativeInputException(nameof(healing));
             this.CurrentHitPoints = Mathf.Clamp(this.CurrentHitPoints + healing, 0, this.MaxHitPoints);
+            this.OnHealing?.Invoke(this, new HealthChangeEventArgs(healing, this.CurrentHitPoints));
         }
 
         public void Damage(int damage)
