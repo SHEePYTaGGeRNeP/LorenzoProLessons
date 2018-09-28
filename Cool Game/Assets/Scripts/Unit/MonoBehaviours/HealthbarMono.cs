@@ -8,13 +8,13 @@ namespace Unit.MonoBehaviours
         [SerializeField]
         private Text _text;
 
-        public void OnHealthChanged(int curHp)
+        public void OnHealthChangedInt(int curHp)
         {
             Debug.Log("int listener");
             this._text.text = $"{curHp} hp";
         }
 
-        public void OnHealthChanges(HealthSystem.HealthChangeEventArgs eventArgs)
+        public void OnHealthChanged(HealthSystem.HealthChangeEventArgs eventArgs)
         {
             Debug.Log("HealthChangeEventArgs listener");
             this._text.text = $"{eventArgs.CurrentHitPoints} hp";

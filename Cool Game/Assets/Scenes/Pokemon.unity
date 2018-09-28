@@ -231,12 +231,11 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_TypeName: Unit.MonoBehaviours.UnityIntEvent, CoolGame, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _creature:
-    _healthSystem:
-      _maxHitPoints: 100
-      _currentHitPoints: 100
+    m_TypeName: Unit.MonoBehaviours.UnityHealthChangeEvent, CoolGame, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+  _creatureConstructorParams:
+    maxHealth: 100
+    curHealth: 100
 --- !u!4 &1047892259
 Transform:
   m_ObjectHideFlags: 0
