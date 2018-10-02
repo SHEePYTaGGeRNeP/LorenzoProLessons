@@ -3,11 +3,9 @@ using UnityEngine;
 
 namespace Unit
 {
-    [Serializable]
     public class Creature
     {
-        [SerializeField]
-        private HealthSystem _healthSystem;
+        private readonly HealthSystem _healthSystem;
 
         public int CurrentHitPoints => this._healthSystem.CurrentHitPoints;
         public int MaxHitPoints => this._healthSystem.MaxHitPoints;
@@ -23,14 +21,20 @@ namespace Unit
             
         }
 
+        ~Creature()
+        {
+            this._healthSystem.OnDamage -= this.HealthSystemOnOnDamage;
+            this._healthSystem.OnHealing -= this.HealthSystemOnOnHealing;
+        }
+
         private void HealthSystemOnOnHealing(object sender, HealthSystem.HealthChangeEventArgs healthChangeEventArgs)
         {
-            this.OnHealing?.Invoke(sender, healthChangeEventArgs);
+            this.OnHealing?.Invoke(this, healthChangeEventArgs);
         }
 
         private void HealthSystemOnOnDamage(object sender, HealthSystem.HealthChangeEventArgs healthChangeEventArgs)
         {
-            this.OnDamage?.Invoke(sender, healthChangeEventArgs);
+            this.OnDamage?.Invoke(this, healthChangeEventArgs);
         }
 
         public void Damage(int damage) => this._healthSystem.Damage(damage);

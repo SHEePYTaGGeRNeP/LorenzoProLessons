@@ -97,7 +97,7 @@ namespace Tests.Unit
         }
 
         [Test]
-        public void Event_Works()
+        public void Damage_Event_Works()
         {
             HealthSystem hs = CreateDefaultHealthSystem();
             StringBuilder sb = new StringBuilder();

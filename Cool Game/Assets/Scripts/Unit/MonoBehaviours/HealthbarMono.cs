@@ -20,12 +20,5 @@ namespace Unit.MonoBehaviours
             this._text.text = $"{eventArgs.CurrentHitPoints} hp";
         }
         
-        
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Return))
-                return;
-        }
-
     }
 }
