@@ -17,8 +17,7 @@ namespace Tests.Unit
             const int someHp = 10;
             Creature c = new Creature(someHp, someHp);
             Assert.IsNotNull(c);
-            Assert.IsNotNull(creature);
-            
+            Assert.IsNotNull(creature);            
         }
         
         
