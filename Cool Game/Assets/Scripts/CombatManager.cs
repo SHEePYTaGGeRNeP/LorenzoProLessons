@@ -24,7 +24,10 @@ public class CombatManager
         Debug.Log($"Its now {this.CurrentCreature.Name}'s turn.");
     }
 
-    public bool IsCreaturesTurn(Creature c) => this.CurrentCreature == c;
+    public bool IsCreaturesTurn(Creature c)
+    {
+        return this.CurrentCreature == c;
+    }
 
     public void UseAbility(Creature c, Ability a)
     {

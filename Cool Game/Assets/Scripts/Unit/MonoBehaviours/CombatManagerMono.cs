@@ -13,7 +13,7 @@ namespace Unit.MonoBehaviours
         [SerializeField]
         private CreatureMono _creatureMono2;
 
-        private void Awake()
+        private void Start()
         {
             CombatManager = new CombatManager(this._creatureMono1.Creature, this._creatureMono2.Creature);
             //ServiceLocator.AddService(CombatManager);

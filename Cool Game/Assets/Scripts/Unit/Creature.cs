@@ -1,5 +1,6 @@
 ﻿using System;
 using Helpers.Classes;
+using Unit.MonoBehaviours;
 using UnityEngine;
 
 namespace Unit
@@ -14,7 +15,7 @@ namespace Unit
 
         public int CurrentHitPoints => this._healthSystem.CurrentHitPoints;
         public int MaxHitPoints => this._healthSystem.MaxHitPoints;
-        
+
         public event EventHandler<HealthSystem.HealthChangeEventArgs> OnDamage;
         public event EventHandler<HealthSystem.HealthChangeEventArgs> OnHealing;
 
@@ -25,10 +26,10 @@ namespace Unit
             this._healthSystem.OnHealing += this.HealthSystemOnOnHealing;
             this.Abilities = new Ability[4]
             {
-                new Ability("Attack", new Action[] {() => ServiceLocator.GetService<CombatManager>().Damage(5)}),
-                new Ability("Heal", new Action[] {() => ServiceLocator.GetService<CombatManager>().Damage(10)}),
-                new Ability("Attack2", new Action[] {() => ServiceLocator.GetService<CombatManager>().Damage(15)}),
-                new Ability("Attack3", new Action[] {() => ServiceLocator.GetService<CombatManager>().Damage(25)}),
+                new Ability("Attack5", new Action[] {() => CombatManagerMono.CombatManager.Damage(5)}),
+                new Ability("Heal 10", new Action[] {() => CombatManagerMono.CombatManager.Heal(10)}),
+                new Ability("Attack2", new Action[] {() => CombatManagerMono.CombatManager.Damage(15)}),
+                new Ability("Attack3", new Action[] {() => CombatManagerMono.CombatManager.Damage(25)}),
             };
         }
 
@@ -55,5 +56,10 @@ namespace Unit
 
         public void Damage(int damage) => this._healthSystem.Damage(damage);
         public void Heal(int healing) => this._healthSystem.Heal(healing);
+
+        public override string ToString()
+        {
+            return $"Name{this.Name} - type : geen";
+        }
     }
 }

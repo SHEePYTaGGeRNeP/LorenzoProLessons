@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 302599193}
   - component: {fileID: 302599195}
   - component: {fileID: 302599194}
+  - component: {fileID: 302599196}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -188,6 +189,20 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 302599192}
   m_CullTransparentMesh: 0
+--- !u!114 &302599196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 302599192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79050d90ba2249c191a591b4ea3fde0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _creature: {fileID: 1657579832}
+  _index: 0
+  _prefix: Enemy
 --- !u!1 &357731156
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,6 +426,7 @@ MonoBehaviour:
   _creatureConstructorParams:
     maxHealth: 150
     curHealth: 100
+    name: Beedrill
 --- !u!1 &630790882
 GameObject:
   m_ObjectHideFlags: 0
@@ -640,6 +656,7 @@ GameObject:
   - component: {fileID: 804831889}
   - component: {fileID: 804831891}
   - component: {fileID: 804831890}
+  - component: {fileID: 804831892}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -705,6 +722,20 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 804831888}
   m_CullTransparentMesh: 0
+--- !u!114 &804831892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 804831888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79050d90ba2249c191a591b4ea3fde0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _creature: {fileID: 426627396}
+  _index: 3
+  _prefix: 
 --- !u!1 &841765649
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,6 +746,7 @@ GameObject:
   - component: {fileID: 841765650}
   - component: {fileID: 841765652}
   - component: {fileID: 841765651}
+  - component: {fileID: 841765653}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -780,6 +812,20 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 841765649}
   m_CullTransparentMesh: 0
+--- !u!114 &841765653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 841765649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79050d90ba2249c191a591b4ea3fde0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _creature: {fileID: 426627396}
+  _index: 1
+  _prefix: 
 --- !u!1 &981313027
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,6 +892,7 @@ MonoBehaviour:
   _creatureConstructorParams:
     maxHealth: 150
     curHealth: 100
+    name: 
 --- !u!114 &981313030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -950,11 +997,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1045351009}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -152, y: -441.895, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1780998475}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1151953283
@@ -1275,6 +1322,7 @@ GameObject:
   - component: {fileID: 1455883439}
   - component: {fileID: 1455883441}
   - component: {fileID: 1455883440}
+  - component: {fileID: 1455883442}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1340,6 +1388,20 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1455883438}
   m_CullTransparentMesh: 0
+--- !u!114 &1455883442
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1455883438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79050d90ba2249c191a591b4ea3fde0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _creature: {fileID: 426627396}
+  _index: 0
+  _prefix: 
 --- !u!1 &1476604670
 GameObject:
   m_ObjectHideFlags: 0
@@ -1652,6 +1714,7 @@ MonoBehaviour:
   _creatureConstructorParams:
     maxHealth: 150
     curHealth: 100
+    name: Something
 --- !u!1 &1727862510
 GameObject:
   m_ObjectHideFlags: 0
@@ -1707,12 +1770,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1727862510}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -152, y: -442.895, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
+  m_Father: {fileID: 1780998475}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1780998473
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1780998475}
+  - component: {fileID: 1780998474}
+  m_Layer: 0
+  m_Name: __MANAGERS
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1780998474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1780998473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a26ed20a5d94426297c51c5c73c41577, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _creatureMono1: {fileID: 426627396}
+  _creatureMono2: {fileID: 1657579832}
+--- !u!4 &1780998475
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1780998473}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 152, y: 442.895, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1045351012}
+  - {fileID: 1727862513}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1931365598
 GameObject:
@@ -1726,7 +1833,7 @@ GameObject:
   - component: {fileID: 1931365601}
   - component: {fileID: 1931365600}
   m_Layer: 5
-  m_Name: Button (4)
+  m_Name: TestAiButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1790,7 +1897,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 426627396}
+      - m_Target: {fileID: 1657579832}
         m_MethodName: UseAbility
         m_Mode: 3
         m_Arguments:
@@ -1847,6 +1954,7 @@ GameObject:
   - component: {fileID: 1942964990}
   - component: {fileID: 1942964992}
   - component: {fileID: 1942964991}
+  - component: {fileID: 1942964993}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -1912,3 +2020,17 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1942964989}
   m_CullTransparentMesh: 0
+--- !u!114 &1942964993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1942964989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79050d90ba2249c191a591b4ea3fde0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _creature: {fileID: 426627396}
+  _index: 2
+  _prefix: 

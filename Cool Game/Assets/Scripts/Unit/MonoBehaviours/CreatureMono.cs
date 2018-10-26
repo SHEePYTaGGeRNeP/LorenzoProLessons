@@ -15,6 +15,7 @@ namespace Unit.MonoBehaviours
         {
             public int maxHealth;
             public int curHealth;
+            public string name;
         }
 
         [SerializeField]
@@ -22,7 +23,7 @@ namespace Unit.MonoBehaviours
 
         private void Awake()
         {
-            this.Creature = new Creature(this._creatureConstructorParams.maxHealth,
+            this.Creature = new Creature(this._creatureConstructorParams.name, this._creatureConstructorParams.maxHealth,
                 this._creatureConstructorParams.curHealth);
             this.Creature.OnDamage += this.HealthSystemOnOnDamage;
             this.Creature.OnHealing += this.HealthSystemOnOnDamage;
