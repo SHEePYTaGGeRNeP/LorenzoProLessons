@@ -8,7 +8,10 @@ namespace Unit.MonoBehaviours
     {
         public UnityHealthChangeEvent onHealthChanged;
 
-        private Creature _creature;
+        [SerializeField]
+        private CombatManagerMono _combatManagerMono;
+
+        public Creature Creature { get; private set; }
 
         [Serializable]
         private class CreatureConstructorParams
@@ -22,9 +25,10 @@ namespace Unit.MonoBehaviours
 
         private void Awake()
         {
-            this._creature = new Creature(this._creatureConstructorParams.maxHealth, this._creatureConstructorParams.curHealth);
-            this._creature.OnDamage += this.HealthSystemOnOnDamage;
-            this._creature.OnHealing += this.HealthSystemOnOnDamage;
+            this.Creature = new Creature(this._creatureConstructorParams.maxHealth,
+                this._creatureConstructorParams.curHealth);
+            this.Creature.OnDamage += this.HealthSystemOnOnDamage;
+            this.Creature.OnHealing += this.HealthSystemOnOnDamage;
         }
 
         private void HealthSystemOnOnDamage(object sender, HealthSystem.HealthChangeEventArgs healthChangeEventArgs)
@@ -32,12 +36,17 @@ namespace Unit.MonoBehaviours
             this.onHealthChanged?.Invoke(healthChangeEventArgs);
         }
 
+        public void UseAbility(int index)
+        {
+            this._combatManagerMono.CombatManager.UseAbility(this.Creature, this.Creature.Abilities[index]);
+        }
+
         private void Update()
         {
             if (Input.GetKeyDown(KeyCode.Return))
-                this._creature.Damage(10);
+                this.Creature.Damage(10);
             else if (Input.GetKeyDown(KeyCode.Backslash))
-                this._creature.Heal(10);
+                this.Creature.Heal(10);
         }
     }
 

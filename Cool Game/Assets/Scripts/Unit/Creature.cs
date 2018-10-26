@@ -9,6 +9,8 @@ namespace Unit
 
         public string Name { get; private set; }
 
+        public Ability[] Abilities;
+
         public int CurrentHitPoints => this._healthSystem.CurrentHitPoints;
         public int MaxHitPoints => this._healthSystem.MaxHitPoints;
         
@@ -19,7 +21,14 @@ namespace Unit
         {
             this._healthSystem = new HealthSystem(maxHealth, currentHealth);
             this._healthSystem.OnDamage += this.HealthSystemOnOnDamage;
-            this._healthSystem.OnHealing += this.HealthSystemOnOnHealing;  
+            this._healthSystem.OnHealing += this.HealthSystemOnOnHealing;
+//            this.Abilities = new Ability[4]
+//            {
+//                new Ability("Attack",),
+//                new Ability(),
+//                new Ability(),
+//                new Ability()
+//            };
         }
 
         public Creature(string name, int maxHealth, int currentHealth) : this(maxHealth, currentHealth)
