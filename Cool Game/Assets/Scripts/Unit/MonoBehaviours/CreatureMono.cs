@@ -22,7 +22,7 @@ namespace Unit.MonoBehaviours
 
         private void Awake()
         {
-            this._creature = new Creature(this._creatureConstructorParams.maxHealth,this._creatureConstructorParams.curHealth);
+            this._creature = new Creature(this._creatureConstructorParams.maxHealth, this._creatureConstructorParams.curHealth);
             this._creature.OnDamage += this.HealthSystemOnOnDamage;
             this._creature.OnHealing += this.HealthSystemOnOnDamage;
         }

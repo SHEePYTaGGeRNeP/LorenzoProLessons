@@ -34,11 +34,6 @@ namespace Unit
             }
         }
 
-        public delegate void DamageDelegate(int damage, int currentHp);
-
-        public event DamageDelegate OnDamageDel;
-
-
         public HealthSystem(int startAndMaxHp)
         {
             if (startAndMaxHp < 0)
@@ -71,7 +66,6 @@ namespace Unit
                 throw new NegativeInputException(nameof(damage));
             this.CurrentHitPoints = Mathf.Clamp(this.CurrentHitPoints - damage, 0, this.MaxHitPoints);
             this.OnDamage?.Invoke(this, new HealthChangeEventArgs(damage, this.CurrentHitPoints));
-            this.OnDamageDel?.Invoke(damage, this.CurrentHitPoints);
         }
     }
 }

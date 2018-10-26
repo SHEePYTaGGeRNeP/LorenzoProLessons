@@ -7,6 +7,8 @@ namespace Unit
     {
         private readonly HealthSystem _healthSystem;
 
+        public string Name { get; private set; }
+
         public int CurrentHitPoints => this._healthSystem.CurrentHitPoints;
         public int MaxHitPoints => this._healthSystem.MaxHitPoints;
         
@@ -17,8 +19,12 @@ namespace Unit
         {
             this._healthSystem = new HealthSystem(maxHealth, currentHealth);
             this._healthSystem.OnDamage += this.HealthSystemOnOnDamage;
-            this._healthSystem.OnHealing += this.HealthSystemOnOnHealing;
-            
+            this._healthSystem.OnHealing += this.HealthSystemOnOnHealing;  
+        }
+
+        public Creature(string name, int maxHealth, int currentHealth) : this(maxHealth, currentHealth)
+        {
+            this.Name = name;
         }
 
         ~Creature()
