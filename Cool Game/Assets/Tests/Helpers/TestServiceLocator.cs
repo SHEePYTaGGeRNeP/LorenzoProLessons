@@ -14,21 +14,20 @@ namespace Tests.Helpers
         {
             try
             {
-                ServiceLocator.Clear();
+                ServiceLocator.Reset();
                 Assert.IsTrue(AddService<IA>(new TestA(), false));
                 Assert.IsTrue(AddService<IB>(new TestB(), false));
                 Assert.IsNotNull(ServiceLocator.GetService<IA>());
                 Assert.IsNotNull(ServiceLocator.GetService<IB>());
-                ServiceLocator.Clear();
+                ServiceLocator.Reset();
                 Assert.IsTrue(AddService<IB>(new TestAB(), false));
                 Assert.IsNotNull(ServiceLocator.GetService<IA>());
                 Assert.IsNotNull(ServiceLocator.GetService<IB>());
 
-                ServiceLocator.Clear();
+                ServiceLocator.Reset();
                 Assert.IsTrue(AddService<IA>(new TestA(), false));
                 Assert.IsTrue(AddService<IB>(new TestB(), false));
                 Assert.IsTrue(AddOrReplaceService<IA>(new TestA(), false));
-                Assert.IsTrue(AddOrReplaceService<IA>(new TestAB(), true));
                 Assert.IsTrue(AddOrReplaceService<IB>(new TestB(), false));
 
                 // TestAB implements IA and IB so replacing fails;
@@ -57,7 +56,7 @@ namespace Tests.Helpers
             }
             finally
             {
-                ServiceLocator.Clear();
+                ServiceLocator.Reset();
             }
         }
 

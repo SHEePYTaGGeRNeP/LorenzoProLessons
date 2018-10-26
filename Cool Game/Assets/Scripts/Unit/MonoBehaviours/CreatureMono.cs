@@ -8,9 +8,6 @@ namespace Unit.MonoBehaviours
     {
         public UnityHealthChangeEvent onHealthChanged;
 
-        [SerializeField]
-        private CombatManagerMono _combatManagerMono;
-
         public Creature Creature { get; private set; }
 
         [Serializable]
@@ -38,7 +35,7 @@ namespace Unit.MonoBehaviours
 
         public void UseAbility(int index)
         {
-            this._combatManagerMono.CombatManager.UseAbility(this.Creature, this.Creature.Abilities[index]);
+            CombatManagerMono.CombatManager.UseAbility(this.Creature, this.Creature.Abilities[index]);
         }
 
         private void Update()

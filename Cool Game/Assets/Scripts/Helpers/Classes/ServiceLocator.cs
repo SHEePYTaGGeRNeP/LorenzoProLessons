@@ -9,10 +9,9 @@ namespace Helpers.Classes
     {
         private static readonly List<object> _services = new List<object>();
 
-        public static void Clear()
+        public static void Reset()
         {
-            for (int i = _services.Count - 1; i >= 0; i--)
-                _services.RemoveAt(i);
+            _services.Clear();
         }
 
         public static void AddService<T>(T t)
@@ -31,9 +30,9 @@ namespace Helpers.Classes
         // IA  - TestA
         // IB  - TestB
         // IA/IB - TestAB
-        
+
         // <IB> TestAB 
-        public static void AddOrReplaceService<T>(T serviceToAdd) where T:  class
+        public static void AddOrReplaceService<T>(T serviceToAdd) where T : class
         {
             if (serviceToAdd == null)
                 throw new ArgumentNullException(nameof(serviceToAdd));
@@ -41,7 +40,7 @@ namespace Helpers.Classes
             int index = -1;
             for (int i = 0; i < _services.Count; i++)
             {
-                if (!(_services[i] is T) 
+                if (!(_services[i] is T)
                     && !_services[i].GetType().IsAssignableFrom(typeof(T))
                     && !_services[i].GetType().IsInstanceOfType(serviceToAdd)
                     && !serviceToAdd.GetType().IsInstanceOfType(_services[i]))
@@ -60,13 +59,14 @@ namespace Helpers.Classes
                     return;
                 default:
                     throw new MultipleServicesAlreadyExistsException("Multiple services found with " + typeof(T).Name
-                                                        + foundServices.ToStringCollection(", "));
+                                                                     + foundServices.ToStringCollection(", "));
             }
         }
 
         public static T GetService<T>()
         {
-            T[] foundServices = _services.Where(o => o is T || o.GetType().IsAssignableFrom(typeof(T))).Cast<T>().ToArray();
+            T[] foundServices = _services.Where(o => o is T || o.GetType().IsAssignableFrom(typeof(T))).Cast<T>()
+                .ToArray();
             if (foundServices.Length == 1)
                 return foundServices[0];
             if (foundServices.Length > 1)
@@ -85,15 +85,16 @@ namespace Helpers.Classes
                 return;
             }
         }
-        
-        public class ServiceAlreadyExistsException: Exception
+
+        public class ServiceAlreadyExistsException : Exception
         {
             public ServiceAlreadyExistsException(string message) : base(message)
             {
 
             }
         }
-        public class MultipleServicesAlreadyExistsException: Exception
+
+        public class MultipleServicesAlreadyExistsException : Exception
         {
             public MultipleServicesAlreadyExistsException(string message) : base(message)
             {

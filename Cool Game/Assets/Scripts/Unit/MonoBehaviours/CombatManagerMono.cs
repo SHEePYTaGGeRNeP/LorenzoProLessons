@@ -5,7 +5,7 @@ namespace Unit.MonoBehaviours
 {
     public class CombatManagerMono : MonoBehaviour
     {
-        public CombatManager CombatManager { get; private set; }
+        public static CombatManager CombatManager { get; private set; }
 
         [SerializeField]
         private CreatureMono _creatureMono1;
@@ -13,10 +13,10 @@ namespace Unit.MonoBehaviours
         [SerializeField]
         private CreatureMono _creatureMono2;
 
-        private void Start()
+        private void Awake()
         {
-            this.CombatManager = new CombatManager(this._creatureMono1.Creature, this._creatureMono2.Creature);
-            ServiceLocator.AddService(this.CombatManager);
+            CombatManager = new CombatManager(this._creatureMono1.Creature, this._creatureMono2.Creature);
+            //ServiceLocator.AddService(CombatManager);
         }
     }
 }
