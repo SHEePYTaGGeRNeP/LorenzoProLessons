@@ -233,10 +233,7 @@ public static class ExtensionMethodsUnity
 
     #region Rects
 
-    public static Rect WithX(this Rect rect, float x)
-    {
-        return new Rect(x, rect.y, rect.width, rect.height);
-    }
+    public static Rect WithX(this Rect rect, float x) => new Rect(x, rect.y, rect.width, rect.height);
 
     public static Rect AddX(this Rect rect, float x)
     {

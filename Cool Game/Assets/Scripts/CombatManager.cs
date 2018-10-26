@@ -33,7 +33,7 @@ public class CombatManager
     {
         if (!this.IsCreaturesTurn(c))
         {
-            Debug.Log($"Its not {this.CurrentCreature.Name}'s turn yet!");
+            Debug.Log($"Its not {c}'s turn yet!");
             return;
         }
         a.Use();
