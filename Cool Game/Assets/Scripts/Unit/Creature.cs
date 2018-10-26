@@ -1,4 +1,5 @@
 ﻿using System;
+using Helpers.Classes;
 using UnityEngine;
 
 namespace Unit
@@ -22,13 +23,13 @@ namespace Unit
             this._healthSystem = new HealthSystem(maxHealth, currentHealth);
             this._healthSystem.OnDamage += this.HealthSystemOnOnDamage;
             this._healthSystem.OnHealing += this.HealthSystemOnOnHealing;
-//            this.Abilities = new Ability[4]
-//            {
-//                new Ability("Attack",),
-//                new Ability(),
-//                new Ability(),
-//                new Ability()
-//            };
+            this.Abilities = new Ability[4]
+            {
+                new Ability("Attack", new Action[] {() => ServiceLocator.GetService<CombatManager>().Damage(5)}),
+                new Ability("Heal", new Action[] {() => ServiceLocator.GetService<CombatManager>().Damage(10)}),
+                new Ability("Attack2", new Action[] {() => ServiceLocator.GetService<CombatManager>().Damage(15)}),
+                new Ability("Attack3", new Action[] {() => ServiceLocator.GetService<CombatManager>().Damage(25)}),
+            };
         }
 
         public Creature(string name, int maxHealth, int currentHealth) : this(maxHealth, currentHealth)

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Helpers.Classes;
+using UnityEngine;
 
 namespace Unit.MonoBehaviours
 {
@@ -15,6 +16,7 @@ namespace Unit.MonoBehaviours
         private void Start()
         {
             this.CombatManager = new CombatManager(this._creatureMono1.Creature, this._creatureMono2.Creature);
+            ServiceLocator.AddService(this.CombatManager);
         }
     }
 }

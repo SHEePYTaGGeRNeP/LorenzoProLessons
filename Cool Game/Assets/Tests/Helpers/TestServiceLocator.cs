@@ -1,4 +1,5 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using Helpers.Classes;
 using NUnit.Framework;
@@ -13,71 +14,124 @@ namespace Tests.Helpers
         {
             try
             {
-                AddService<IA>(new TestA(), false);
-                AddService<IB>(new TestB(), false);
-                ServiceLocator.GetService<IA>().A();
-                ServiceLocator.GetService<IB>().A();
-                AddService<IB>(new TestAB(), true);
-                AddOrReplaceService<IA>(new TestAB(), false);
-                AddOrReplaceService<IB>(new TestAB(), false);
+                ServiceLocator.Clear();
+                Assert.IsTrue(AddService<IA>(new TestA(), false));
+                Assert.IsTrue(AddService<IB>(new TestB(), false));
+                Assert.IsNotNull(ServiceLocator.GetService<IA>());
+                Assert.IsNotNull(ServiceLocator.GetService<IB>());
+                ServiceLocator.Clear();
+                Assert.IsTrue(AddService<IB>(new TestAB(), false));
+                Assert.IsNotNull(ServiceLocator.GetService<IA>());
+                Assert.IsNotNull(ServiceLocator.GetService<IB>());
+
+                ServiceLocator.Clear();
+                Assert.IsTrue(AddService<IA>(new TestA(), false));
+                Assert.IsTrue(AddService<IB>(new TestB(), false));
+                Assert.IsTrue(AddOrReplaceService<IA>(new TestA(), false));
+                Assert.IsTrue(AddOrReplaceService<IA>(new TestAB(), true));
+                Assert.IsTrue(AddOrReplaceService<IB>(new TestB(), false));
+
+                // TestAB implements IA and IB so replacing fails;
+                Assert.IsTrue(AddOrReplaceService<IB>(new TestAB(), true));
+                Assert.IsTrue(AddOrReplaceService<IA>(new TestAB(), true));
 
                 ServiceLocator.RemoveService<IA>();
-                // TestAB is removed
-                AddService<IA>(new TestA(), false);
+                // TestB exists, but TestAB also implements IB                
+                //so that gets replaced, eventhough TestB doesn't implement IA;
+                Assert.IsTrue(AddOrReplaceService<IA>(new TestAB(), true));
+                Assert.IsNotNull(ServiceLocator.GetService<IA>());
+                Assert.IsNotNull(ServiceLocator.GetService<IB>());
+
+                Assert.IsTrue(AddService<IA>(new TestA(), true));
+                Assert.IsTrue(AddService<IB>(new TestB(), true));
                 ServiceLocator.RemoveService<IA>();
-                // TestAB implements IB, which exists
-                AddService<IA>(new TestAB(), true);
-                ServiceLocator.RemoveService<IA>();
-                AddService(new TestAB(), true);
-                ServiceLocator.RemoveService<IA>();
-                AddService<IB>(new TestAB(), true);
             }
             catch (Exception ex)
             {
+                if (ex is AssertionException)
+                {
+                    Assert.Fail();
+                }
                 Debug.Log(ex);
+                Assert.Fail();
+            }
+            finally
+            {
+                ServiceLocator.Clear();
             }
         }
 
-        private static void AddService<T>(T service, bool expectException)
+        /// <returns>failed</returns>
+        private static bool AddService<T>(T service, bool expectException)
         {
             try
             {
                 ServiceLocator.AddService(service);
-                if (expectException)
-                    Debug.Log("Expected exception, but service got added anyway");
+                if (!expectException)
+                    return true;
+                Debug.Log("Expected exception, but service got added anyway");
+                return false;
             }
             catch (Exception ex)
             {
-                if (ex is KeyNotFoundException)
+                switch (ex)
                 {
-                    if (!expectException)
-                        Debug.Log(ex);
-                    else
-                        Debug.Log("Correctly failed to add " + typeof(T).Name);
+                    case KeyNotFoundException _:
+                        if (!expectException)
+                        {
+                            Debug.Log(ex);
+                            return false;
+                        }
+                        Debug.Log("Correctly failed to remove " + typeof(T).Name);
+                        return true;
+                    case ServiceLocator.ServiceAlreadyExistsException _:
+                        if (!expectException)
+                        {
+                            Debug.Log(ex);
+                            return false;
+                        }
+                        Debug.Log($"Correctly failed to add {service} because {typeof(T).Name} already exsits");
+                        return true;
+                    case ServiceLocator.MultipleServicesAlreadyExistsException _:
+                        if (!expectException)
+                        {
+                            Debug.Log(ex);
+                            return false;
+                        }
+                        Debug.Log(
+                            $"Correctly failed to add {service} because multiple {typeof(T).Name} already exsits");
+                        return true;
                 }
-                else
-                    Debug.Log(ex);
+                Debug.Log(ex);
+                return false;
             }
         }
-        private static void AddOrReplaceService<T>(T service, bool expectException)
+
+        /// <returns>failed</returns>
+        private static bool AddOrReplaceService<T>(T service, bool expectException) where T : class
         {
             try
             {
-                ServiceLocator.AddOrReplaceService(service);
-                if (expectException)
-                    Debug.Log("Expected exception, but service got added anyway");
+                ServiceLocator.AddOrReplaceService<T>(service);
+                if (!expectException)
+                    return true;
+                Debug.Log("Expected exception, but service got added anyway");
+                return false;
             }
             catch (Exception ex)
             {
                 if (ex is KeyNotFoundException)
                 {
                     if (!expectException)
+                    {
                         Debug.Log(ex);
-                    else
-                        Debug.Log("Correctly failed to addOrReplace " + typeof(T).Name);
+                        return false;
+                    }
+                    Debug.Log("Correctly failed to add " + typeof(T).Name);
+                    return true;
                 }
-                else
-                    Debug.Log(ex);
+                Debug.Log(ex);
+                return false;
             }
         }
     }
