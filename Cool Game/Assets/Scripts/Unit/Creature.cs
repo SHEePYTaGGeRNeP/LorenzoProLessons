@@ -19,6 +19,12 @@ namespace Unit
         public event EventHandler<HealthSystem.HealthChangeEventArgs> OnDamage;
         public event EventHandler<HealthSystem.HealthChangeEventArgs> OnHealing;
 
+        #region Constructors
+
+        public Creature(int maxHealth) : this(maxHealth, maxHealth)
+        {
+        }
+
         public Creature(int maxHealth, int currentHealth)
         {
             this._healthSystem = new HealthSystem(maxHealth, currentHealth);
@@ -28,9 +34,13 @@ namespace Unit
             {
                 new Ability("Attack5", new Action[] {() => CombatManagerMono.CombatManager.Damage(5)}),
                 new Ability("Heal 10", new Action[] {() => CombatManagerMono.CombatManager.Heal(10)}),
-                new Ability("Attack2", new Action[] {() => CombatManagerMono.CombatManager.Damage(15)}),
-                new Ability("Attack3", new Action[] {() => CombatManagerMono.CombatManager.Damage(25)}),
+                new Ability("Attack15", new Action[] {() => CombatManagerMono.CombatManager.Damage(15)}),
+                new Ability("Attack25", new Action[] {() => CombatManagerMono.CombatManager.Damage(25)}),
             };
+        }
+
+        public Creature(string name, int maxHealth) : this(name, maxHealth, maxHealth)
+        {
         }
 
         public Creature(string name, int maxHealth, int currentHealth) : this(maxHealth, currentHealth)
@@ -38,11 +48,18 @@ namespace Unit
             this.Name = name;
         }
 
+        public Creature(int maxHealth, Ability[] abilities) : this(maxHealth)
+        {
+            this.Abilities = abilities;
+        }
+
         ~Creature()
         {
             this._healthSystem.OnDamage -= this.HealthSystemOnOnDamage;
             this._healthSystem.OnHealing -= this.HealthSystemOnOnHealing;
         }
+
+        #endregion Constructors
 
         private void HealthSystemOnOnHealing(object sender, HealthSystem.HealthChangeEventArgs healthChangeEventArgs)
         {
@@ -61,5 +78,7 @@ namespace Unit
         {
             return $"Name{this.Name} - type : geen";
         }
+
+        public void UseAbility(Ability ability) => ability.Use();
     }
 }

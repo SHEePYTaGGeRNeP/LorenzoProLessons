@@ -34,17 +34,10 @@ namespace Unit.MonoBehaviours
             this.onHealthChanged?.Invoke(healthChangeEventArgs);
         }
 
+        // ReSharper disable once UnusedMember.Global
         public void UseAbility(int index)
         {
             CombatManagerMono.CombatManager.UseAbility(this.Creature, this.Creature.Abilities[index]);
-        }
-
-        private void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Return))
-                this.Creature.Damage(10);
-            else if (Input.GetKeyDown(KeyCode.Backslash))
-                this.Creature.Heal(10);
         }
     }
 
