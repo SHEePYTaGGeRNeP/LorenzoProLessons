@@ -30,7 +30,7 @@ namespace Unit.MonoBehaviours
             {
                 Abilities = new Ability[]
                 {
-                    new RegenerateAbility(),
+                    new LifeLeachAbility(),
                     new TackleAbility(),
                     new RegenerateAbility(),
                     new LifeLeachAbility(),
