@@ -1,6 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
 using Unit;
+using Unit.Abilities;
 using UnityEngine;
 
 namespace Tests.Unit
@@ -10,40 +11,28 @@ namespace Tests.Unit
         [Test]
         public void Can_Create()
         {
-            Ability a = new Ability(String.Empty, null);
+            Ability a = new TackleAbility();
             Assert.IsNotNull(a);
-            a = new Ability(String.Empty, new Action[0]);
-            Assert.IsNotNull(a);
-            a = new Ability(String.Empty, new Action[1] {() => { Debug.Log("hi"); }});
+            a = new TackleAbility();
             Assert.IsNotNull(a);
         }
 
         [Test]
-        public void Can_Use_Ability_SingleAction()
+        public void TackleAbility()
         {
-            bool changed = false;
-            Ability a = new Ability(String.Empty, new Action[1] {() => { changed = true; }});
-            a.Use();
-            Assert.IsTrue(changed);
+            Creature c = new Creature(100);
+            Ability a = new TackleAbility();
+            a.Use(c,c);
+            Assert.IsTrue(c.CurrentHitPoints < 100);
+        }
+        [Test]
+        public void RegenerateAbility()
+        {
+            Creature c = new Creature(150,100);
+            Ability a = new RegenerateAbility();
+            a.Use(c,c);
+            Assert.IsTrue(c.CurrentHitPoints > 100);
         }
 
-        [Test]
-        public void Can_Use_Ability_MultipleAction()
-        {
-            bool changed = false;
-            int i = 0;
-            Ability a = new Ability(String.Empty, new Action[2]
-            {
-                () =>
-                {
-                    changed = true;
-                    i = 2;
-                },
-                () => { i = 1; }
-            });
-            a.Use();
-            Assert.IsTrue(changed);
-            Assert.AreEqual(1, i);
-        }
     }
 }

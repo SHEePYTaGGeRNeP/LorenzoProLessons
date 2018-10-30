@@ -1,5 +1,6 @@
 ﻿using System;
 using Helpers.Classes;
+using Unit.Abilities;
 using Unit.MonoBehaviours;
 using UnityEngine;
 
@@ -30,13 +31,6 @@ namespace Unit
             this._healthSystem = new HealthSystem(maxHealth, currentHealth);
             this._healthSystem.OnDamage += this.HealthSystemOnOnDamage;
             this._healthSystem.OnHealing += this.HealthSystemOnOnHealing;
-            this.Abilities = new Ability[4]
-            {
-                new Ability("Attack5", new Action[] {() => CombatManagerMono.CombatManager.Damage(5)}),
-                new Ability("Heal 10", new Action[] {() => CombatManagerMono.CombatManager.Heal(10)}),
-                new Ability("Attack15", new Action[] {() => CombatManagerMono.CombatManager.Damage(15)}),
-                new Ability("Attack25", new Action[] {() => CombatManagerMono.CombatManager.Damage(25)}),
-            };
         }
 
         public Creature(string name, int maxHealth) : this(name, maxHealth, maxHealth)
@@ -79,6 +73,6 @@ namespace Unit
             return $"Name{this.Name} - type : geen";
         }
 
-        public void UseAbility(Ability ability) => ability.Use();
+        public void UseAbility(Ability ability,Creature self, Creature opponent) => ability.Use(self, opponent);
     }
 }

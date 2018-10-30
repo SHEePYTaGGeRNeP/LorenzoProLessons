@@ -1,4 +1,5 @@
 ﻿using System;
+using Unit.Abilities;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -23,8 +24,18 @@ namespace Unit.MonoBehaviours
 
         private void Awake()
         {
-            this.Creature = new Creature(this._creatureConstructorParams.name, this._creatureConstructorParams.maxHealth,
-                this._creatureConstructorParams.curHealth);
+            this.Creature = new Creature(this._creatureConstructorParams.name,
+                this._creatureConstructorParams.maxHealth,
+                this._creatureConstructorParams.curHealth)
+            {
+                Abilities = new Ability[]
+                {
+                    new RegenerateAbility(),
+                    new TackleAbility(),
+                    new RegenerateAbility(),
+                    new TackleAbility()
+                }
+            };
             this.Creature.OnDamage += this.HealthSystemOnOnDamage;
             this.Creature.OnHealing += this.HealthSystemOnOnDamage;
         }

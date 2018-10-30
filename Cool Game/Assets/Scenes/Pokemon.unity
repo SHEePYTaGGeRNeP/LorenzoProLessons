@@ -549,7 +549,7 @@ MonoBehaviour:
     m_TypeName: Unit.MonoBehaviours.UnityHealthChangeEvent, CoolGame, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   _creatureConstructorParams:
-    maxHealth: 150
+    maxHealth: 100
     curHealth: 100
     name: Beedrill
 --- !u!1 &630790882
@@ -1837,9 +1837,9 @@ MonoBehaviour:
     m_TypeName: Unit.MonoBehaviours.UnityHealthChangeEvent, CoolGame, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
   _creatureConstructorParams:
-    maxHealth: 150
+    maxHealth: 100
     curHealth: 100
-    name: Something
+    name: Enemy
 --- !u!1 &1727862510
 GameObject:
   m_ObjectHideFlags: 0

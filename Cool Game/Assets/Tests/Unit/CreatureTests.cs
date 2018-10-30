@@ -4,6 +4,7 @@ using Unit;
 using UnityEngine.TestTools;
 using System.Collections.Generic;
 using System.Linq;
+using Unit.Abilities;
 using Unit.MonoBehaviours;
 using UnityEngine;
 
@@ -27,7 +28,7 @@ namespace Tests.Unit
             Assert.IsNotNull(c);
 
             c = new Creature(someHp,
-                new[] {new Ability(String.Empty, new Action[0])});
+                new Ability[] {new TackleAbility()});
             Assert.IsNotNull(c);
         }
 
@@ -35,13 +36,12 @@ namespace Tests.Unit
         public void Can_Use_Ability()
         {
             const int someHp = 100;
-            int i = 0;
-            Creature c = new Creature(someHp,
-                new Ability[] {new Ability(String.Empty, 
-                    new Action[1]{() => { i = 2; }})});
-            i = 1;
-            c.UseAbility(c.Abilities.First());
-            Assert.AreEqual(2,i);
+            Creature c = new Creature(someHp)
+            {
+                Abilities = new Ability[] {new TackleAbility()}
+            };
+            c.UseAbility(c.Abilities.First(), c, c);
+            Assert.AreNotEqual(someHp, c.CurrentHitPoints);
         }
     }
 }

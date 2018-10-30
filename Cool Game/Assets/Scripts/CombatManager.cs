@@ -1,5 +1,6 @@
 ﻿using System.Runtime.CompilerServices;
 using Unit;
+using Unit.Abilities;
 using UnityEngine;
 
 public class CombatManager
@@ -36,10 +37,11 @@ public class CombatManager
             Debug.Log($"Its not {c}'s turn yet!");
             return;
         }
-        a.Use();
+        a.Use(c, this.OpponentOf(c));
         this.NextTurn();
     }
 
+    public Creature OpponentOf(Creature c) => c == this.creature1 ? this.creature2 : this.creature1;
 
     public void Damage(int damage)
     {
