@@ -33,7 +33,7 @@ namespace Unit.MonoBehaviours
                     new RegenerateAbility(),
                     new TackleAbility(),
                     new RegenerateAbility(),
-                    new TackleAbility()
+                    new LifeLeachAbility(),
                 }
             };
             this.Creature.OnDamage += this.HealthSystemOnOnDamage;
