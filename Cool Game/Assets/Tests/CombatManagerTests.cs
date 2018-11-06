@@ -13,6 +13,14 @@ namespace Tests
         private const int _DEFAULT_START_HP = 100;
         private const int _DEFAULT_DMG = 10;
 
+        [Test]
+        public void Can_Create()
+        {
+            (Creature c1, Creature c2) = CreatureCreatures();
+            CombatManager cm = new CombatManager(c1, c2);
+            Assert.IsNotNull(cm);
+        }
+                
         private static (Creature c1, Creature c2) CreatureCreatures()
         {
             Creature c1 = new Creature(_DEFAULT_START_HP);
@@ -23,15 +31,6 @@ namespace Tests
             c2.Abilities = new[] {dmgC1};
             return (c1, c2);
         }
-
-        [Test]
-        public void Can_Create()
-        {
-            (Creature c1, Creature c2) = CreatureCreatures();
-            CombatManager cm = new CombatManager(c1, c2);
-            Assert.IsNotNull(cm);
-        }
-
         [Test]
         public void Can_Use_Ability()
         {

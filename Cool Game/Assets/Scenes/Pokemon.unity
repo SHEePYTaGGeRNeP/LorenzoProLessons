@@ -244,7 +244,7 @@ AudioSource:
     type: 2}
   m_audioClip: {fileID: 8300000, guid: 08d6e887ce87e994d8e9090e6f0bb86e, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.541
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -961,7 +961,6 @@ GameObject:
   - component: {fileID: 981313028}
   - component: {fileID: 981313031}
   - component: {fileID: 981313030}
-  - component: {fileID: 981313029}
   m_Layer: 5
   m_Name: ImageC2
   m_TagString: Untagged
@@ -987,37 +986,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 125}
   m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &981313029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 981313027}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3219e04826ad4ed6a7b8a3e87aafdbd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onHealthChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 357731158}
-        m_MethodName: OnHealthChanged
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: Unit.MonoBehaviours.UnityHealthChangeEvent, CoolGame, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-  _creatureConstructorParams:
-    maxHealth: 150
-    curHealth: 100
-    name: 
 --- !u!114 &981313030
 MonoBehaviour:
   m_ObjectHideFlags: 0
