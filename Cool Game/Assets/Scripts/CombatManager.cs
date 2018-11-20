@@ -19,13 +19,13 @@ public class CombatManager
         this.CurrentCreature = creature1;
     }
 
-    public void NextTurn()
+    private void NextTurn()
     {
         this.CurrentCreature = this.CurrentCreature == this.creature1 ? this.creature2 : this.creature1;
         Debug.Log($"Its now {this.CurrentCreature.Name}'s turn.");
     }
 
-    public bool IsCreaturesTurn(Creature c)
+    private bool IsCreaturesTurn(Creature c)
     {
         return this.CurrentCreature == c;
     }
