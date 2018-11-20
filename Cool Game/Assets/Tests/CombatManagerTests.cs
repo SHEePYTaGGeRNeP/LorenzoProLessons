@@ -11,7 +11,7 @@ namespace Tests
     public class CombatManagerTests
     {
         private const int _DEFAULT_START_HP = 100;
-        private const int _DEFAULT_DMG = 10;
+        private const int _DEFAULT_DMG = 15;
 
         [Test]
         public void Can_Create()
@@ -25,10 +25,10 @@ namespace Tests
         {
             Creature c1 = new Creature(_DEFAULT_START_HP);
             Creature c2 = new Creature(_DEFAULT_START_HP);
-            Ability dmgC2 = new TackleAbility();
-            Ability dmgC1 = new TackleAbility();
-            c1.Abilities = new[] {dmgC2};
-            c2.Abilities = new[] {dmgC1};
+            TackleAbility dmgC2 = ScriptableObject.CreateInstance<TackleAbility>();
+            TackleAbility dmgC1 = ScriptableObject.CreateInstance<TackleAbility>();
+            c1.Abilities = new Ability[] {dmgC2};
+            c2.Abilities = new Ability[] {dmgC1};
             return (c1, c2);
         }
         [Test]

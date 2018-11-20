@@ -485,7 +485,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -559,7 +559,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3219e04826ad4ed6a7b8a3e87aafdbd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _creature: {fileID: 11400000, guid: b6f82856b0956314ea23ae4dffc0b9d5, type: 2}
+  _creatures: {fileID: 11400000, guid: a0f41f73ce1db324296bcfc9699ab5fc, type: 2}
   _image: {fileID: 409264435}
   onHealthChanged:
     m_PersistentCalls:
@@ -1063,7 +1063,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -2018,7 +2018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3219e04826ad4ed6a7b8a3e87aafdbd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _creature: {fileID: 11400000, guid: b6f82856b0956314ea23ae4dffc0b9d5, type: 2}
+  _creatures: {fileID: 11400000, guid: a0f41f73ce1db324296bcfc9699ab5fc, type: 2}
   _image: {fileID: 981313030}
   onHealthChanged:
     m_PersistentCalls:

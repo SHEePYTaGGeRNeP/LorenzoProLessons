@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Unit.Abilities;
 using UnityEngine;
 using UnityEngine.Events;
@@ -9,7 +10,7 @@ namespace Unit.MonoBehaviours
     public class CreatureMono : MonoBehaviour
     {
         [SerializeField]
-        private CreatureSO _creature;
+        private CreatureCollectionSO _creatures;
 
         [SerializeField]
         private Image _image;
@@ -20,15 +21,15 @@ namespace Unit.MonoBehaviours
 
         private void Awake()
         {
-            this._image.sprite = this._creature.Sprite;
-            this.Creature = new Creature(this._creature.name,
-                this._creature.CreatureStats.MaxHitPoints,
-                this._creature.CreatureStats.CurrentHitPoints)
+            CreatureSO data = this._creatures.Creatures.ElementAt(
+                UnityEngine.Random.Range(0, this._creatures.Creatures.Count()));
+            this._image.sprite = data.Sprite;
+            this.Creature = new Creature(data.name, data.Health)
             {
-                Abilities = new Ability[this._creature.Abilities.Length]
+                Abilities = new Ability[data.Abilities.Length]
             };
-            for (int i = 0; i < this._creature.Abilities.Length; i++)
-                this.Creature.Abilities[i] = this._creature.Abilities[i];
+            for (int i = 0; i < data.Abilities.Length; i++)
+                this.Creature.Abilities[i] = data.Abilities[i];
             this.Creature.OnDamage += this.HealthSystemOnOnDamage;
             this.Creature.OnHealing += this.HealthSystemOnOnDamage;
         }
@@ -44,7 +45,7 @@ namespace Unit.MonoBehaviours
             if (index < this.Creature.Abilities.Length)
                 CombatManagerMono.CombatManager.UseAbility(this.Creature, this.Creature.Abilities[index]);
             else
-                Debug.LogWarning("Creature does not have so many abilities. Index:" + index );
+                Debug.LogWarning("Creature does not have so many abilities. Index:" + index);
         }
     }
 

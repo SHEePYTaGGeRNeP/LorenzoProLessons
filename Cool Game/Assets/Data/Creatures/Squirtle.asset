@@ -17,6 +17,4 @@ MonoBehaviour:
   _sprite: {fileID: 21300000, guid: 0d130567edc8f234faf1d2117e756566, type: 3}
   _abilities:
   - {fileID: 11400000, guid: 7823b7cbc30a42c409f96e0b5745e193, type: 2}
-  _creatureStats:
-    _maxHitPoints: 75
-    _currentHitPoints: 75
+  _health: 50

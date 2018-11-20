@@ -20,8 +20,8 @@ namespace Unit
         public Ability[] Abilities => this._abilities;
 
         [SerializeField]
-        private HealthSystem _creatureStats;
-        public HealthSystem CreatureStats => this._creatureStats;
+        private int _health;
+        public int Health => this._health;
 
     }
 }

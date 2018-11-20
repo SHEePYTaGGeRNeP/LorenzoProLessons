@@ -18,6 +18,4 @@ MonoBehaviour:
   _abilities:
   - {fileID: 11400000, guid: c5e1e50ef81fac3488936696148571f1, type: 2}
   - {fileID: 11400000, guid: e659b41b30ff05245b5fc530c2a3c16c, type: 2}
-  _creatureStats:
-    _maxHitPoints: 100
-    _currentHitPoints: 100
+  _health: 75
