@@ -14,6 +14,9 @@ namespace Unit.MonoBehaviours
         {
             this._text.text = $"Health: {eventArgs.CurrentHitPoints} hp";
             this._image.fillAmount = (float)eventArgs.CurrentHitPoints / eventArgs.MaxHitPoints;
+            this._image.color =
+                new Color(Mathf.Lerp(0f, 1f, 1- this._image.fillAmount),
+                    Mathf.Lerp(0f, 1f, this._image.fillAmount), 0);
         }
         
     }
