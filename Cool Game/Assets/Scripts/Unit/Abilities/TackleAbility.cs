@@ -1,14 +1,13 @@
-﻿namespace Unit.Abilities
+﻿using UnityEngine;
+
+namespace Unit.Abilities
 {
+    [CreateAssetMenu(fileName = "Tackle", menuName = "Creatures/Abilities/CreateTackle")]
     public class TackleAbility : Ability
     {
-        public override string Name => "Tackle";
-
         protected override void Execute(Creature self, Creature opponent)
         {
-            opponent.Damage(10);
+            opponent.Damage(15);
         }
-
-        protected override bool IsAllowedToUse(Creature self, Creature opponent) => true;
     }
 }

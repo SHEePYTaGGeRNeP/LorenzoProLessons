@@ -1,14 +1,13 @@
-﻿namespace Unit.Abilities
+﻿using UnityEngine;
+
+namespace Unit.Abilities
 {
+    [CreateAssetMenu(fileName = "Regenerate", menuName = "Creatures/Abilities/CreateRegenerate")]
     public class RegenerateAbility : Ability
     {
-        public override string Name => "Regenerate";
-
         protected override void Execute(Creature self, Creature opponent)
         {
-            self.Heal(5);
+            self.Heal(10);
         }
-
-        protected override bool IsAllowedToUse(Creature self, Creature opponent) => true;
     }
 }

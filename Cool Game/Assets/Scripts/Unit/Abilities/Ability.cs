@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Unit.Abilities
-{
-    public abstract class Ability
+{    
+    public abstract class Ability : ScriptableObject
     {
-        public abstract string Name { get; }
+        [SerializeField]
+        private string _name;
+        public string Name => this._name;
 
+        [SerializeField]
+        private AudioClip _soundFx;
+        public AudioClip SoundFx => this._soundFx;
 
         public bool Use(Creature self, Creature opponent)
         {
@@ -17,6 +23,11 @@ namespace Unit.Abilities
         }
 
         protected abstract void Execute(Creature self, Creature opponent);
-        protected abstract bool IsAllowedToUse(Creature self, Creature opponent);
+
+        public bool IsAllowedToUse(Creature self, Creature opponent)
+        {
+            // TODO: when we have cooldowns, add this
+            return true;
+        }
     }
 }

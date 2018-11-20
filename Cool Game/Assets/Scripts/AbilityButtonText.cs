@@ -16,6 +16,9 @@ public class AbilityButtonText : MonoBehaviour
 
     private void Start()
     {
-        this.GetComponent<Text>().text = $"{this._prefix}{this._creature.Creature.Abilities[this._index].Name}";
+        if (this._index < this._creature.Creature.Abilities.Length)
+            this.GetComponent<Text>().text = $"{this._prefix}{this._creature.Creature.Abilities[this._index].Name}";
+        else
+            Debug.LogWarning("Creature does not have so many abilities. Index:" + this._index);
     }
 }

@@ -7,35 +7,23 @@ namespace Unit.MonoBehaviours
 {
     public class CreatureMono : MonoBehaviour
     {
+        [SerializeField]
+        private CreatureSO _creature;
+
         public UnityHealthChangeEvent onHealthChanged;
 
         public Creature Creature { get; private set; }
 
-        [Serializable]
-        private class CreatureConstructorParams
-        {
-            public int maxHealth;
-            public int curHealth;
-            public string name;
-        }
-
-        [SerializeField]
-        private CreatureConstructorParams _creatureConstructorParams;
-
         private void Awake()
         {
-            this.Creature = new Creature(this._creatureConstructorParams.name,
-                this._creatureConstructorParams.maxHealth,
-                this._creatureConstructorParams.curHealth)
+            this.Creature = new Creature(this._creature.name,
+                this._creature.CreatureStats.MaxHitPoints,
+                this._creature.CreatureStats.CurrentHitPoints)
             {
-                Abilities = new Ability[]
-                {
-                    new LifeLeachAbility(),
-                    new TackleAbility(),
-                    new RegenerateAbility(),
-                    new LifeLeachAbility(),
-                }
+                Abilities = new Ability[this._creature.Abilities.Length]
             };
+            for (int i = 0; i < this._creature.Abilities.Length; i++)
+                this.Creature.Abilities[i] = this._creature.Abilities[i];
             this.Creature.OnDamage += this.HealthSystemOnOnDamage;
             this.Creature.OnHealing += this.HealthSystemOnOnDamage;
         }
@@ -48,7 +36,10 @@ namespace Unit.MonoBehaviours
         // ReSharper disable once UnusedMember.Global
         public void UseAbility(int index)
         {
-            CombatManagerMono.CombatManager.UseAbility(this.Creature, this.Creature.Abilities[index]);
+            if (index < this.Creature.Abilities.Length)
+                CombatManagerMono.CombatManager.UseAbility(this.Creature, this.Creature.Abilities[index]);
+            else
+                Debug.LogWarning("Creature does not have so many abilities. Index:" + index );
         }
     }
 
