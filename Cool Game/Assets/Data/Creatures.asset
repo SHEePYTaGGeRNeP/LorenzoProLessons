@@ -16,3 +16,4 @@ MonoBehaviour:
   _creatures:
   - {fileID: 11400000, guid: b6f82856b0956314ea23ae4dffc0b9d5, type: 2}
   - {fileID: 11400000, guid: b71050ec2b8102e42ac361cb21484670, type: 2}
+  - {fileID: 11400000, guid: 020e5c2a1b8afc046a1e134fa1cb372e, type: 2}

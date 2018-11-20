@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04bdf5b9df834116934ad6c2b03663f0, type: 3}
   m_Name: LifeLeach
   m_EditorClassIdentifier: 
-  _name: 
+  _name: LifeLeach
   _soundFx: {fileID: 0}

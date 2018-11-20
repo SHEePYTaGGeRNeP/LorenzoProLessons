@@ -445,7 +445,7 @@ GameObject:
   - component: {fileID: 409264436}
   - component: {fileID: 409264435}
   m_Layer: 5
-  m_Name: ImageC2
+  m_Name: ImageC1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -491,7 +491,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 9dee7454c3943614597eb668227df53e, type: 3}
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -559,6 +559,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3219e04826ad4ed6a7b8a3e87aafdbd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _creature: {fileID: 11400000, guid: b6f82856b0956314ea23ae4dffc0b9d5, type: 2}
+  _image: {fileID: 409264435}
   onHealthChanged:
     m_PersistentCalls:
       m_Calls:
@@ -575,10 +577,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Unit.MonoBehaviours.UnityHealthChangeEvent, CoolGame, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _creatureConstructorParams:
-    maxHealth: 100
-    curHealth: 100
-    name: Beedrill
 --- !u!1 &630790882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,7 +1069,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 04fa25afb9889584b890a4a60d471858, type: 3}
+  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1919,6 +1917,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3219e04826ad4ed6a7b8a3e87aafdbd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _creature: {fileID: 11400000, guid: 020e5c2a1b8afc046a1e134fa1cb372e, type: 2}
+  _image: {fileID: 981313030}
   onHealthChanged:
     m_PersistentCalls:
       m_Calls:
@@ -1935,10 +1935,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Unit.MonoBehaviours.UnityHealthChangeEvent, CoolGame, Version=0.0.0.0,
       Culture=neutral, PublicKeyToken=null
-  _creatureConstructorParams:
-    maxHealth: 100
-    curHealth: 100
-    name: Enemy
 --- !u!1 &1727862510
 GameObject:
   m_ObjectHideFlags: 0

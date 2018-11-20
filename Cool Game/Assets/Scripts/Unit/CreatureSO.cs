@@ -12,11 +12,16 @@ namespace Unit
         public string Name => this._name;
 
         [SerializeField]
+        private Sprite _sprite;
+        public Sprite Sprite => this._sprite;
+
+        [SerializeField]
         private Ability[] _abilities;
         public Ability[] Abilities => this._abilities;
 
         [SerializeField]
         private HealthSystem _creatureStats;
         public HealthSystem CreatureStats => this._creatureStats;
+
     }
 }

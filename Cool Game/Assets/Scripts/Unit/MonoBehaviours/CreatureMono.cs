@@ -2,6 +2,7 @@
 using Unit.Abilities;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 namespace Unit.MonoBehaviours
 {
@@ -10,12 +11,16 @@ namespace Unit.MonoBehaviours
         [SerializeField]
         private CreatureSO _creature;
 
+        [SerializeField]
+        private Image _image;
+
         public UnityHealthChangeEvent onHealthChanged;
 
         public Creature Creature { get; private set; }
 
         private void Awake()
         {
+            this._image.sprite = this._creature.Sprite;
             this.Creature = new Creature(this._creature.name,
                 this._creature.CreatureStats.MaxHitPoints,
                 this._creature.CreatureStats.CurrentHitPoints)
