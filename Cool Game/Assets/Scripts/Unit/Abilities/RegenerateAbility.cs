@@ -12,6 +12,7 @@ namespace Unit.Abilities
         {
             int healing = this._healingBase * this.Level;
             self.Heal(healing);
+            LogHelper.Log(typeof(TackleAbility), $"Regenerate healed {healing} hitpoints.");
         }
     }
 }

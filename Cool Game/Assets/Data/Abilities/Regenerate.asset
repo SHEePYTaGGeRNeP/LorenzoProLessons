@@ -14,4 +14,5 @@ MonoBehaviour:
   m_Name: Regenerate
   m_EditorClassIdentifier: 
   _name: Regenerate
-  _soundFx: {fileID: 0}
+  _soundFx: {fileID: 8300000, guid: c6a38b4faf6560e48bcdc598fcb242db, type: 3}
+  _healingBase: 10

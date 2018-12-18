@@ -1,0 +1,50 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_GeneratorAsset: {fileID: 0}
+  m_Script: {fileID: 0}
+  m_Name: RandomDamage
+  m_EditorClassIdentifier: CoolGame:Unit.Abilities:RandomDamageAbility
+  _name: Random Damage
+  _soundFx: {fileID: 8300000, guid: a7eda85336b53a94c8089a5d1fee598d, type: 3}
+  _curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.00053023756
+      value: 0.8675537
+      inSlope: 124.9895
+      outSlope: 124.9895
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.0634618
+    - serializedVersion: 3
+      time: 0.5117915
+      value: 30.044847
+      inSlope: 0.22891444
+      outSlope: 0.22891444
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33487594
+    - serializedVersion: 3
+      time: 0.9986687
+      value: 0.9115487
+      inSlope: -125.31218
+      outSlope: -125.31218
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.0461144
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

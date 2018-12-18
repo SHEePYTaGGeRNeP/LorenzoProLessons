@@ -6,11 +6,11 @@ namespace Unit.Abilities
     public class TackleAbility : Ability
     {
         [SerializeField]
-        private AnimationCurve _curve;
-        
+        private int _damageBase = 15;
+
         protected override void Execute(Creature self, Creature opponent)
         {
-            int damage = (int)this._curve.Evaluate(Random.Range(0f, 1f)) * this.Level;
+            int damage = this._damageBase * this.Level;
             opponent.Damage(damage);
             LogHelper.Log(typeof(TackleAbility), $"Tackle did {damage} damage.");
         }

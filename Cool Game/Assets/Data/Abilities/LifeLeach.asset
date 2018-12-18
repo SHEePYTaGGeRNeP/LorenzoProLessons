@@ -14,4 +14,6 @@ MonoBehaviour:
   m_Name: LifeLeach
   m_EditorClassIdentifier: 
   _name: LifeLeach
-  _soundFx: {fileID: 0}
+  _soundFx: {fileID: 8300000, guid: 0c19a13b538070948b5760df12ecf16a, type: 3}
+  _damageBase: 5
+  _healingBase: 5
