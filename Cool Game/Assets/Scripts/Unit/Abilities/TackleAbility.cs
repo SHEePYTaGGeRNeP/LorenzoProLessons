@@ -13,6 +13,7 @@ namespace Unit.Abilities
             int damage = this._damageBase * this.Level;
             opponent.Damage(damage);
             LogHelper.Log(typeof(TackleAbility), $"Tackle did {damage} damage.");
+            base.Execute(self, opponent);
         }
     }
 }

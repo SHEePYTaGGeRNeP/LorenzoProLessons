@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Scripts.Effects;
 
 namespace Unit.Abilities
 {    
@@ -16,6 +17,9 @@ namespace Unit.Abilities
 
         public int Level { get; set; } = 1;
 
+        [SerializeField]
+        private CustomSoundEffect _soundPrefab;
+
         public bool Use(Creature self, Creature opponent)
         {
             if (!this.IsAllowedToUse(self, opponent))
@@ -24,7 +28,12 @@ namespace Unit.Abilities
             return true;
         }
 
-        protected abstract void Execute(Creature self, Creature opponent);
+        protected virtual void Execute(Creature self, Creature opponent)
+        {
+            CustomSoundEffect sfx = GameObject.Instantiate(this._soundPrefab);
+            sfx.GetComponent<AudioSource>().clip = this.SoundFx;
+            sfx.Play();
+        }
 
         public virtual bool IsAllowedToUse(Creature self, Creature opponent)
         {

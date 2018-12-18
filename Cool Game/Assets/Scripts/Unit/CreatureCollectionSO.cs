@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Unit
 {
-    [CreateAssetMenu(fileName = "Creatures", menuName = "Creatures/CreateCollection")]
+    [CreateAssetMenu(fileName = "Creatures", menuName = "Creatures/CreateCreatureCollection")]
     public class CreatureCollectionSO : ScriptableObject
     {
         [SerializeField]

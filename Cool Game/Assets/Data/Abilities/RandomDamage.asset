@@ -15,35 +15,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: CoolGame:Unit.Abilities:RandomDamageAbility
   _name: Random Damage
   _soundFx: {fileID: 8300000, guid: a7eda85336b53a94c8089a5d1fee598d, type: 3}
+  _soundPrefab: {fileID: 7610342344348496237, guid: e8565c23db0762e4cac514a18378cd38,
+    type: 3}
   _curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0.00053023756
       value: 0.8675537
-      inSlope: 124.9895
-      outSlope: 124.9895
+      inSlope: 78.585724
+      outSlope: 78.585724
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.0634618
+      outWeight: 0.27969444
     - serializedVersion: 3
-      time: 0.5117915
-      value: 30.044847
-      inSlope: 0.22891444
-      outSlope: 0.22891444
+      time: 0.50201064
+      value: 25.246805
+      inSlope: 0.0000065508852
+      outSlope: 0.0000065508852
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.33487594
+      outWeight: 0.5862362
     - serializedVersion: 3
       time: 0.9986687
       value: 0.9115487
-      inSlope: -125.31218
-      outSlope: -125.31218
+      inSlope: -88.45314
+      outSlope: -88.45314
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.0461144
+      inWeight: 0.124785975
       outWeight: 0.33333334
     m_PreInfinity: 2
     m_PostInfinity: 2

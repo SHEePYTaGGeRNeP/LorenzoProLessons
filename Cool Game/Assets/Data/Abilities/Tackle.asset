@@ -15,4 +15,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _name: Tackle
   _soundFx: {fileID: 8300000, guid: 0c1c4f2dc2e9d77418050cdbefd7415e, type: 3}
+  _soundPrefab: {fileID: 7610342344348496237, guid: e8565c23db0762e4cac514a18378cd38,
+    type: 3}
   _damageBase: 15
