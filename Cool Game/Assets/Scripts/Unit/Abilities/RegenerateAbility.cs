@@ -6,11 +6,12 @@ namespace Unit.Abilities
     public class RegenerateAbility : Ability
     {
         [SerializeField]
-        private int _healing = 10;
+        private int _healingBase = 10;
         
         protected override void Execute(Creature self, Creature opponent)
         {
-            self.Heal(this._healing * this.Level);
+            int healing = this._healingBase * this.Level;
+            self.Heal(healing);
         }
     }
 }
