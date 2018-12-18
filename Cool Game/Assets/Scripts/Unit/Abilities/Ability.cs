@@ -26,7 +26,7 @@ namespace Unit.Abilities
 
         protected abstract void Execute(Creature self, Creature opponent);
 
-        public bool IsAllowedToUse(Creature self, Creature opponent)
+        public virtual bool IsAllowedToUse(Creature self, Creature opponent)
         {
             // TODO: when we have cooldowns, add this
             return true;
