@@ -10,7 +10,7 @@ namespace Unit.Abilities
         
         protected override void Execute(Creature self, Creature opponent)
         {
-            self.Heal(this._healing);
+            self.Heal(this._healing * this.Level);
         }
     }
 }

@@ -14,6 +14,8 @@ namespace Unit.Abilities
         private AudioClip _soundFx;
         public AudioClip SoundFx => this._soundFx;
 
+        public int Level { get; set; } = 1;
+
         public bool Use(Creature self, Creature opponent)
         {
             if (!this.IsAllowedToUse(self, opponent))
