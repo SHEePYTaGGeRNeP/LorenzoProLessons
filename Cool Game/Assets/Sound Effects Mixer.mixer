@@ -14,10 +14,31 @@ AudioMixerGroupController:
   m_Pitch: bc56e109550bd4d4eb1df4993a1d7718
   m_Effects:
   - {fileID: 9097998429594976494}
+  - {fileID: -5088155193321935648}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0
   m_BypassEffects: 0
+--- !u!244 &-5088155193321935648
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 1431ad6bc2c26e3458d410c0e5e36373
+  m_EffectName: ParamEQ
+  m_MixLevel: 06e79c540e647d94cb839f4389eb0c70
+  m_Parameters:
+  - m_ParameterName: Center freq
+    m_GUID: 589b7ec7bbf391341afc26e8a3f58e31
+  - m_ParameterName: Octave range
+    m_GUID: 86cd729fab3857047b6970dbe9403d18
+  - m_ParameterName: Frequency gain
+    m_GUID: c3c6c90f8e54ab347b03a64691c40c9c
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!244 &-3683180066898333425
 AudioMixerEffectController:
   m_ObjectHideFlags: 3
@@ -102,8 +123,30 @@ AudioMixerSnapshotController:
   m_Name: Snapshot
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 27610af0c9fea7e48a808d7bf0c1e24b
-  m_FloatValues: {}
+  m_FloatValues:
+    f8c652c0d90db584aa68b15e42fefa77: 2000
+    5b3e3fa2d7f43444bbf52a9f371f50c4: -2.5738313
+    dd04f5731e2688c459815854de269e4d: -1.7612991
+    589b7ec7bbf391341afc26e8a3f58e31: 2727
   m_TransitionOverrides: {}
+--- !u!244 &230385107298481080
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: d425d05bef9f1a64a81460b6e2103570
+  m_EffectName: Lowpass
+  m_MixLevel: 26b2efc443aa4ae4fb94dc020ff8c6c2
+  m_Parameters:
+  - m_ParameterName: Cutoff freq
+    m_GUID: f8c652c0d90db584aa68b15e42fefa77
+  - m_ParameterName: Resonance
+    m_GUID: 9d13e8e195dfa44488a71d083e5e5cf8
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &3813300105262231058
 AudioMixerGroupController:
   m_ObjectHideFlags: 0
@@ -136,6 +179,7 @@ AudioMixerGroupController:
   m_Pitch: e9130d2a47e345640927bf8bf9050a5e
   m_Effects:
   - {fileID: 6820870425950235372}
+  - {fileID: 230385107298481080}
   m_UserColorIndex: 0
   m_Mute: 0
   m_Solo: 0

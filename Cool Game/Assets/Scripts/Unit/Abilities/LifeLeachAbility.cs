@@ -17,7 +17,6 @@ namespace Unit.Abilities
             opponent.Damage(damage);
             self.Heal(healing);
             LogHelper.Log(typeof(TackleAbility), $"LifeLeach did {damage} damage and healed {healing}.");
-            base.Execute(self, opponent);
         }
     }
 }

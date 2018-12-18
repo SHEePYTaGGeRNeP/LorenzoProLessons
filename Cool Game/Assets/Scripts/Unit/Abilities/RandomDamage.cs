@@ -13,7 +13,6 @@ namespace Unit.Abilities
             int damage = (int)this._curve.Evaluate(Random.Range(0f, 1f)) * this.Level;
             opponent.Damage(damage);
             LogHelper.Log(typeof(TackleAbility), $"Random Damage did {damage} damage.");
-            base.Execute(self, opponent);
         }
     }
 }

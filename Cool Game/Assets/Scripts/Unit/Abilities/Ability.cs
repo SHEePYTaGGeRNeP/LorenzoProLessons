@@ -24,16 +24,14 @@ namespace Unit.Abilities
         {
             if (!this.IsAllowedToUse(self, opponent))
                 return false;
+            CustomSoundEffect sfx = GameObject.Instantiate(this._soundPrefab);
+            sfx.GetComponent<AudioSource>().clip = this.SoundFx;
+            sfx.Play();
             this.Execute(self, opponent);
             return true;
         }
 
-        protected virtual void Execute(Creature self, Creature opponent)
-        {
-            CustomSoundEffect sfx = GameObject.Instantiate(this._soundPrefab);
-            sfx.GetComponent<AudioSource>().clip = this.SoundFx;
-            sfx.Play();
-        }
+        protected abstract void Execute(Creature self, Creature opponent);
 
         public virtual bool IsAllowedToUse(Creature self, Creature opponent)
         {
