@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c591f8a9cfbbb5d47b0b230e82fd74bf, type: 3}
   m_Name: 1
   m_EditorClassIdentifier: 
-  _name: 
-  _sprite: {fileID: 0}
-  _abilities: []
-  _health: 0
+  _name: Gabumon
+  _sprite: {fileID: 21300000, guid: 9b848a2bd43699344be66b6d3b073aa9, type: 3}
+  _abilities:
+  - {fileID: 11400000, guid: d627f3173224d34488501d3a52da58d6, type: 2}
+  - {fileID: 11400000, guid: 7823b7cbc30a42c409f96e0b5745e193, type: 2}
+  _health: 50

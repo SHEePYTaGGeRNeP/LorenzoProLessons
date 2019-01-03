@@ -17,6 +17,5 @@ MonoBehaviour:
   _sprite: {fileID: 21300000, guid: 9dee7454c3943614597eb668227df53e, type: 3}
   _abilities:
   - {fileID: 11400000, guid: c5e1e50ef81fac3488936696148571f1, type: 2}
-  - {fileID: 11400000, guid: e659b41b30ff05245b5fc530c2a3c16c, type: 2}
   - {fileID: 11400000, guid: 7823b7cbc30a42c409f96e0b5745e193, type: 2}
   _health: 60

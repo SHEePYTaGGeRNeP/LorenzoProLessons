@@ -11,9 +11,11 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_GeneratorAsset: {fileID: 0}
   m_Script: {fileID: 11500000, guid: c591f8a9cfbbb5d47b0b230e82fd74bf, type: 3}
-  m_Name: _Creature
+  m_Name: Palmon
   m_EditorClassIdentifier: 
-  _name: 
-  _sprite: {fileID: 0}
-  _abilities: []
-  _health: 0
+  _name: Palmon
+  _sprite: {fileID: 21300000, guid: e1ef092d7b92849419aa623fd8e5ab90, type: 3}
+  _abilities:
+  - {fileID: 11400000, guid: c9892b7b1fa1f5a47856c2e585482d05, type: 2}
+  - {fileID: 11400000, guid: c04c72f18feceee408c88391a09b27ca, type: 2}
+  _health: 40
