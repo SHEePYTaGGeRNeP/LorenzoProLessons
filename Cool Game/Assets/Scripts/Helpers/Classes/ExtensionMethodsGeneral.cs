@@ -14,6 +14,7 @@ public static class ExtensionMethodsGeneral
 {
     private static readonly System.Random _random = new System.Random();
 
+
     /// <summary>
     /// If the given <paramref name="type"/> is an array or some other collection
     /// comprised of 0 or more instances of a "subtype", get that type

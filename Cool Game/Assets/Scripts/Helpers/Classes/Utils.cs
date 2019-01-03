@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using Unit.Abilities;
 #if (UNITY_EDITOR)
 using UnityEditor;
 #endif
@@ -13,6 +14,31 @@ using UnityEngine.Assertions;
 
 public static class Utils
 {
+    public static IEnumerable<Type> GetSubclassesOfAbility()
+    {
+        List<Type> objects = new List<Type>();
+        foreach (Type type in
+            typeof(Ability).Assembly.GetTypes()
+            .Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(Ability))))
+        {
+            objects.Add(type);
+        }
+        return objects.OrderBy(x => x.Name);
+    }
+
+    public static IEnumerable<T> GetEnumerableOfType<T>(params object[] constructorArgs) where T : class
+    {
+        List<T> objects = new List<T>();
+        foreach (Type type in
+            Assembly.GetAssembly(typeof(T)).GetTypes()
+            .Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(T))))
+        {
+            objects.Add((T)Activator.CreateInstance(type, constructorArgs));
+        }
+        objects.Sort();
+        return objects;
+    }
+
     public static Color GetColorRGB(float[] colors)
     {
         if (colors.IsNullOrEmpty())

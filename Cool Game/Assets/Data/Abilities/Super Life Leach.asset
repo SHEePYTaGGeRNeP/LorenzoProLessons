@@ -11,11 +11,11 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_GeneratorAsset: {fileID: 0}
   m_Script: {fileID: 11500000, guid: 04bdf5b9df834116934ad6c2b03663f0, type: 3}
-  m_Name: LifeLeach
+  m_Name: Super Life Leach
   m_EditorClassIdentifier: 
-  _name: LifeLeach
+  _name: Super Life Leach
   _soundFx: {fileID: 8300000, guid: 0c19a13b538070948b5760df12ecf16a, type: 3}
   _soundPrefab: {fileID: 7610342344348496237, guid: e8565c23db0762e4cac514a18378cd38,
     type: 3}
-  _damageBase: 5
-  _healingBase: 5
+  _damageBase: 10
+  _healingBase: 10

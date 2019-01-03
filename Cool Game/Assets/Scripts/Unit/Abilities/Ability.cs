@@ -24,7 +24,7 @@ namespace Unit.Abilities
         {
             if (!this.IsAllowedToUse(self, opponent))
                 return false;
-            if (this._soundPrefab == null || this.SoundFx)
+            if (this._soundPrefab == null || this.SoundFx == null)
                 LogHelper.LogWarning(typeof(Ability), $"{this.Name} has no sound prefab or FX");
             else
             {
@@ -43,5 +43,7 @@ namespace Unit.Abilities
             // TODO: when we have cooldowns, add this
             return true;
         }
+
+        public override string ToString() => $"Level {this.Level} {this.Name} ";
     }
 }
