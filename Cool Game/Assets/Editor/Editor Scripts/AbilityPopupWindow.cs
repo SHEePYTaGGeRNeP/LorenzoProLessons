@@ -9,16 +9,15 @@ using UnityEngine;
 
 namespace Assets.Editor.Editor_Scripts
 {
-    class CreateAbilityPopup : EditorWindow
+    class AbilityPopupWindow : EditorWindow
     {
         private int _selectedIndex;
         static Dictionary<string, Type> optionsDic = new Dictionary<string, Type>();
 
-        [MenuItem("Abilities/CreateAsset")]
-        static void CreateAbility()
+        public static void ShowWindow()
         {
             UpdateAbilityOptions();
-            EditorWindow window = GetWindowWithRect<CreateAbilityPopup>(
+            EditorWindow window = GetWindowWithRect<AbilityPopupWindow>(
                 new Rect(Screen.width / 2, Screen.height / 2, 250, 100));
             window.Show();
         }

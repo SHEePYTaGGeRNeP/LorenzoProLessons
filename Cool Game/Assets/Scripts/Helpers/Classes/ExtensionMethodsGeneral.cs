@@ -35,7 +35,7 @@ public static class ExtensionMethodsGeneral
         return null;
     }
 
-    
+
     public static string ToRacePositionText(this int pos)
     {
         switch (pos)
@@ -99,7 +99,7 @@ public static class ExtensionMethodsGeneral
     /// <returns></returns>
     public static bool AboutEqualTo(this float f, float to, float margin = 1e-5f)
     {
-        float result = Math.Abs(f - to);        
+        float result = Math.Abs(f - to);
         return result < margin;
     }
     /// <summary>
@@ -111,7 +111,7 @@ public static class ExtensionMethodsGeneral
     /// <returns></returns>
     public static bool AboutEqualToOrMoreThan(this float f, float to, float margin = 1e-5f)
     {
-        if (f > to) return true;        
+        if (f > to) return true;
         return f.AboutEqualTo(to, margin);
     }
 
@@ -155,7 +155,7 @@ public static class ExtensionMethodsGeneral
             formatter.Serialize(ms, obj);
             ms.Position = 0;
 
-            return (T) formatter.Deserialize(ms);
+            return (T)formatter.Deserialize(ms);
         }
     }
 #endif
@@ -419,6 +419,7 @@ public static class ExtensionMethodsGeneral
         StringBuilder builder = new StringBuilder();
         foreach (T t in something)
             builder.Append(t + seperator);
+        if (builder.Length > 0)
             builder.Remove(builder.Length - seperator.Length, seperator.Length);
         return builder.ToString();
     }

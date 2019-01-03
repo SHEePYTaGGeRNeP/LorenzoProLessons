@@ -16,7 +16,7 @@ namespace Unit.Abilities
             int healing = this._healingBase * this.Level;
             opponent.Damage(damage);
             self.Heal(healing);
-            LogHelper.Log(typeof(TackleAbility), $"LifeLeach did {damage} damage and healed {healing}.");
+            LogHelper.Log(typeof(TackleAbility), $"{this.Name} did {damage} damage and healed {healing}.");
         }
     }
 }

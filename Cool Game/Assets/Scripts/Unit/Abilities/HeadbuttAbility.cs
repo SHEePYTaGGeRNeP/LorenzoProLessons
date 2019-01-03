@@ -16,7 +16,7 @@ namespace Unit.Abilities
             opponent.Damage(damage);
             int selfDamage = this._damageSelfBase * this.Level;
             self.Damage(selfDamage);
-            LogHelper.Log(typeof(TackleAbility), $"Headbutt did {damage} damage to the enemy and {selfDamage} to self.");
+            LogHelper.Log(typeof(TackleAbility), $"{this.Name} did {damage} damage to the enemy and {selfDamage} to self.");
         }
     }
 }

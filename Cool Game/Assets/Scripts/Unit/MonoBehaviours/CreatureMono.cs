@@ -34,6 +34,12 @@ namespace Unit.MonoBehaviours
             this.Creature.OnHealing += this.HealthSystemOnOnDamage;
         }
 
+        private void Start()
+        {
+            this.onHealthChanged?.Invoke(new HealthSystem.HealthChangeEventArgs(0,
+                this.Creature.CurrentHitPoints, this.Creature.MaxHitPoints));
+        }
+
         private void HealthSystemOnOnDamage(object sender, HealthSystem.HealthChangeEventArgs healthChangeEventArgs)
         {
             this.onHealthChanged?.Invoke(healthChangeEventArgs);
