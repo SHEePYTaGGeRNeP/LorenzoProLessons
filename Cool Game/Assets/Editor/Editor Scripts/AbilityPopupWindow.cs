@@ -26,9 +26,7 @@ namespace Assets.Editor.Editor_Scripts
         {
             optionsDic.Clear();
             foreach (Type type in Utils.GetSubclassesOfAbility())
-            {
                 optionsDic.Add(type.Name, type);
-            }
         }
 
         private void OnGUI()

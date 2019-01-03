@@ -15,16 +15,9 @@ using UnityEngine.Assertions;
 public static class Utils
 {
     public static IEnumerable<Type> GetSubclassesOfAbility()
-    {
-        List<Type> objects = new List<Type>();
-        foreach (Type type in
-            typeof(Ability).Assembly.GetTypes()
-            .Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(Ability))))
-        {
-            objects.Add(type);
-        }
-        return objects.OrderBy(x => x.Name);
-    }
+        => typeof(Ability).Assembly.GetTypes()
+           .Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(Ability)))
+           .OrderBy(x => x.Name);
 
     public static IEnumerable<T> GetEnumerableOfType<T>(params object[] constructorArgs) where T : class
     {
@@ -67,7 +60,7 @@ public static class Utils
         if (obj.GetType().IsArray || obj.GetType().IsGenericType)
         {
             var index = Convert.ToInt32(new string(property.propertyPath.Where(char.IsDigit).ToArray()));
-            IEnumerable<T> ienumerable = (IEnumerable<T>) obj;
+            IEnumerable<T> ienumerable = (IEnumerable<T>)obj;
             actualObject = ienumerable.ElementAt(index);
             //actualObject = ((T[]) obj)[index];
         }
@@ -145,7 +138,7 @@ public static class Utils
 
     public static string GetTime(float seconds)
     {
-        int intTime = (int) seconds;
+        int intTime = (int)seconds;
         int minutes = intTime / 60;
         int secondsint = intTime % 60;
         float fraction = seconds * 1000;
@@ -169,24 +162,24 @@ public static class Utils
         switch (Application.platform)
         {
             case RuntimePlatform.IPhonePlayer:
-            {
-                string path = Application.dataPath.Substring(0, Application.dataPath.Length - 5);
-                path = path.Substring(0, path.LastIndexOf('/'));
-                return Path.Combine(Path.Combine(path, "Documents"), filename);
-            }
+                {
+                    string path = Application.dataPath.Substring(0, Application.dataPath.Length - 5);
+                    path = path.Substring(0, path.LastIndexOf('/'));
+                    return Path.Combine(Path.Combine(path, "Documents"), filename);
+                }
             case RuntimePlatform.Android:
-            {
-                string path = Application.persistentDataPath;
-                path = path.Substring(0, path.LastIndexOf('/'));
-                return Path.Combine(path, filename);
-            }
+                {
+                    string path = Application.persistentDataPath;
+                    path = path.Substring(0, path.LastIndexOf('/'));
+                    return Path.Combine(path, filename);
+                }
             // Not all switch cases present
             default:
-            {
-                string path = Application.dataPath;
-                path = path.Substring(0, path.LastIndexOf('/'));
-                return Path.Combine(path, filename);
-            }
+                {
+                    string path = Application.dataPath;
+                    path = path.Substring(0, path.LastIndexOf('/'));
+                    return Path.Combine(path, filename);
+                }
         }
     }
 
@@ -243,7 +236,7 @@ public static class Utils
     public static float VolumeToDb(float volume)
     {
         if (volume > 0f)
-            return (float) (20f * Math.Log10(volume));
+            return (float)(20f * Math.Log10(volume));
         return -80f;
     }
 
@@ -309,17 +302,17 @@ public static class Utils
     public static Vector3 ObjectSide(Transform t1, Vector3 target)
     {
         return t1.InverseTransformPoint(target);
-//        if (relativePoint.x < 0.0)
-//            print ("Object is to the left");
-//        else if (relativePoint.x > 0.0)
-//            print ("Object is to the right");
-//        else
-//            print ("Object is directly ahead");
+        //        if (relativePoint.x < 0.0)
+        //            print ("Object is to the left");
+        //        else if (relativePoint.x > 0.0)
+        //            print ("Object is to the right");
+        //        else
+        //            print ("Object is directly ahead");
     }
 
     public static T ParseEnum<T>(string value)
     {
-        return (T) Enum.Parse(typeof(T), value, true);
+        return (T)Enum.Parse(typeof(T), value, true);
     }
 
     public static void AddColorToString(string s, Color color, out string newString)
