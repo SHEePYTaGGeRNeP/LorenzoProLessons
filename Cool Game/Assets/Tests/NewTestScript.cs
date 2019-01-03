@@ -42,8 +42,8 @@ namespace Tests
             Quaternion q = Quaternion.Euler(expected);
             //Debug.Log($"q {q.eulerAngles}");
             //Debug.Log($"e {expected}");
+            Debug.Log(expected - q.eulerAngles);
             Assert.AreEqual(expected, q.eulerAngles);
-            List<object> ls;
         }
 
 

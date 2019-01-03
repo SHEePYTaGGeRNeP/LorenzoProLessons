@@ -28,7 +28,7 @@ namespace Tests.Unit
             Assert.IsNotNull(c);
 
             c = new Creature(someHp,
-                new Ability[] {new TackleAbility()});
+                new Ability[] {new DamageAbility()});
             Assert.IsNotNull(c);
         }
 
@@ -38,7 +38,7 @@ namespace Tests.Unit
             const int someHp = 100;
             Creature c = new Creature(someHp)
             {
-                Abilities = new Ability[] {new TackleAbility()}
+                Abilities = new Ability[] {new DamageAbility()}
             };
             c.UseAbility(c.Abilities.First(), c, c);
             Assert.AreNotEqual(someHp, c.CurrentHitPoints);

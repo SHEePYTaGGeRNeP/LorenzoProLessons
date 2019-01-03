@@ -11,9 +11,9 @@ namespace Tests.Unit
         [Test]
         public void Can_Create()
         {
-            Ability a = ScriptableObject.CreateInstance<TackleAbility>();
+            Ability a = ScriptableObject.CreateInstance<DamageAbility>();
             Assert.IsNotNull(a);
-            a = ScriptableObject.CreateInstance<TackleAbility>();
+            a = ScriptableObject.CreateInstance<DamageAbility>();
             Assert.IsNotNull(a);
         }
 
@@ -21,7 +21,7 @@ namespace Tests.Unit
         public void TackleAbility()
         {
             Creature c = new Creature(100);
-            Ability a = ScriptableObject.CreateInstance<TackleAbility>();
+            Ability a = ScriptableObject.CreateInstance<DamageAbility>();
             a.Use(c,c);
             Assert.IsTrue(c.CurrentHitPoints < 100);
         }
@@ -29,7 +29,7 @@ namespace Tests.Unit
         public void RegenerateAbility()
         {
             Creature c = new Creature(150,100);
-            Ability a = ScriptableObject.CreateInstance<RegenerateAbility>();
+            Ability a = ScriptableObject.CreateInstance<HealAbility>();
             a.Use(c,c);
             Assert.IsTrue(c.CurrentHitPoints > 100);
         }

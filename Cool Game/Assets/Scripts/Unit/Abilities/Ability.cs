@@ -12,6 +12,11 @@ namespace Unit.Abilities
         public string Name => this._name;
 
         [SerializeField]
+        [Range(0.01f, 1f)]
+        private double _accuracy = 1f;
+        public double Accuracy => this._accuracy;
+
+        [SerializeField]
         private AudioClip _soundFx;
         public AudioClip SoundFx => this._soundFx;
 
@@ -32,7 +37,10 @@ namespace Unit.Abilities
                 sfx.GetComponent<AudioSource>().clip = this.SoundFx;
                 sfx.Play();
             }
-            this.Execute(self, opponent);
+            if (UnityEngine.Random.Range(0f, 1f) < this.Accuracy)
+                this.Execute(self, opponent);
+            else
+                LogHelper.Log(typeof(Ability), $"{this.Name} missed!");
             return true;
         }
 

@@ -25,8 +25,8 @@ namespace Tests
         {
             Creature c1 = new Creature(_DEFAULT_START_HP);
             Creature c2 = new Creature(_DEFAULT_START_HP);
-            TackleAbility dmgC2 = ScriptableObject.CreateInstance<TackleAbility>();
-            TackleAbility dmgC1 = ScriptableObject.CreateInstance<TackleAbility>();
+            DamageAbility dmgC2 = ScriptableObject.CreateInstance<DamageAbility>();
+            DamageAbility dmgC1 = ScriptableObject.CreateInstance<DamageAbility>();
             c1.Abilities = new Ability[] {dmgC2};
             c2.Abilities = new Ability[] {dmgC1};
             return (c1, c2);

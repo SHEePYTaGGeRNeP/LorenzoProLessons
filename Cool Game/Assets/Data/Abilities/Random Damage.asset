@@ -14,6 +14,7 @@ MonoBehaviour:
   m_Name: Random Damage
   m_EditorClassIdentifier: 
   _name: Random Damage
+  _accuracy: 1
   _soundFx: {fileID: 8300000, guid: 3be7522094eb255419467a6fa53249e8, type: 3}
   _soundPrefab: {fileID: 7610342344348496237, guid: e8565c23db0762e4cac514a18378cd38,
     type: 3}

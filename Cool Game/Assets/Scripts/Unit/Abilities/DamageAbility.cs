@@ -2,8 +2,8 @@
 
 namespace Unit.Abilities
 {
-    [CreateAssetMenu(fileName = "Tackle", menuName = "Creatures/Abilities/CreateTackle")]
-    public class TackleAbility : Ability
+    [CreateAssetMenu(fileName = "Damage", menuName = "Creatures/Abilities/DamageTackle")]
+    public class DamageAbility : Ability
     {
         [SerializeField]
         private int _damageBase = 15;
@@ -12,7 +12,7 @@ namespace Unit.Abilities
         {
             int damage = this._damageBase * this.Level;
             opponent.Damage(damage);
-            LogHelper.Log(typeof(TackleAbility), $"{this.Name} did {damage} damage.");
+            LogHelper.Log(typeof(DamageAbility), $"{this.Name} did {damage} damage.");
         }
     }
 }

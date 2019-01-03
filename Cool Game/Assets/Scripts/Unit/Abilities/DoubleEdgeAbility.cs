@@ -2,8 +2,8 @@
 
 namespace Unit.Abilities
 {
-    [CreateAssetMenu(fileName = "Headbutt", menuName = "Creatures/Abilities/CreateHeadbutt")]
-    public class HeadbuttAbility : Ability
+    [CreateAssetMenu(fileName = "DoubleEdge", menuName = "Creatures/Abilities/CreateDoubleEdge")]
+    public class DoubleEdgeAbility : Ability
     {
         [SerializeField]
         private int _damageBase = 25;
@@ -16,7 +16,7 @@ namespace Unit.Abilities
             opponent.Damage(damage);
             int selfDamage = this._damageSelfBase * this.Level;
             self.Damage(selfDamage);
-            LogHelper.Log(typeof(TackleAbility), $"{this.Name} did {damage} damage to the enemy and {selfDamage} to self.");
+            LogHelper.Log(typeof(DoubleEdgeAbility), $"{this.Name} did {damage} damage to the enemy and {selfDamage} to self.");
         }
     }
 }

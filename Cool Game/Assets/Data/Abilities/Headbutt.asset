@@ -14,6 +14,7 @@ MonoBehaviour:
   m_Name: Headbutt
   m_EditorClassIdentifier: 
   _name: Headbutt
+  _accuracy: 1
   _soundFx: {fileID: 8300000, guid: 0c2a72d2192cc6748870abdf92c7083b, type: 3}
   _soundPrefab: {fileID: 7610342344348496237, guid: e8565c23db0762e4cac514a18378cd38,
     type: 3}

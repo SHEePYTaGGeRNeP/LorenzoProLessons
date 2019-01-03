@@ -2,8 +2,8 @@
 
 namespace Unit.Abilities
 {
-    [CreateAssetMenu(fileName = "Regenerate", menuName = "Creatures/Abilities/CreateRegenerate")]
-    public class RegenerateAbility : Ability
+    [CreateAssetMenu(fileName = "Heal", menuName = "Creatures/Abilities/CreateHeal")]
+    public class HealAbility : Ability
     {
         [SerializeField]
         private int _healingBase = 10;
@@ -12,7 +12,7 @@ namespace Unit.Abilities
         {
             int healing = this._healingBase * this.Level;
             self.Heal(healing);
-            LogHelper.Log(typeof(TackleAbility), $"{this.Name} healed {healing} hitpoints.");
+            LogHelper.Log(typeof(HealAbility), $"{this.Name} healed {healing} hitpoints.");
         }
     }
 }

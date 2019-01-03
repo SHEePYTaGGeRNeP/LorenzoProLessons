@@ -17,8 +17,9 @@ namespace Assets.Editor.Editor_Scripts
         public static void ShowWindow()
         {
             UpdateAbilityOptions();
-            EditorWindow window = GetWindowWithRect<AbilityPopupWindow>(
-                new Rect(Screen.width / 2, Screen.height / 2, 250, 100));
+            EditorWindow window = GetWindow<AbilityPopupWindow>();
+            window.position = new Rect(Screen.width / 2, Screen.height / 2, 300, 100);
+            window.minSize = new Vector2(250, 100);
             window.Show();
         }
 
@@ -47,7 +48,12 @@ namespace Assets.Editor.Editor_Scripts
             string className = type.Name;
             Ability data = (Ability)CreateInstance(className);
             Debug.Log($"data: {data}");
-            AssetDatabase.CreateAsset(data, $"Assets/Data/Abilities/_{name}.asset");
+            string prefix = "_" + className;
+            string fileName = prefix;
+            int nr = 0;
+            while (AssetDatabase.FindAssets(fileName, new[] { "Assets/Data/Abilities" }).Length > 0)
+                fileName = prefix + ++nr;
+            AssetDatabase.CreateAsset(data, $"Assets/Data/Abilities/{fileName}.asset");
         }
     }
 }
