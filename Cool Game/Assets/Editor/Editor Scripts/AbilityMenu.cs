@@ -18,8 +18,8 @@ namespace Assets.Editor.Editor_Scripts
         static void CreateAbility()
         {
             UpdateAbilityOptions();
-            EditorWindow window = GetWindow<CreateAbilityPopup>();
-            window.position = new Rect(Screen.width / 2, Screen.height / 2, 250, 100);
+            EditorWindow window = GetWindowWithRect<CreateAbilityPopup>(
+                new Rect(Screen.width / 2, Screen.height / 2, 250, 100));
             window.Show();
         }
 

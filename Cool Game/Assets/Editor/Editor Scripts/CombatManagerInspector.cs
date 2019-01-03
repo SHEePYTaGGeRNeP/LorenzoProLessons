@@ -10,7 +10,7 @@ public class CombatManagerInspector : Editor
 {
     public override void OnInspectorGUI()
     {
-        CombatManagerMono target = (CombatManagerMono)this.target;
+        CombatManagerMono target = this.target as CombatManagerMono;
         base.OnInspectorGUI();
         if (target.Creature1 == null)
             return;
