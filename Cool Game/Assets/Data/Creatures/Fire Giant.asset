@@ -17,4 +17,4 @@ MonoBehaviour:
   _sprite: {fileID: 21300000, guid: 59ae1ce976210294c95b61025ada7d7b, type: 3}
   _abilities:
   - {fileID: 11400000, guid: 31cb5eb84adb47641b7b80ba62eb7dd7, type: 2}
-  _health: 120
+  _health: 100

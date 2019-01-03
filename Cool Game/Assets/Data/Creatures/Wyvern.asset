@@ -18,4 +18,4 @@ MonoBehaviour:
   _abilities:
   - {fileID: 11400000, guid: fdff12b9f49ab144fa81bac3560704ca, type: 2}
   - {fileID: 11400000, guid: 7823b7cbc30a42c409f96e0b5745e193, type: 2}
-  _health: 100
+  _health: 80
