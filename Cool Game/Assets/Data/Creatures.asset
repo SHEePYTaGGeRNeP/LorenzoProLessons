@@ -15,5 +15,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _creatures:
   - {fileID: 11400000, guid: b6f82856b0956314ea23ae4dffc0b9d5, type: 2}
+  - {fileID: 11400000, guid: 807a4732f662ae340b07433c49ac5102, type: 2}
+  - {fileID: 11400000, guid: 5baab5d2e7553514ea8872f5f9588c05, type: 2}
+  - {fileID: 11400000, guid: bd8918276f5515c4488aac12ae00b58c, type: 2}
+  - {fileID: 11400000, guid: bb16276ed5a5d6343b46fb6a42b64aae, type: 2}
+  - {fileID: 11400000, guid: d8da68a4d52c11144b825cfc6382aa07, type: 2}
+  - {fileID: 11400000, guid: 3fb5ca537873d5446952a00384779d12, type: 2}
   - {fileID: 11400000, guid: b71050ec2b8102e42ac361cb21484670, type: 2}
   - {fileID: 11400000, guid: 020e5c2a1b8afc046a1e134fa1cb372e, type: 2}
+  - {fileID: 11400000, guid: ed909598d58452646aefd0dea486a388, type: 2}

@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_GeneratorAsset: {fileID: 0}
   m_Script: {fileID: 11500000, guid: c591f8a9cfbbb5d47b0b230e82fd74bf, type: 3}
-  m_Name: _Creature3
+  m_Name: Goblin
   m_EditorClassIdentifier: 
   _name: Goblin
   _sprite: {fileID: 21300000, guid: 9f051268e4db7fa439ae00eb990f734d, type: 3}

@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_GeneratorAsset: {fileID: 0}
   m_Script: {fileID: 11500000, guid: c591f8a9cfbbb5d47b0b230e82fd74bf, type: 3}
-  m_Name: 1
+  m_Name: Gabumon
   m_EditorClassIdentifier: 
   _name: Gabumon
   _sprite: {fileID: 21300000, guid: 9b848a2bd43699344be66b6d3b073aa9, type: 3}
