@@ -24,9 +24,14 @@ namespace Unit.Abilities
         {
             if (!this.IsAllowedToUse(self, opponent))
                 return false;
-            CustomSoundEffect sfx = GameObject.Instantiate(this._soundPrefab);
-            sfx.GetComponent<AudioSource>().clip = this.SoundFx;
-            sfx.Play();
+            if (this._soundPrefab == null || this.SoundFx)
+                LogHelper.LogWarning(typeof(Ability), $"{this.Name} has no sound prefab or FX");
+            else
+            {
+                CustomSoundEffect sfx = GameObject.Instantiate(this._soundPrefab);
+                sfx.GetComponent<AudioSource>().clip = this.SoundFx;
+                sfx.Play();
+            }
             this.Execute(self, opponent);
             return true;
         }

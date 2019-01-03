@@ -10,15 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_GeneratorAsset: {fileID: 0}
-  m_Script: {fileID: 0}
-  m_Name: RandomDamage
-  m_EditorClassIdentifier: CoolGame:Unit.Abilities:RandomDamageAbility
+  m_Script: {fileID: 11500000, guid: 5b8b0ca7311c4f4489507cfd4a9baacd, type: 3}
+  m_Name: Headbutt
+  m_EditorClassIdentifier: 
   _name: 
   _soundFx: {fileID: 0}
   _soundPrefab: {fileID: 0}
-  _curve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
+  _damageBase: 25
+  _damageSelfBase: 10

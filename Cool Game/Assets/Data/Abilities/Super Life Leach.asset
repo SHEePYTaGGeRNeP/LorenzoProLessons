@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_GeneratorAsset: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 04bdf5b9df834116934ad6c2b03663f0, type: 3}
+  m_Name: LifeLeach
+  m_EditorClassIdentifier: 
+  _name: LifeLeach
+  _soundFx: {fileID: 8300000, guid: 0c19a13b538070948b5760df12ecf16a, type: 3}
+  _soundPrefab: {fileID: 7610342344348496237, guid: e8565c23db0762e4cac514a18378cd38,
+    type: 3}
+  _damageBase: 5
+  _healingBase: 5

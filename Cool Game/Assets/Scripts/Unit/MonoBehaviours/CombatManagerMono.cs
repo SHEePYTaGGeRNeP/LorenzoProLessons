@@ -13,6 +13,9 @@ namespace Unit.MonoBehaviours
         [SerializeField]
         private CreatureMono _creatureMono2;
 
+        public Creature Creature1 => this._creatureMono1?.Creature;
+        public Creature Creature2 => this._creatureMono2?.Creature;
+
         private void Start()
         {
             CombatManager = new CombatManager(this._creatureMono1.Creature, this._creatureMono2.Creature);
