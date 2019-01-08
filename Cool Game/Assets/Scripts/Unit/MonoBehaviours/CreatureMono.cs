@@ -23,6 +23,15 @@ namespace Unit.MonoBehaviours
         {
             CreatureSO data = this._creatures.Creatures.ElementAt(
                 UnityEngine.Random.Range(0, this._creatures.Creatures.Count()));
+            this.Setup(data);
+        }
+        public void Setup(CreatureSO data)
+        {
+            if (this.Creature != null)
+            {
+                this.Creature.OnDamage -= this.HealthSystemOnDamage;
+                this.Creature.OnHealing -= this.HealthSystemOnDamage;
+            }
             this._image.sprite = data.Sprite;
             this.Creature = new Creature(data.name, data.Health)
             {
@@ -30,17 +39,16 @@ namespace Unit.MonoBehaviours
             };
             for (int i = 0; i < data.Abilities.Length; i++)
                 this.Creature.Abilities[i] = data.Abilities[i];
-            this.Creature.OnDamage += this.HealthSystemOnOnDamage;
-            this.Creature.OnHealing += this.HealthSystemOnOnDamage;
+            this.Creature.OnDamage += this.HealthSystemOnDamage;
+            this.Creature.OnHealing += this.HealthSystemOnDamage;
         }
-
         private void Start()
         {
             this.onHealthChanged?.Invoke(new HealthSystem.HealthChangeEventArgs(0,
                 this.Creature.CurrentHitPoints, this.Creature.MaxHitPoints));
         }
 
-        private void HealthSystemOnOnDamage(object sender, HealthSystem.HealthChangeEventArgs healthChangeEventArgs)
+        private void HealthSystemOnDamage(object sender, HealthSystem.HealthChangeEventArgs healthChangeEventArgs)
         {
             this.onHealthChanged?.Invoke(healthChangeEventArgs);
         }
