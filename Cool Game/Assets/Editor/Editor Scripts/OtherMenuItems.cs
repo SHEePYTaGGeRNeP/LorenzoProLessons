@@ -17,8 +17,6 @@ namespace Assets.Editor.Editor_Scripts
         static OtherMenuItems()
         {
             Debug.Log("OtherMenuItems constructor");
-            EditorPrefs.SetBool(_TEST_KEY, true);
-            Debug.Log("Test key: " +  EditorPrefs.GetBool(_TEST_KEY));
         }
 
         // Add a menu item called "Random COlor" to a Image's context menu.
@@ -60,5 +58,15 @@ namespace Assets.Editor.Editor_Scripts
             // Return false if no transform is selected.
             return Selection.activeTransform != null;
         }
+
+        private const string _CHECKBOXED = "MyMenu/Checkboxed";
+        [MenuItem(_CHECKBOXED)]
+        static void CheckboxMenuItem()
+        {
+            bool current = EditorPrefs.GetBool(_TEST_KEY);
+            Menu.SetChecked(_CHECKBOXED, !current);
+            EditorPrefs.SetBool(_TEST_KEY, !current);
+        }
+
     }
 }
