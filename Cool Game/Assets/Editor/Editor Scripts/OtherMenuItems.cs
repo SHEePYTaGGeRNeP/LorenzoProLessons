@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +18,7 @@ namespace Assets.Editor.Editor_Scripts
 
         static OtherMenuItems()
         {
-            Debug.Log("OtherMenuItems constructor");
+            UnityEngine.Debug.Log("OtherMenuItems constructor");
         }
 
         // Add a menu item called "Random COlor" to a Image's context menu.
@@ -31,7 +33,7 @@ namespace Assets.Editor.Editor_Scripts
         static void WhiteColor(MenuCommand command)
         {
             Image image = (Image)command.context;
-            image.color = new Color(1,1,1,1);
+            image.color = new Color(1, 1, 1, 1);
         }
 
         [MenuItem("Scene/SaveTest")]
@@ -47,7 +49,7 @@ namespace Assets.Editor.Editor_Scripts
         [MenuItem("MyMenu/Log Selected Transform Name")]
         static void LogSelectedTransformName()
         {
-            Debug.Log("Selected Transform is on " + Selection.activeTransform.gameObject.name + ".");
+            UnityEngine.Debug.Log("Selected Transform is on " + Selection.activeTransform.gameObject.name + ".");
         }
 
         // Validate the menu item defined by the function above.
@@ -66,6 +68,12 @@ namespace Assets.Editor.Editor_Scripts
             bool current = EditorPrefs.GetBool(_TEST_KEY);
             Menu.SetChecked(_CHECKBOXED, !current);
             EditorPrefs.SetBool(_TEST_KEY, !current);
+        }
+
+        [MenuItem("Tools/Open Unity Roadmap")]
+        private static void OpenWebsite()
+        {
+            Process.Start("https://unity3d.com/unity/roadmap");
         }
 
     }
