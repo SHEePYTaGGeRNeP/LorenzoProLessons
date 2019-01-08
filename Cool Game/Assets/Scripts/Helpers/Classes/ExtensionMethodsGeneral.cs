@@ -12,8 +12,7 @@ using System.Text.RegularExpressions;
 // ReSharper disable once CheckNamespace
 public static class ExtensionMethodsGeneral
 {
-    private static readonly System.Random _random = new System.Random();
-
+    private static readonly Random _random = new Random();
 
     /// <summary>
     /// If the given <paramref name="type"/> is an array or some other collection

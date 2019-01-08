@@ -11,6 +11,7 @@ namespace Assets.Editor.Editor_Scripts
 {
     class AbilityPopupWindow : EditorWindow
     {
+        private const string _ABILITIES_ASSETS_PATH = "Assets/Data/Abilities";
         private int _selectedIndex;
         static Dictionary<string, Type> optionsDic = new Dictionary<string, Type>();
 
@@ -41,7 +42,6 @@ namespace Assets.Editor.Editor_Scripts
                 CreateAsset(optionsArray[_selectedIndex]);
             GUILayout.EndHorizontal();
         }
-
         private void CreateAsset(string name)
         {
             Type type = optionsDic[name];
@@ -51,9 +51,9 @@ namespace Assets.Editor.Editor_Scripts
             string prefix = "_" + className;
             string fileName = prefix;
             int nr = 0;
-            while (AssetDatabase.FindAssets(fileName, new[] { "Assets/Data/Abilities" }).Length > 0)
+            while (AssetDatabase.FindAssets(fileName, new[] { _ABILITIES_ASSETS_PATH }).Length > 0)
                 fileName = prefix + ++nr;
-            AssetDatabase.CreateAsset(data, $"Assets/Data/Abilities/{fileName}.asset");
+            AssetDatabase.CreateAsset(data, $"{_ABILITIES_ASSETS_PATH }/{fileName}.asset");
         }
     }
 }

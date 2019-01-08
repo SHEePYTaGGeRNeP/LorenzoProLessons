@@ -23,6 +23,6 @@ public class CombatManagerInspector : Editor
         EditorGUILayout.LabelField("Creature", c.Name);   
         EditorGUILayout.LabelField("Hitpoints", $"{c.CurrentHitPoints} / {c.MaxHitPoints}");
         EditorGUILayout.EndHorizontal();
-
     }
+
 }

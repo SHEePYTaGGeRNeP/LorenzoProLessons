@@ -11,9 +11,12 @@ using UnityEditor;
 #endif
 using UnityEngine;
 using UnityEngine.Assertions;
+using Random = UnityEngine.Random;
 
 public static class Utils
 {
+    public static Color GetRandomColor() => new Color(Random.Range(0, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+
     public static IEnumerable<Type> GetSubclassesOfAbility()
         => typeof(Ability).Assembly.GetTypes()
            .Where(myType => myType.IsClass && !myType.IsAbstract && myType.IsSubclassOf(typeof(Ability)))
