@@ -34,6 +34,15 @@ public static class ExtensionMethodsGeneral
         return null;
     }
 
+    public static void Test(this string s)
+    {
+        s = "hello";
+    }
+    public static void Test(this int i)
+    {
+       i = 2;
+    }
+
 
     public static string ToRacePositionText(this int pos)
     {

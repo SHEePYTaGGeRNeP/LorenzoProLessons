@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
@@ -243,10 +243,7 @@ public static class Utils
         return -80f;
     }
 
-    public static float DbToVolume(float dB)
-    {
-        return Mathf.Pow(10f, dB / 20f);
-    }
+    public static float DbToVolume(float dB) => Mathf.Pow(10f, dB / 20f);
 
     public static Vector3 RandomPointInBounds(Bounds bounds)
     {

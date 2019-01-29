@@ -9,7 +9,7 @@ using System.Linq;
 using Jobs;
 using UnityEngine.Jobs;
 using UnityEngine.Windows;
-
+using Assets.Scripts.SavingAndLoading;
 namespace Tests
 {
     public class NewTestScript
@@ -20,6 +20,23 @@ namespace Tests
             // Use the Assert class to test conditions.
             Assert.IsTrue(true);
             Assert.AreEqual(1, 1);
+            string s = Int32.MaxValue.ToRacePositionText();
+            string s2 = ExtensionMethodsGeneral.ToRacePositionText(Int32.MaxValue);
+        }
+
+        [Test]
+        public void TestExtension()
+        {
+            string a = "test";
+            a.Test();
+            Assert.AreEqual("test", a);
+            int i = 1;
+            i.Test();
+            Assert.AreEqual(1, i);
+            Vector3 v = Vector3.zero;
+            Vector2 xy = v.Xy();
+            Vector2 xy2 = ExtensionMethodsUnity.Xy(v);
+
         }
 
         // A UnityTest behaves like a coroutine in PlayMode
@@ -44,8 +61,17 @@ namespace Tests
             //Debug.Log($"e {expected}");
             Debug.Log(expected - q.eulerAngles);
             Assert.AreEqual(expected, q.eulerAngles);
-        }
 
+
+        }
+        private class GenericList<T, TY, U> where TY: U
+        {
+            List<T> list;
+        }
+        private void tetst()
+        {
+            GenericList<int, string, object> genericList = new GenericList<int, string, object>();
+        }
 
         [Test]
         public void Testttt()
@@ -72,7 +98,7 @@ namespace Tests
         {
             public void Eat()
             {
-                LogHelper.Log(typeof(Animal),"Nomnomnom");
+                LogHelper.Log(typeof(Animal), "Nomnomnom");
             }
         }
 
@@ -101,7 +127,7 @@ namespace Tests
 
             public void Fly()
             {
-                
+
             }
         }
 
@@ -112,6 +138,36 @@ namespace Tests
             public void Swim()
             {
             }
+        }
+
+        [Serializable]
+        private class A
+        {
+            public string Hello { get; set; }
+        }
+        [Serializable]
+        private class B : A
+        {
+            public int Test { get; set; }
+        }
+
+        [Test]
+        public void TestPolymorphismSaveLoadDisk()
+        {
+            const string FILE_NAME = "test.dat";
+            B b = new B() { Hello = "hello", Test = 1 };
+            SaveLoadObject.SaveObject(b, FILE_NAME);
+            B loaded = SaveLoadObject.LoadObjectOfType<B>(FILE_NAME);
+            if (File.Exists(FILE_NAME))
+                File.Delete(FILE_NAME);
+            Assert.AreEqual(b.Hello, loaded.Hello);
+            List<A> list = new List<A>();
+            list.Add(new B() { Hello = " ha" });
+            SaveLoadObject.SaveObject(list, FILE_NAME);
+            List<A> listLoaded = SaveLoadObject.LoadObjectOfType<List<A>>(FILE_NAME);
+            Assert.IsTrue(listLoaded[0] is B);
+            if (File.Exists(FILE_NAME))
+                File.Delete(FILE_NAME);
         }
     }
 }
