@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections;
-using System.Runtime.Remoting.Channels;
-using System.Runtime.Remoting.Messaging;
 using System.Text;
-using Helpers.Classes;
 using NUnit.Framework;
-using Unit;
+using Units;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace Tests.Unit
+namespace Tests.Units
 {
     public class HealthSystemTests
     {
@@ -17,12 +14,29 @@ namespace Tests.Unit
         private const int _DEFAULT_DAMAGE_AND_HEALING = 10;
 
         private static HealthSystem CreateDefaultHealthSystem() => new HealthSystem(_DEFAULT_START_HP);
-        
+
         [Test]
         public void Can_Create()
         {
             HealthSystem hs = CreateDefaultHealthSystem();
             Assert.IsNotNull(hs);
+        }
+
+        [Test]
+        public void Constructor_SetsHealth()
+        {
+            HealthSystem hs = new HealthSystem(_DEFAULT_START_HP);
+            Assert.AreEqual(_DEFAULT_START_HP, hs.CurrentHitPoints);
+            Assert.AreEqual(_DEFAULT_START_HP, hs.MaxHitPoints);
+            hs = new HealthSystem(_DEFAULT_START_HP / 2);
+            Assert.AreEqual(_DEFAULT_START_HP / 2, hs.CurrentHitPoints);
+            Assert.AreEqual(_DEFAULT_START_HP / 2, hs.MaxHitPoints);
+        }
+
+        [Test]
+        public void Constructor_Negative_Exception()
+        {
+            Assert.Throws<NegativeInputException>(() => new HealthSystem(-1));            
         }
 
         [Test]
