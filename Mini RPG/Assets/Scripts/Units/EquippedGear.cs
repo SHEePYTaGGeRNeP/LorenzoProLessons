@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using Assets.Scripts.Items;
 namespace Assets.Scripts.Units
 {
-    class EquippedGear
+    public class EquippedGear
     {
         private readonly Dictionary<ItemSO.GearSlot, ItemSO> _gear;
     }
