@@ -17,5 +17,6 @@ namespace Assets.Editor.Tests
             Assert.IsFalse(i.Any(x => x > 5));
             Assert.IsTrue(i.All(x => x > 5));
         }
+        
     }
 }

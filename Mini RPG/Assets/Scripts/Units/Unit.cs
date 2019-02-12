@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Items;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +11,9 @@ namespace Units
     public class Unit : MonoBehaviour
     {
         private HealthSystem _healthSystem;
+
+        [SerializeField]
+        private ItemSO[] _itemsTest;
 
         private void Awake()
         {
