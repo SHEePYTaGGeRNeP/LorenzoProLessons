@@ -115,7 +115,7 @@ namespace Tests.Units
         {
             HealthSystem hs = CreateDefaultHealthSystem();
             bool event1Raised = false;
-            hs.OnHealing += (sender, args) =>
+            hs.OnHealthChanged += (sender, args) =>
             {
                 event1Raised = true;
             };
@@ -127,7 +127,7 @@ namespace Tests.Units
         {
             HealthSystem hs = CreateDefaultHealthSystem();
             bool event1Raised = false;
-            hs.OnDamage += (sender, args) =>
+            hs.OnHealthChanged += (sender, args) =>
             {
                 event1Raised = true;
             };

@@ -21,12 +21,11 @@ namespace Tests.Units
         public void Unity_Event_Works()
         {
             Unit unit = new GameObject().AddComponent<Unit>();
-            //yield return null;
             bool eventRaised = false;
             unit.onHealthChanged = new Assets.Scripts.UnityHealthChangeEvent();
-            unit.onHealthChanged.AddListener((HealthSystem.HealthChangeEventArgs e) =>
+            unit.onHealthChanged.AddListener((HealthChangeEventArgs e) =>
             {
-                eventRaised = true;               
+                eventRaised = true;
             });
             unit.Damage(_DEFAULT_DAMAGE_AND_HEALING);
             Assert.IsTrue(eventRaised);

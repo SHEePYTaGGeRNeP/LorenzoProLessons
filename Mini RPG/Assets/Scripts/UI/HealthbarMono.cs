@@ -8,17 +8,20 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace Assets.Scripts.UI
 {
-    [RequireComponent(typeof(Text))]
     public class HealthbarMono : MonoBehaviour
     {
+        [SerializeField]
         private Text _text;
-        private void Awake()
-        {
-            this._text = this.GetComponent<Text>();
-        }
-        public void OnHealthChanged(HealthSystem.HealthChangeEventArgs e)
+        [SerializeField]
+        private Image _image;
+        [SerializeField]
+        private Gradient _gradientColor;
+        
+        public void OnHealthChanged(HealthChangeEventArgs e)
         {
             this._text.text = $"{e.CurrentHitPoints}/{e.MaxHitPoints} hp";
+            this._image.fillAmount = (float)e.CurrentHitPoints / e.MaxHitPoints;
+            this._image.color = _gradientColor.Evaluate(1 - this._image.fillAmount);
         }
     }
 }

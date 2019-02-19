@@ -3,6 +3,20 @@ using UnityEngine;
 
 namespace Units
 {
+    public class HealthChangeEventArgs : EventArgs
+    {
+        public int Change { get; }
+        public int CurrentHitPoints { get; }
+        public int MaxHitPoints { get; }
+
+        public HealthChangeEventArgs(int change, int currentHitPoints, int maxHp)
+        {
+            this.Change = change;
+            this.CurrentHitPoints = currentHitPoints;
+            this.MaxHitPoints = maxHp;
+        }
+    }
+
     [Serializable]
     public class HealthSystem
     {
@@ -18,22 +32,7 @@ namespace Units
             private set { this._currentHitPoints = value; }
         }
 
-        public event EventHandler<HealthChangeEventArgs> OnDamage;
-        public event EventHandler<HealthChangeEventArgs> OnHealing;
-
-        public class HealthChangeEventArgs : EventArgs
-        {
-            public int Change { get; }
-            public int CurrentHitPoints { get; }
-            public int MaxHitPoints { get; }
-
-            public HealthChangeEventArgs(int change, int currentHitPoints, int maxHp)
-            {
-                this.Change = change;
-                this.CurrentHitPoints = currentHitPoints;
-                this.MaxHitPoints = maxHp;
-            }
-        }
+        public event EventHandler<HealthChangeEventArgs> OnHealthChanged;
 
         public HealthSystem(int startAndMaxHp) : this(startAndMaxHp, startAndMaxHp) { }
         public HealthSystem(int maxHitPoints, int currentHitPoints)
@@ -51,7 +50,7 @@ namespace Units
             if (healing < 0)
                 throw new NegativeInputException(nameof(healing));
             this.CurrentHitPoints = Mathf.Clamp(this.CurrentHitPoints + healing, 0, this.MaxHitPoints);
-            this.OnHealing?.Invoke(this, new HealthChangeEventArgs(healing, this.CurrentHitPoints, this.MaxHitPoints));
+            this.OnHealthChanged?.Invoke(this, new HealthChangeEventArgs(healing, this.CurrentHitPoints, this.MaxHitPoints));
         }
 
         public void Damage(int damage)
@@ -59,7 +58,7 @@ namespace Units
             if (damage < 0)
                 throw new NegativeInputException(nameof(damage));
             this.CurrentHitPoints = Mathf.Clamp(this.CurrentHitPoints - damage, 0, this.MaxHitPoints);
-            this.OnDamage?.Invoke(this, new HealthChangeEventArgs(damage, this.CurrentHitPoints, this.MaxHitPoints));
+            this.OnHealthChanged?.Invoke(this, new HealthChangeEventArgs(-damage, this.CurrentHitPoints, this.MaxHitPoints));
         }
     }
 }
