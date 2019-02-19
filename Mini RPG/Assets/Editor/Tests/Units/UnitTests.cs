@@ -8,12 +8,31 @@ namespace Tests.Units
 {
     class UnitTests
     {
-        [UnityTest]
-        public IEnumerator Can_Create_Unit()
+        private const int _DEFAULT_DAMAGE_AND_HEALING = 10;
+
+        [Test]
+        public void Can_Create_Unit()
         {
             Unit unit = new GameObject().AddComponent<Unit>();
-            yield return null;
             Assert.IsNotNull(unit);
+        }
+
+        [Test]
+        public void Unity_Event_Works()
+        {
+            Unit unit = new GameObject().AddComponent<Unit>();
+            //yield return null;
+            bool eventRaised = false;
+            unit.onHealthChanged = new Assets.Scripts.UnityHealthChangeEvent();
+            unit.onHealthChanged.AddListener((HealthSystem.HealthChangeEventArgs e) =>
+            {
+                eventRaised = true;               
+            });
+            unit.Damage(_DEFAULT_DAMAGE_AND_HEALING);
+            Assert.IsTrue(eventRaised);
+            eventRaised = false;
+            unit.Heal(_DEFAULT_DAMAGE_AND_HEALING);
+            Assert.IsTrue(eventRaised);
         }
     }
 }

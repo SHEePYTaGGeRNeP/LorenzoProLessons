@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Text;
 using NUnit.Framework;
@@ -114,12 +114,10 @@ namespace Tests.Units
         public void Heal_Event_Works()
         {
             HealthSystem hs = CreateDefaultHealthSystem();
-            StringBuilder sb = new StringBuilder();
             bool event1Raised = false;
             hs.OnHealing += (sender, args) =>
             {
                 event1Raised = true;
-                sb.AppendLine($"Event1 Raised heal: {args.Change} hp: {args.CurrentHitPoints}");
             };
             hs.Heal(_DEFAULT_DAMAGE_AND_HEALING);
             Assert.IsTrue(event1Raised);
@@ -128,12 +126,10 @@ namespace Tests.Units
         public void Damage_Event_Works()
         {
             HealthSystem hs = CreateDefaultHealthSystem();
-            StringBuilder sb = new StringBuilder();
             bool event1Raised = false;
             hs.OnDamage += (sender, args) =>
             {
                 event1Raised = true;
-                sb.AppendLine($"Event1 Raised damage: {args.Change} hp: {args.CurrentHitPoints}");
             };
             hs.Damage(_DEFAULT_DAMAGE_AND_HEALING);
             Assert.IsTrue(event1Raised);

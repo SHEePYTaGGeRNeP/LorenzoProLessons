@@ -20,8 +20,8 @@ namespace Assets.Editor.Tests.Utils
         [Test]
         public void Can_Roll()
         {
-            const uint sides = 6;
-            const uint nrOfDice = 1;
+            const int sides = 6;
+            const int nrOfDice = 1;
             Die d = new Die(sides);
             for (int i = 0; i < 100; i++)
             {
@@ -33,8 +33,8 @@ namespace Assets.Editor.Tests.Utils
         [Test]
         public void Can_Roll_Static()
         {
-            const uint sides = 6;
-            const uint nrOfDice = 1;
+            const int sides = 6;
+            const int nrOfDice = 1;
             for (int i = 0; i < 100; i++)
             {
                 int result = Die.Roll(sides, nrOfDice);
@@ -45,8 +45,8 @@ namespace Assets.Editor.Tests.Utils
         [Test]
         public void Can_Roll_Two_Static()
         {
-            const uint sides = 6;
-            const uint nrOfDice = 2;
+            const int sides = 6;
+            const int nrOfDice = 2;
             for (int i = 0; i < 100; i++)
             {
                 int result = Die.Roll(sides, nrOfDice);
@@ -57,14 +57,14 @@ namespace Assets.Editor.Tests.Utils
         [Test]
         public void Can_Roll_Dice()
         {
-            (Die, uint) die1 = (new Die(8), 1);
-            (Die, uint) die2 = (new Die(8), 1);
-            (Die, uint)[] dice = new(Die, uint)[] { die1, die2 };
+            (Die, int) die1 = (new Die(8), 1);
+            (Die, int) die2 = (new Die(8), 1);
+            (Die, int)[] dice = new(Die, int)[] { die1, die2 };
+            int max = dice.Sum(x => x.Item2 * x.Item1.NrOfSides);
             for (int i = 0; i < 100; i++)
             {
                 int result = Die.Roll(dice);
-                Assert.True(result > dice.Sum(x => x.Item2) - 1
-                    && result <= dice.Sum(x => x.Item2 * x.Item1.NrOfSides));
+                Assert.True(result >= dice.Length && result <= max);
             }
         }
     }
