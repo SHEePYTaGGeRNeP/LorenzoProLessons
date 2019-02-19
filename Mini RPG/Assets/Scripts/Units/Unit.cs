@@ -24,6 +24,7 @@ namespace Units
         {
             this._healthSystem = new HealthSystem(50);
             this._healthSystem.OnHealthChanged += _healthSystem_OnHealthChange;
+            this._healthSystem.Heal(0);
         }
 
         private void _healthSystem_OnHealthChange(object sender, HealthChangeEventArgs e)
