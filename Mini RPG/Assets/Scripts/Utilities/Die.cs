@@ -3,7 +3,7 @@ using System.Linq;
 using UnityEngine;
 using System;
 
-namespace Utils
+namespace Utilities
 {
     public class Die
     {

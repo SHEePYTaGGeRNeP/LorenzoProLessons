@@ -1,11 +1,5 @@
 ﻿using Assets.Scripts;
-using Assets.Scripts.Items;
 using Assets.Scripts.Units;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 
 namespace Units
@@ -20,6 +14,10 @@ namespace Units
 
         public UnityHealthChangeEvent onHealthChanged;
 
+        [Header("DEBUG")]
+        [SerializeField]
+        private string _currentHP;
+
         private void Awake()
         {
             this._healthSystem = new HealthSystem(50);
@@ -29,6 +27,7 @@ namespace Units
 
         private void _healthSystem_OnHealthChange(object sender, HealthChangeEventArgs e)
         {
+            this._currentHP = $"{e.CurrentHitPoints} / {e.MaxHitPoints}";
             onHealthChanged?.Invoke(e);
         }
         public void Damage(int damage) => this._healthSystem.Damage(damage);

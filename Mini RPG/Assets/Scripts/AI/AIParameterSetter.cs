@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Units;
 using UnityEngine;
 namespace Assets.Scripts.AI
 {
@@ -11,7 +12,7 @@ namespace Assets.Scripts.AI
     {
         [SerializeField]
         private Animator _animator;
-        private Transform _target;
+        public Unit Target { get; private set; }
 
         public Vector3 OriginalPosition { get; private set; }
 
@@ -22,24 +23,25 @@ namespace Assets.Scripts.AI
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponent<Player>() == null)
+            Unit u = other.GetComponent<Unit>();
+            if (other.GetComponent<Player>() == null || u == null)
                 return;
-            _target = other.transform;
+            Target = u;
             this._animator.SetBool(AISimpleParameters.NAME_IN_RANGE_FOR_CHASE, true);
         }
         private void OnTriggerExit(Collider other)
         {
-            if (other.transform != _target)
+            if (other.transform != Target.transform)
                 return;
-            this._target = null;
+            this.Target = null;
             this._animator.SetBool(AISimpleParameters.NAME_IN_RANGE_FOR_CHASE, false);
         }
         private void Update()
         {
-            this._animator.SetBool(AISimpleParameters.NAME_IN_ORIGINAL_SPOT, this.transform.position == this.OriginalPosition);
-            if (this._target == null)
+            this._animator.SetBool(AISimpleParameters.NAME_IN_ORIGINAL_SPOT, Vector3.Distance(this.transform.position, this.OriginalPosition) < 1f);
+            if (this.Target == null)
                 return;
-            float range = Vector3.Distance(this.transform.position, _target.position);
+            float range = Vector3.Distance(this.transform.position, Target.transform.position);
             bool inRange = range <= AISimpleParameters.ATTACK_RANGE;
             this._animator.SetBool(AISimpleParameters.NAME_IN_RANGE_FOR_ATTACK, inRange);
         }
