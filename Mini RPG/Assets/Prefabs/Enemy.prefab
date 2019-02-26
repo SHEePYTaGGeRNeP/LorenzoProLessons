@@ -421,12 +421,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32ca30c36b506c64aafa127f12f968fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 2
-  m_turnSpeed: 200
+  _isControllerByPlayer: 0
+  m_moveSpeed: 1
+  m_turnSpeed: 100
   m_jumpForce: 4
   m_animator: {fileID: 8502101983429115897}
   m_rigidBody: {fileID: 4789124455082565771}
-  m_controlMode: 0
 --- !u!1 &1963520437470549339
 GameObject:
   m_ObjectHideFlags: 0
