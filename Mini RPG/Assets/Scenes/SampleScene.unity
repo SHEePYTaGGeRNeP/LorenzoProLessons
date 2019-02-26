@@ -1286,29 +1286,31 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &1909910327626690628 stripped
+--- !u!1 &138275391223173684 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 1909910327626690628, guid: 24eff8f436d5814478bebc16dfaec549,
+  m_CorrespondingSourceObject: {fileID: 138275391223173684, guid: 24eff8f436d5814478bebc16dfaec549,
     type: 3}
   m_PrefabInstance: {fileID: 8544328742333049140}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1909910327626690629
-MonoBehaviour:
+--- !u!95 &138275391223173685
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1909910327626690628}
+  m_GameObject: {fileID: 138275391223173684}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6117e773d7226964d9bcba23932fa886, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Assets.Scripts.UnityHealthChangeEvent, Scripts, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &3720319767120023300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1376,42 +1378,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6570002132977724657, guid: 46cb3dd7de539d04ea74282f4504964b,
+        type: 3}
+      propertyPath: onHealthChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 799515362}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 46cb3dd7de539d04ea74282f4504964b, type: 3}
---- !u!1 &6570002132977724656 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6570002132977724656, guid: 46cb3dd7de539d04ea74282f4504964b,
-    type: 3}
-  m_PrefabInstance: {fileID: 3720319767120023300}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6570002132977724657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6570002132977724656}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6117e773d7226964d9bcba23932fa886, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onHealthChanged:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 799515362}
-        m_MethodName: OnHealthChanged
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_TypeName: Assets.Scripts.UnityHealthChangeEvent, Scripts, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
 --- !u!1001 &8544328742333049140
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1478,6 +1451,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 138275391223173684, guid: 24eff8f436d5814478bebc16dfaec549,
+        type: 3}
+      propertyPath: m_Name
+      value: AI
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 24eff8f436d5814478bebc16dfaec549, type: 3}

@@ -814,6 +814,8 @@ GameObject:
   - component: {fileID: 6955665546960142789}
   - component: {fileID: 4558732829247916042}
   - component: {fileID: 4215501294367875883}
+  - component: {fileID: 6570002132977724657}
+  - component: {fileID: 6570002132977724658}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -828,7 +830,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6570002132977724656}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 25, y: 0, z: 25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -905,6 +907,46 @@ MonoBehaviour:
   m_jumpForce: 4
   m_animator: {fileID: 4558732829247916042}
   m_rigidBody: {fileID: 1495104664685168142}
+--- !u!114 &6570002132977724657
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6570002132977724656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6117e773d7226964d9bcba23932fa886, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onHealthChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_MethodName: OnHealthChanged
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_TypeName: Assets.Scripts.UnityHealthChangeEvent, Scripts, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+--- !u!114 &6570002132977724658
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6570002132977724656}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c513327617d3da49bdc2941c79b96c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6809668689977071825
 GameObject:
   m_ObjectHideFlags: 0
