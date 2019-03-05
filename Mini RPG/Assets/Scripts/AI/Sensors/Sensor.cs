@@ -16,10 +16,9 @@ namespace Assets.Scripts.AI.Sensors
         [SerializeField]
         protected bool debug = true;
         [SerializeField]
-        protected bool debugOnlyWhenSelected = true;
-
+        protected bool debugOnlyWhenSelected;
         [SerializeField]
-        protected bool debugOnlyOnImportantValues = false;
+        protected bool debugOnlyOnImportantValues;
 
         private float _elapsedTime = 0.0f;
 

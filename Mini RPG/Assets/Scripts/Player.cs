@@ -1,6 +1,8 @@
-﻿namespace Assets.Scripts
+﻿using UnityEngine;
+namespace Assets.Scripts
 {
-    class Player : UnityEngine.MonoBehaviour
+    [RequireComponent(typeof(Collider))]
+    public class Player : MonoBehaviour
     { 
     }
 }

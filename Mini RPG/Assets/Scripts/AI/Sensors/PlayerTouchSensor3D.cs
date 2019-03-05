@@ -18,7 +18,7 @@ namespace Assets.Scripts.AI.Sensors
         {
             Player p = col.GetComponentInParent<Player>();
             if (p == null)
-                return;
+                throw new Exception("We should have caught this in ShouldAddOrRemove");
             this.Player = p;
             this._player = p;
         }
@@ -27,9 +27,12 @@ namespace Assets.Scripts.AI.Sensors
         {
             Player p = col.GetComponentInParent<Player>();
             if (p == null)
-                return;
+                throw new Exception("We should have caught this in ShouldAddOrRemove");
             this.Player = null;
             this._player = null;
         }
+
+        protected override bool ShouldAddOrRemove(Collider col) => col.GetComponentInParent<Player>() != null;
+
     }
 }

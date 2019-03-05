@@ -50,7 +50,8 @@ namespace Assets.Scripts.AI.Sensors
 
         protected virtual void OnTriggerEnter(Collider other)
         {
-            if (!this.triggerSense || !this.detectionMask.IsLayerInLayerMask(other.gameObject.layer))
+            if (!this.triggerSense || !this.detectionMask.IsLayerInLayerMask(other.gameObject.layer)
+                || !this.ShouldAddOrRemove(other))
                 return;
             this.touchCount++;
             this._touchingColliders.Add(other);
@@ -59,7 +60,8 @@ namespace Assets.Scripts.AI.Sensors
 
         protected virtual void OnTriggerExit(Collider other)
         {
-            if (!this.triggerSense || !this.detectionMask.IsLayerInLayerMask(other.gameObject.layer))
+            if (!this.triggerSense || !this.detectionMask.IsLayerInLayerMask(other.gameObject.layer)
+                || !this.ShouldAddOrRemove(other))
                 return;
             this.touchCount--;
             this._touchingColliders.Remove(other);
@@ -68,7 +70,8 @@ namespace Assets.Scripts.AI.Sensors
 
         protected virtual void OnCollisionEnter(Collision col)
         {
-            if (!this.collisionSense || !this.detectionMask.IsLayerInLayerMask(col.gameObject.layer))
+            if (!this.collisionSense || !this.detectionMask.IsLayerInLayerMask(col.gameObject.layer)
+                || !this.ShouldAddOrRemove(col.collider))
                 return;
             this.touchCount++;
             this._touchingColliders.Add(col.collider);
@@ -77,7 +80,8 @@ namespace Assets.Scripts.AI.Sensors
 
         protected virtual void OnCollisionExit(Collision col)
         {
-            if (!this.collisionSense || !this.detectionMask.IsLayerInLayerMask(col.gameObject.layer))
+            if (!this.collisionSense || !this.detectionMask.IsLayerInLayerMask(col.gameObject.layer)
+                || !this.ShouldAddOrRemove(col.collider))
                 return;
             this.touchCount--;
             this._touchingColliders.Remove(col.collider);
@@ -86,6 +90,8 @@ namespace Assets.Scripts.AI.Sensors
 
         protected abstract void OnTouch(Collider col);
         protected abstract void OnTouchExit(Collider col);
+
+        protected virtual bool ShouldAddOrRemove(Collider col) => true;
 
         protected override void DebugDrawGizmos()
         {
