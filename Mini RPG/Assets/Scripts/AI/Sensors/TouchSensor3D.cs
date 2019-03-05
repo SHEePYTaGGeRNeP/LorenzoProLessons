@@ -19,26 +19,22 @@ namespace Assets.Scripts.AI.Sensors
         protected bool collisionSense;
 
         [SerializeField]
-        protected Collider touchCollider;
-
-        [SerializeField]
         private Transform _parentObject;
 
         [Header("Debug TouchSensor3D")]
         [SerializeField]
-        protected int touchCount;
+        private int touchCount;
 
         [SerializeField]
         private List<Collider> _touchingColliders;
 
+        private Collider _touchCollider;
         public bool IsTouching { get { return this.touchCount > 0; } }
 
         protected override void Awake()
         {
             base.Awake();
-            this.touchCount = 0;
-            if (this.touchCollider == null)
-                this.touchCollider = this.GetComponent<Collider>();
+            this._touchCollider = this.GetComponent<Collider>();
             Assert.IsNotNull(this._parentObject, "Please set parent");
         }
 
@@ -99,16 +95,15 @@ namespace Assets.Scripts.AI.Sensors
                 Gizmos.color = this.IsTouching ? Color.red : Color.green;
             else
                 Gizmos.color = Color.grey;
-            if (this.touchCollider is BoxCollider box)
+            if (this._touchCollider is BoxCollider box)
                 Gizmos.DrawWireCube(this.transform.position + box.center, box.size);
-            else if (this.touchCollider is SphereCollider sphere)
+            else if (this._touchCollider is SphereCollider sphere)
                 Gizmos.DrawWireSphere(this.transform.position + sphere.center, sphere.radius);
-            else if (this.touchCollider is CapsuleCollider capsule)
+            else if (this._touchCollider is CapsuleCollider capsule)
             {
                 // draw some spheres to fake capsule
                 for (float position = -capsule.height / 2f + capsule.radius;
-                    position < (capsule.height / 2f);
-                    position += (int)capsule.radius)
+                    position < (capsule.height / 2f); position += (int)capsule.radius)
                 {
                     switch (capsule.direction)
                     {
@@ -131,7 +126,6 @@ namespace Assets.Scripts.AI.Sensors
                 }
             }
         }
-
 
         protected override void DebugDrawImportantGizmos()
         {
