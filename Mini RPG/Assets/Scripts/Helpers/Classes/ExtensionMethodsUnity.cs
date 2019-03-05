@@ -46,7 +46,8 @@ public static class ExtensionMethodsUnity
 
     public static bool IsTransformInMyParents(this Transform t, Transform parent)
     {
-        if (t == parent) return true;
+        if (t == parent)
+            return true;
         Transform p = t;
         while ((p = p.parent) != null)
         {
