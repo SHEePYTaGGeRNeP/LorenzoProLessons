@@ -20,8 +20,8 @@ public class WalkBackBehavior : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        float v = Vector3.Distance(this.aiParams.OriginalPosition, this.aiParams.transform.position);
-        this._controller.MoveByInput(-1, 0, false);
+        Vector3 remain = Utils.ObjectSide(this._controller.transform, this.aiParams.OriginalPosition);
+        this._controller.MoveByInput(-1, -remain.x, false);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

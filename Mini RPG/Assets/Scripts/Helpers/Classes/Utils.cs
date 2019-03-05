@@ -275,21 +275,7 @@ public static class Utils
         return rightRay ? angleIndex : -angleIndex;
     }
 
-    /// <summary>
-    /// x Less than 0 is left, x more than 0 is right
-    /// z less than 0 is behind, z more than 0 is forward
-    /// y less than 0 is under, y more than 0 is above
-    /// </summary>
-    public static Vector3 ObjectSide(Transform t1, Vector3 target)
-    {
-        return t1.InverseTransformPoint(target);
-//        if (relativePoint.x < 0.0)
-//            print ("Object is to the left");
-//        else if (relativePoint.x > 0.0)
-//            print ("Object is to the right");
-//        else
-//            print ("Object is directly ahead");
-    }
+    public static Vector3 ObjectSide(Transform t1, Vector3 target) => t1.InverseTransformPoint(target);
 
     public static T ParseEnum<T>(string value)
     {
