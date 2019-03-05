@@ -10,7 +10,7 @@ namespace Assets.Scripts.AI.Sensors
         protected LayerMask blockedMask;
         public float detectionRate = 1.0f;
 
-        [Header("Debug")]
+        [Header("Debug Sensor")]
         [SerializeField]
         protected LayerMask combinedMask;
         [SerializeField]
@@ -37,7 +37,8 @@ namespace Assets.Scripts.AI.Sensors
         protected virtual void Update()
         {
             this._elapsedTime += Time.deltaTime;
-            if (this._elapsedTime < this.detectionRate) return;
+            if (this._elapsedTime < this.detectionRate)
+                return;
             this._elapsedTime = 0;
             // it might change
             this.combinedMask = this.detectionMask + this.blockedMask;

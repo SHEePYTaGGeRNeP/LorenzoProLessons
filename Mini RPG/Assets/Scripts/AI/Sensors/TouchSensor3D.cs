@@ -11,6 +11,7 @@ namespace Assets.Scripts.AI.Sensors
     [RequireComponent(typeof(Collider))]
     public abstract class TouchSensor3D : Sensor
     {
+        [Space(20)]
         [SerializeField]
         protected bool triggerSense = true;
 
@@ -23,7 +24,7 @@ namespace Assets.Scripts.AI.Sensors
         [SerializeField]
         private Transform _parentObject;
 
-        [Header("Debug")]
+        [Header("Debug TouchSensor3D")]
         [SerializeField]
         protected int touchCount;
 
@@ -62,6 +63,7 @@ namespace Assets.Scripts.AI.Sensors
                 return;
             this.touchCount--;
             this._touchingColliders.Remove(other);
+            this.OnTouchExit(other);
         }
 
         protected virtual void OnCollisionEnter(Collision col)
@@ -79,10 +81,11 @@ namespace Assets.Scripts.AI.Sensors
                 return;
             this.touchCount--;
             this._touchingColliders.Remove(col.collider);
+            this.OnTouchExit(col.collider);
         }
 
         protected abstract void OnTouch(Collider col);
-
+        protected abstract void OnTouchExit(Collider col);
 
         protected override void DebugDrawGizmos()
         {
@@ -90,41 +93,34 @@ namespace Assets.Scripts.AI.Sensors
                 Gizmos.color = this.IsTouching ? Color.red : Color.green;
             else
                 Gizmos.color = Color.grey;
-            // there's no forward check
-            var box = this.touchCollider as BoxCollider;
-            if (box != null)
+            if (this.touchCollider is BoxCollider box)
                 Gizmos.DrawWireCube(this.transform.position + box.center, box.size);
-            else
+            else if (this.touchCollider is SphereCollider sphere)
+                Gizmos.DrawWireSphere(this.transform.position + sphere.center, sphere.radius);
+            else if (this.touchCollider is CapsuleCollider capsule)
             {
-                var sphere = this.touchCollider as SphereCollider;
-                if (sphere != null)
-                    Gizmos.DrawWireSphere(this.transform.position + sphere.center, sphere.radius);
-                else
+                // draw some spheres to fake capsule
+                for (float position = -capsule.height / 2f + capsule.radius;
+                    position < (capsule.height / 2f);
+                    position += (int)capsule.radius)
                 {
-                    var capsule = this.touchCollider as CapsuleCollider;
-                    if (capsule == null) return;
-                    for (float position = -capsule.height / 2f + capsule.radius;
-                        position < (capsule.height / 2f);
-                        position += (int)capsule.radius)
+                    switch (capsule.direction)
                     {
-                        switch (capsule.direction)
-                        {
-                            case 0: //x
-                                Gizmos.DrawWireSphere(
-                                    this.transform.position + capsule.center + (this.transform.right * position),
-                                    capsule.radius);
-                                break;
-                            case 1: //y
-                                Gizmos.DrawWireSphere(
-                                    this.transform.position + capsule.center + (this.transform.up * position),
-                                    capsule.radius);
-                                break;
-                            default: //z
-                                Gizmos.DrawWireSphere(
-                                    this.transform.position + capsule.center + (this.transform.forward * position),
-                                    capsule.radius);
-                                break;
-                        }
+                        case 0: //x
+                            Gizmos.DrawWireSphere(
+                                this.transform.position + capsule.center + (this.transform.right * position),
+                                capsule.radius);
+                            break;
+                        case 1: //y
+                            Gizmos.DrawWireSphere(
+                                this.transform.position + capsule.center + (this.transform.up * position),
+                                capsule.radius);
+                            break;
+                        default: //z
+                            Gizmos.DrawWireSphere(
+                                this.transform.position + capsule.center + (this.transform.forward * position),
+                                capsule.radius);
+                            break;
                     }
                 }
             }

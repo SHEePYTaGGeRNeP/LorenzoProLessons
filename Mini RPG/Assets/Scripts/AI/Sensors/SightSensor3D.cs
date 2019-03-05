@@ -8,12 +8,12 @@ using UnityEngine;
 using UnityEngine.Assertions;
 namespace Assets.Scripts.AI.Sensors
 {
-    public class SightSensor : Sensor
+    public class SightSensor3D : Sensor
     {
+        [Space(20)]
         [SerializeField]
         private Transform _parentObject;
 
-        [Space(20)]
         [Range(1, 360)]
         public float fov = 120f;
 
@@ -39,7 +39,7 @@ namespace Assets.Scripts.AI.Sensors
         private Color[] _raycastColors;
 
         [SerializeField]
-        private AnimationCurve _red, _green, _blue;
+        private Gradient _colorGradient;
 
         /// <summary>
         /// First index is forward then left, right, left, right
@@ -145,8 +145,7 @@ namespace Assets.Scripts.AI.Sensors
             if (perc.AboutEqualToOrMoreThan(1))
                 c = Color.white;
             else
-                c = new Color(this._red.Evaluate(perc), this._green.Evaluate(perc),
-                    this._blue.Evaluate(perc));
+                c = this._colorGradient.Evaluate(perc);
             Gizmos.color = c;
             this._raycastColors[index] = c;
             if (perc > this.importantIfLessThan && this.debugOnlyOnImportantValues)
