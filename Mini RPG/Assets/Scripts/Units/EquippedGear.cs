@@ -9,5 +9,14 @@ namespace Assets.Scripts.Units
     public class EquippedGear
     {
         private readonly Dictionary<ItemSO.GearSlot, ItemSO> _gear;
+
+        public void Equip(ItemSO item)
+        {
+
+        }
+        public void Unequip(ItemSO item)
+        {
+
+        }
     }
 }

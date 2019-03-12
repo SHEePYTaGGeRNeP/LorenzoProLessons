@@ -42,18 +42,19 @@ namespace Assets.Editor.Tests.Items
             eg.Equip(item);
             Assert.IsFalse(eg.Equip(item));
         }
-        [UnityTest]
-        public void Equipping_HpItem_IncreasesHealth()
+        [Test]
+        public void Equipping_HpItem_ChangesHealth()
         {
             Unit u = new GameObject().AddComponent<Unit>();
-            EquippedGear eg = new EquippedGear(u);
             ItemSO item = ScriptableObject.CreateInstance<ItemSO>();
             item.Slot = ItemSO.GearSlot.Head;
             const int hpIncrease = 10;
             int currentMaxHp = u.MaxHp;
             // Somehow increase hp
-            eg.Equip(item);
+            u.EquippedGear.Equip(item);
             Assert.AreEqual(currentMaxHp + hpIncrease, u.MaxHp);
+            u.EquippedGear.Unequip(item);
+            Assert.AreEqual(currentMaxHp u.MaxHp);
         }
     }
 }
