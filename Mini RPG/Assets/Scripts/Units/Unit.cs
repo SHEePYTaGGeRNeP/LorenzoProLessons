@@ -9,10 +9,11 @@ namespace Units
     {
         private HealthSystem _healthSystem;
 
-        [SerializeField]
-        private EquippedGear _equippedGear = new EquippedGear();
+        public EquippedGear EquippedGear { get; private set; }
 
         public UnityHealthChangeEvent onHealthChanged;
+
+        public int MaxHp => this._healthSystem.MaxHitPoints;
 
         [Header("DEBUG")]
         [SerializeField]
@@ -23,6 +24,7 @@ namespace Units
             this._healthSystem = new HealthSystem(50);
             this._healthSystem.OnHealthChanged += _healthSystem_OnHealthChange;
             this._healthSystem.Heal(0);
+            this.EquippedGear = new EquippedGear(this);        
         }
 
         private void _healthSystem_OnHealthChange(object sender, HealthChangeEventArgs e)
