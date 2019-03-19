@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.Items;
+﻿using System;
+
+using Assets.Scripts.Items;
 using Assets.Scripts.Units;
 using NUnit.Framework;
 using Units;
@@ -20,41 +22,77 @@ namespace Assets.Editor.Tests.Items
             const string name = "_itemTest";
             //AssetDatabase.CreateAsset(data, $"{_ITEM_ASSET_PATH }/{name}.asset");
             //AssetDatabase.DeleteAsset($"{_ITEM_ASSET_PATH }/{name}.asset");
-            Assert.IsTrue(true);
+            Assert.IsNotNull(data);
         }
 
         [Test]
-        public void Can_Equip_NonEquippedItem()
+        public void Can_Equip_Item()
         {
             EquippedGear eg = new EquippedGear();
             ItemSO item = ScriptableObject.CreateInstance<ItemSO>();
-            item.Slot = ItemSO.GearSlot.Head;
-            Assert.IsTrue(eg.Equip(item));
-            // throw exception instead of return value?
-        }
-
-        [Test]
-        public void Cannot_Unequip_NonEquippedItem()
-        {
-            EquippedGear eg = new EquippedGear();
-            ItemSO item = ScriptableObject.CreateInstance<ItemSO>();
-            item.Slot = ItemSO.GearSlot.Head;
+            item.Slot = GearSlot.Head;
             eg.Equip(item);
-            Assert.IsFalse(eg.Equip(item));
+            Assert.AreEqual(item, eg.GetItemFromSlot(item.Slot));
+            Assert.IsTrue(eg.IsEquipped(item));
         }
+        [Test]
+        public void Can_UnEquip_EquippedItem()
+        {
+            EquippedGear eg = new EquippedGear();
+            ItemSO item = ScriptableObject.CreateInstance<ItemSO>();
+            item.Slot = GearSlot.Head;
+            eg.Equip(item);
+            Assert.AreEqual(item, eg.GetItemFromSlot(item.Slot));
+            Assert.IsTrue(eg.IsEquipped(item));
+            eg.Unequip(item);
+            Assert.IsNull(eg.GetItemFromSlot(item.Slot));
+            Assert.IsFalse(eg.IsEquipped(item));
+        }
+        [Test]
+        public void EquippingASecondItem_Unequips_FirstItem()
+        {
+            EquippedGear eg = new EquippedGear();
+            ItemSO item1 = ScriptableObject.CreateInstance<ItemSO>();
+            item1.Slot = GearSlot.Head;
+            eg.Equip(item1);
+            Assert.AreEqual(item1, eg.GetItemFromSlot(item1.Slot));
+            Assert.IsTrue(eg.IsEquipped(item1));
+            ItemSO item2 = ScriptableObject.CreateInstance<ItemSO>();
+            item2.Slot = GearSlot.Head;
+            eg.Equip(item2);
+            Assert.AreEqual(item2, eg.GetItemFromSlot(item2.Slot));
+            Assert.IsTrue(eg.IsEquipped(item2));
+            Assert.IsFalse(eg.IsEquipped(item1));
+        }
+        [Test]
+        public void GetItemFromSlot_NotEquipped_ReturnsNull()
+        {
+            EquippedGear gear = new EquippedGear();
+            Assert.IsNull(gear.GetItemFromSlot(GearSlot.Head));
+        }
+
+        [Test]
+        public void Unequipping_NonEquippedItem_ThrowsException()
+        {
+            EquippedGear eg = new EquippedGear();
+            ItemSO item = ScriptableObject.CreateInstance<ItemSO>();
+            item.Slot = GearSlot.Head;
+            Assert.Throws<ArgumentException>(() => eg.Unequip(item));
+        }
+
         [Test]
         public void Equipping_HpItem_ChangesHealth()
         {
             Unit u = new GameObject().AddComponent<Unit>();
             ItemSO item = ScriptableObject.CreateInstance<ItemSO>();
-            item.Slot = ItemSO.GearSlot.Head;
+            item.Slot = GearSlot.Head;
             const int hpIncrease = 10;
             int currentMaxHp = u.MaxHp;
             // Somehow increase hp
             u.EquippedGear.Equip(item);
             Assert.AreEqual(currentMaxHp + hpIncrease, u.MaxHp);
             u.EquippedGear.Unequip(item);
-            Assert.AreEqual(currentMaxHp u.MaxHp);
+            Assert.AreEqual(currentMaxHp, u.MaxHp);
         }
     }
 }

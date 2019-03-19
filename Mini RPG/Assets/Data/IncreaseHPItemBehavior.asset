@@ -9,14 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd41c4112b0a09847b1e2f5f58ca9f1b, type: 3}
-  m_Name: Helmet of Life
+  m_Script: {fileID: 11500000, guid: ab6ad2d098b4c414aa6d8de68c64bbf9, type: 3}
+  m_Name: IncreaseHPItemBehavior
   m_EditorClassIdentifier: 
-  _id: 0
-  _name: Helmet of Life
-  _slot: 1
-  _isStackable: 0
-  _behaviors:
-  - behavior: {fileID: 11400000, guid: a7567147ac6ff96439ca2af4f03ffa0e, type: 2}
-    parameter:
-    - 10

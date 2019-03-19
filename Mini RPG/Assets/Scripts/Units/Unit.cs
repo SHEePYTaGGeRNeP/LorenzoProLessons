@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts;
+using Assets.Scripts.Items;
 using Assets.Scripts.Units;
 using UnityEngine;
 
@@ -15,6 +16,9 @@ namespace Units
 
         public int MaxHp => this._healthSystem.MaxHitPoints;
 
+        [SerializeField]
+        private ItemSO itemToEquip;
+
         [Header("DEBUG")]
         [SerializeField]
         private string _currentHP;
@@ -24,7 +28,7 @@ namespace Units
             this._healthSystem = new HealthSystem(50);
             this._healthSystem.OnHealthChanged += _healthSystem_OnHealthChange;
             this._healthSystem.Heal(0);
-            this.EquippedGear = new EquippedGear(this);        
+            this.EquippedGear = new EquippedGear(this, this._healthSystem);        
         }
 
         private void _healthSystem_OnHealthChange(object sender, HealthChangeEventArgs e)
@@ -34,5 +38,10 @@ namespace Units
         }
         public void Damage(int damage) => this._healthSystem.Damage(damage);
         public void Heal(int heal) => this._healthSystem.Heal(heal);
+
+        public void TestButton_Clicked()
+        {
+            this.EquippedGear.Equip(itemToEquip);
+        }
     }
 }

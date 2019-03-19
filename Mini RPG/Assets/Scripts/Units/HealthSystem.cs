@@ -22,7 +22,17 @@ namespace Units
     {
         [SerializeField]
         private int _maxHitPoints;
-        public int MaxHitPoints => this._maxHitPoints;
+        public int MaxHitPoints
+        {
+            get { return this._maxHitPoints; }
+            set
+            {
+                int change = value - this._maxHitPoints;
+                this._maxHitPoints = value;
+                this._currentHitPoints += change;
+                this.OnHealthChanged?.Invoke(this, new HealthChangeEventArgs(change, this.CurrentHitPoints, this.MaxHitPoints));
+            }
+        }
 
         [SerializeField]
         private int _currentHitPoints;
