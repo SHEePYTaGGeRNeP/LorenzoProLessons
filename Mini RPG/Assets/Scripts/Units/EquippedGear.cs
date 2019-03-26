@@ -12,38 +12,32 @@ namespace Assets.Scripts.Units
     {
         private readonly Dictionary<GearSlot, ItemSO> _gear = new Dictionary<GearSlot, ItemSO>();
 
-        private BaseItemBehavior.ItemBehaviorParameters itemBehaviorParameters;
+        private readonly BaseItemBehavior.ItemBehaviorParameters _itemBehaviorParameters;
 
-        public EquippedGear(Unit u)
-        {
-            this.itemBehaviorParameters = new BaseItemBehavior.ItemBehaviorParameters()
-            {
-                Unit = u
-            };
-        }
         public EquippedGear(Unit u, HealthSystem hs)
         {
-            this.itemBehaviorParameters = new BaseItemBehavior.ItemBehaviorParameters()
+            this._itemBehaviorParameters = new BaseItemBehavior.ItemBehaviorParameters()
             {
                 Unit = u,
                 HealthSystem = hs
             };
         }
         public EquippedGear()
-        { this.itemBehaviorParameters = new BaseItemBehavior.ItemBehaviorParameters(); }
+        { this._itemBehaviorParameters = new BaseItemBehavior.ItemBehaviorParameters(); }
         public void Equip(ItemSO item)
         {
-            if (this.GetItemFromSlot(item.Slot))
-                this.Unequip(item);
+            ItemSO equippedItem = this.GetItemFromSlot(item.Slot);
+            if (equippedItem != null)
+                this.Unequip(equippedItem);
             this._gear[item.Slot] = item;
-            item.OnEquip(this.itemBehaviorParameters);
+            item.OnEquip(this._itemBehaviorParameters);
         }
         public void Unequip(ItemSO item)
         {
             if (!this.IsEquipped(item))
                 throw new ArgumentException("Item is not equipped");
             this._gear.Remove(item.Slot);
-            item.OnUnequip(this.itemBehaviorParameters);
+            item.OnUnequip(this._itemBehaviorParameters);
         }
         public ItemSO GetItemFromSlot(GearSlot slot)
         {

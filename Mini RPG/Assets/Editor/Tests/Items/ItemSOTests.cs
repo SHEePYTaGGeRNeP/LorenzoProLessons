@@ -85,8 +85,15 @@ namespace Assets.Editor.Tests.Items
         {
             Unit u = new GameObject().AddComponent<Unit>();
             ItemSO item = ScriptableObject.CreateInstance<ItemSO>();
+            var behavior = ScriptableObject.CreateInstance<IncreaseHpItemBehavior>();
             item.Slot = GearSlot.Head;
             const int hpIncrease = 10;
+            ItemSO.Behaviors behaviorItemSO = new ItemSO.Behaviors()
+            {
+                behavior = behavior,
+                parameter = new[] { (float)hpIncrease }
+            };
+            item.SetBehaviors(new[] { behaviorItemSO});
             int currentMaxHp = u.MaxHp;
             // Somehow increase hp
             u.EquippedGear.Equip(item);

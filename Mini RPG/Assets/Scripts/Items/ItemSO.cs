@@ -37,7 +37,10 @@ namespace Assets.Scripts.Items
         }
         [SerializeField]
         private Behaviors[] _behaviors;
-
+        public void SetBehaviors(Behaviors[] behaviors )
+        {
+            this._behaviors = behaviors;
+        }
 
         public void OnEquip(BaseItemBehavior.ItemBehaviorParameters parameters)
         {

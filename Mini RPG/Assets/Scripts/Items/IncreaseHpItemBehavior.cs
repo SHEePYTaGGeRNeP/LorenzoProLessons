@@ -9,7 +9,7 @@ using UnityEngine;
 namespace Assets.Scripts.Items
 {
     [CreateAssetMenu(fileName = "IncreaseHPItemBehavior", menuName = "Items/Behaviors/CreateHpItemBehavior", order = 0)]
-    class IncreaseHpItemBehavior : BaseItemBehavior
+    public class IncreaseHpItemBehavior : BaseItemBehavior
     {
         public override void OnEquip(ItemBehaviorParameters parameters, float[] value)
         {
