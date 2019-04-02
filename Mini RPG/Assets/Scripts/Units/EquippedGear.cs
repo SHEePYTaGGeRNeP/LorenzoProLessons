@@ -12,15 +12,16 @@ namespace Assets.Scripts.Units
     {
         private readonly Dictionary<GearSlot, ItemSO> _gear = new Dictionary<GearSlot, ItemSO>();
 
-        private readonly BaseItemBehavior.ItemBehaviorParameters _itemBehaviorParameters;
+       // private readonly BaseItemBehavior.ItemBehaviorParameters _itemBehaviorParameters;
+
+        private Unit _unit;
+        private HealthSystem _hs;
+
 
         public EquippedGear(Unit u, HealthSystem hs)
         {
-            this._itemBehaviorParameters = new BaseItemBehavior.ItemBehaviorParameters()
-            {
-                Unit = u,
-                HealthSystem = hs
-            };
+            this._unit = u;
+            this._hs = hs;
         }
         public EquippedGear()
         { this._itemBehaviorParameters = new BaseItemBehavior.ItemBehaviorParameters(); }

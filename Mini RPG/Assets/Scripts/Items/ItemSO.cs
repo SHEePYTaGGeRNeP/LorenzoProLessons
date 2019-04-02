@@ -29,15 +29,16 @@ namespace Assets.Scripts.Items
         public bool IsStackable => this._isStackable;
 
 
-        [Serializable]
-        public class Behaviors
-        {
-            public BaseItemBehavior behavior;
-            public float[] parameter;
-        }
+        //[Serializable]
+        //public class Behaviors
+        //{
+        //    public BaseItemBehavior behavior;
+        //    public float[] parameter;
+        //}
+
         [SerializeField]
-        private Behaviors[] _behaviors;
-        public void SetBehaviors(Behaviors[] behaviors )
+        private BaseItemBehavior[] _behaviors;
+        public void SetBehaviors(BaseItemBehavior[] behaviors )
         {
             this._behaviors = behaviors;
         }
@@ -46,15 +47,15 @@ namespace Assets.Scripts.Items
         {
             if (this._behaviors.IsNullOrEmpty())
                 return;
-            foreach (Behaviors behavior in _behaviors)
-                behavior.behavior.OnEquip(parameters, behavior.parameter);
+            foreach (BaseItemBehavior behavior in _behaviors)
+                behavior.OnEquip(parameters);
         }
         public void OnUnequip(BaseItemBehavior.ItemBehaviorParameters parameters)
         {
             if (this._behaviors.IsNullOrEmpty())
                 return;
-            foreach (Behaviors behavior in _behaviors)
-                behavior.behavior.OnUnequip(parameters, behavior.parameter);
+            foreach (BaseItemBehavior behavior in _behaviors)
+                behavior.OnUnequip(parameters);
         }
 
     }

@@ -9,7 +9,6 @@ namespace Units
     public class Unit : MonoBehaviour
     {
         private HealthSystem _healthSystem;
-
         public EquippedGear EquippedGear { get; private set; }
 
         public UnityHealthChangeEvent onHealthChanged;
@@ -17,7 +16,7 @@ namespace Units
         public int MaxHp => this._healthSystem.MaxHitPoints;
 
         [SerializeField]
-        private ItemSO itemToEquip;
+        private ItemSO _itemToEquip;
 
         [Header("DEBUG")]
         [SerializeField]
@@ -25,9 +24,7 @@ namespace Units
 
         private void Awake()
         {
-            this._healthSystem = new HealthSystem(50);
-            this._healthSystem.OnHealthChanged += _healthSystem_OnHealthChange;
-            this._healthSystem.Heal(0);
+            this._healthSystem = new HealthSystem(50, 50, this._healthSystem_OnHealthChange);
             this.EquippedGear = new EquippedGear(this, this._healthSystem);        
         }
 
@@ -41,7 +38,7 @@ namespace Units
 
         public void TestButton_Clicked()
         {
-            this.EquippedGear.Equip(itemToEquip);
+            this.EquippedGear.Equip(_itemToEquip);
         }
     }
 }

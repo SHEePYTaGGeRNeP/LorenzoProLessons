@@ -11,13 +11,22 @@ namespace Assets.Scripts.Items
     [CreateAssetMenu(fileName = "IncreaseHPItemBehavior", menuName = "Items/Behaviors/CreateHpItemBehavior", order = 0)]
     public class IncreaseHpItemBehavior : BaseItemBehavior
     {
-        public override void OnEquip(ItemBehaviorParameters parameters, float[] value)
+        [Serializable]
+        public class IncreaseHpItemBehaviorParameters : ItemBehaviorParameters
         {
-            parameters.HealthSystem.MaxHitPoints += (int)value[0];
+            public HealthSystem HealthSystem { get; set; }
         }
-        public override void OnUnequip(ItemBehaviorParameters parameters, float[] value)
+        public override void OnEquip(ItemBehaviorParameters parameters)
         {
-            parameters.HealthSystem.MaxHitPoints -= (int)value[0];
+            if (parameters is IncreaseHpItemBehaviorParameters par)
+                par.HealthSystem.MaxHitPoints += (int)parameters.values[0];
+            else throw new ArgumentException($"must be {nameof(IncreaseHpItemBehaviorParameters)}");
+        }
+        public override void OnUnequip(ItemBehaviorParameters parameters)
+        {
+            if (parameters is IncreaseHpItemBehaviorParameters par)
+                par.HealthSystem.MaxHitPoints -= (int)parameters.values[0];
+            else throw new ArgumentException($"must be {nameof(IncreaseHpItemBehaviorParameters)}");
         }
     }
 }

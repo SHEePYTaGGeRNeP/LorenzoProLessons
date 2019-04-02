@@ -36,7 +36,7 @@ namespace Assets.Editor.Tests.Units
         [Test]
         public void Constructor_Negative_Exception()
         {
-            Assert.Throws<NegativeInputException>(() => new HealthSystem(-1));            
+            Assert.Throws<NegativeInputException>(() => new HealthSystem(-1));
         }
 
         [Test]
@@ -113,14 +113,28 @@ namespace Assets.Editor.Tests.Units
         [Test]
         public void Heal_Event_Works()
         {
-            HealthSystem hs = CreateDefaultHealthSystem();
             bool event1Raised = false;
-            hs.OnHealthChanged += (sender, args) =>
+            HealthSystem hs = new HealthSystem(50, 50, (sender, args) =>
             {
                 event1Raised = true;
-            };
+            });
             hs.Heal(_DEFAULT_DAMAGE_AND_HEALING);
             Assert.IsTrue(event1Raised);
+        }
+        [Test]
+        public void Test_Recursive_Event_Works()
+        {
+            int nr = 0;
+            HealthSystem hs = new HealthSystem(50, 50, (sender, args) =>
+            {
+                nr++;
+            });
+            hs.OnHealthChanged += (sender, args) =>
+            {
+                nr++;
+            };
+            hs.Heal(0);
+            Assert.AreEqual(5, nr);
         }
         [Test]
         public void Damage_Event_Works()

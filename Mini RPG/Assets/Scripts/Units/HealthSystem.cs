@@ -24,7 +24,7 @@ namespace Units
         private int _maxHitPoints;
         public int MaxHitPoints
         {
-            get { return this._maxHitPoints; }
+            get => this._maxHitPoints;
             set
             {
                 int change = value - this._maxHitPoints;
@@ -54,6 +54,13 @@ namespace Units
             this._maxHitPoints = maxHitPoints;
             this.CurrentHitPoints = currentHitPoints;
         }
+        public HealthSystem(int maxHitPoints, int currentHitPoints,
+          EventHandler<HealthChangeEventArgs> listener) : this(maxHitPoints, currentHitPoints)
+        {            
+            listener += listener;
+            this.OnHealthChanged += listener;
+            this.OnHealthChanged?.Invoke(this, new HealthChangeEventArgs(0, this.CurrentHitPoints, this.MaxHitPoints));
+        }
 
         public void Heal(int healing)
         {
@@ -62,7 +69,6 @@ namespace Units
             this.CurrentHitPoints = Mathf.Clamp(this.CurrentHitPoints + healing, 0, this.MaxHitPoints);
             this.OnHealthChanged?.Invoke(this, new HealthChangeEventArgs(healing, this.CurrentHitPoints, this.MaxHitPoints));
         }
-
         public void Damage(int damage)
         {
             if (damage < 0)

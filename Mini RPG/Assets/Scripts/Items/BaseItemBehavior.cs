@@ -13,12 +13,10 @@ namespace Assets.Scripts.Items
         [Serializable]
         public class ItemBehaviorParameters
         {
-            public HealthSystem HealthSystem { get; set; }
-            public Unit Unit { get; set; }
-            public SimpleCharacterControl SimpleCharacterControl { get; set; }
+            public float[] values;
         }
 
-        public abstract void OnEquip(ItemBehaviorParameters parameters, float[] value);
-        public abstract void OnUnequip(ItemBehaviorParameters parameters, float[] value);
+        public abstract void OnEquip(ItemBehaviorParameters parameters);
+        public abstract void OnUnequip(ItemBehaviorParameters parameters);
     }
 }
