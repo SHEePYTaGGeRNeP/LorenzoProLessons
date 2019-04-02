@@ -43,32 +43,32 @@ public class MeshHelper
         foreach (Vector3 vertPosition in meshFilter.mesh.vertices)
         {
             Vector3 current = dict[SideInfo.Side.Back];
-            bool useNewValue = Mathf.Min(current.z, vertPosition.z).AboutEqualTo(vertPosition.z);
+            bool useNewValue = Mathf.Min(current.z, vertPosition.z).IsAbout(vertPosition.z);
             if (useNewValue)
                 dict[SideInfo.Side.Back] = Vector3.zero.WithZ(vertPosition.z);
 
             current = dict[SideInfo.Side.Front];
-            useNewValue = Mathf.Max(current.z, vertPosition.z).AboutEqualTo(vertPosition.z);
+            useNewValue = Mathf.Max(current.z, vertPosition.z).IsAbout(vertPosition.z);
             if (useNewValue)
                 dict[SideInfo.Side.Front] = Vector3.zero.WithZ(vertPosition.z);
 
             current = dict[SideInfo.Side.Left];
-            useNewValue = Mathf.Min(current.x, vertPosition.x).AboutEqualTo(vertPosition.x);
+            useNewValue = Mathf.Min(current.x, vertPosition.x).IsAbout(vertPosition.x);
             if (useNewValue)
                 dict[SideInfo.Side.Left] = Vector3.zero.WithX(vertPosition.x);
 
             current = dict[SideInfo.Side.Right];
-            useNewValue = Mathf.Max(current.x, vertPosition.x).AboutEqualTo(vertPosition.x);
+            useNewValue = Mathf.Max(current.x, vertPosition.x).IsAbout(vertPosition.x);
             if (useNewValue)
                 dict[SideInfo.Side.Right] = Vector3.zero.WithX(vertPosition.x);
 
             current = dict[SideInfo.Side.Top];
-            useNewValue = Mathf.Max(current.y, vertPosition.y).AboutEqualTo(vertPosition.y);
+            useNewValue = Mathf.Max(current.y, vertPosition.y).IsAbout(vertPosition.y);
             if (useNewValue)
                 dict[SideInfo.Side.Top] = Vector3.zero.WithY(vertPosition.y);
 
             current = dict[SideInfo.Side.Bottom];
-            useNewValue = Mathf.Min(current.y, vertPosition.y).AboutEqualTo(vertPosition.y);
+            useNewValue = Mathf.Min(current.y, vertPosition.y).IsAbout(vertPosition.y);
             if (useNewValue)
                 dict[SideInfo.Side.Bottom] = Vector3.zero.WithY(vertPosition.y);
         }

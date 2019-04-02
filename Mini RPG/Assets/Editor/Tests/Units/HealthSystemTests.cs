@@ -6,7 +6,7 @@ using Units;
 using UnityEngine;
 using UnityEngine.TestTools;
 
-namespace Tests.Units
+namespace Assets.Editor.Tests.Units
 {
     public class HealthSystemTests
     {

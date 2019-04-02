@@ -101,7 +101,7 @@ namespace Assets.Scripts.AI.Sensors
                 if (this._rayHits[i].collider.transform
                     .IsTransformInMyParents(this._parentObject))
                     continue;
-                if (!this.RaycastDistances[index].Item1.AboutEqualTo(-1) &&
+                if (!this.RaycastDistances[index].Item1.IsAbout(-1) &&
                     this.RaycastDistances[index].Item1 <= this._rayHits[i].distance) continue;
                 this.RaycastDistances[index].Item1 = this._rayHits[i].distance;
                 this.RaycastDistances[index].Item2 = this._rayHits[i].collider;
@@ -142,7 +142,7 @@ namespace Assets.Scripts.AI.Sensors
         {
             float perc = this._copy[index] < 0 ? 1 : this._copy[index] / this.viewDistance;
             Color c;
-            if (perc.AboutEqualToOrMoreThan(1))
+            if (perc.IsMoreThanOrAbout(1))
                 c = Color.white;
             else
                 c = this._colorGradient.Evaluate(perc);

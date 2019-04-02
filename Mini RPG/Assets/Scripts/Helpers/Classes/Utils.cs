@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.InteropServices;
 using System.Text;
 #if (UNITY_EDITOR)
 using UnityEditor;
@@ -41,7 +43,7 @@ public static class Utils
         if (obj.GetType().IsArray || obj.GetType().IsGenericType)
         {
             var index = Convert.ToInt32(new string(property.propertyPath.Where(char.IsDigit).ToArray()));
-            IEnumerable<T> ienumerable = (IEnumerable<T>) obj;
+            IEnumerable<T> ienumerable = (IEnumerable<T>)obj;
             actualObject = ienumerable.ElementAt(index);
             //actualObject = ((T[]) obj)[index];
         }
@@ -119,7 +121,7 @@ public static class Utils
 
     public static string GetTime(float seconds)
     {
-        int intTime = (int) seconds;
+        int intTime = (int)seconds;
         int minutes = intTime / 60;
         int secondsint = intTime % 60;
         float fraction = seconds * 1000;
@@ -143,24 +145,24 @@ public static class Utils
         switch (Application.platform)
         {
             case RuntimePlatform.IPhonePlayer:
-            {
-                string path = Application.dataPath.Substring(0, Application.dataPath.Length - 5);
-                path = path.Substring(0, path.LastIndexOf('/'));
-                return Path.Combine(Path.Combine(path, "Documents"), filename);
-            }
+                {
+                    string path = Application.dataPath.Substring(0, Application.dataPath.Length - 5);
+                    path = path.Substring(0, path.LastIndexOf('/'));
+                    return Path.Combine(Path.Combine(path, "Documents"), filename);
+                }
             case RuntimePlatform.Android:
-            {
-                string path = Application.persistentDataPath;
-                path = path.Substring(0, path.LastIndexOf('/'));
-                return Path.Combine(path, filename);
-            }
+                {
+                    string path = Application.persistentDataPath;
+                    path = path.Substring(0, path.LastIndexOf('/'));
+                    return Path.Combine(path, filename);
+                }
             // Not all switch cases present
             default:
-            {
-                string path = Application.dataPath;
-                path = path.Substring(0, path.LastIndexOf('/'));
-                return Path.Combine(path, filename);
-            }
+                {
+                    string path = Application.dataPath;
+                    path = path.Substring(0, path.LastIndexOf('/'));
+                    return Path.Combine(path, filename);
+                }
         }
     }
 
@@ -217,7 +219,7 @@ public static class Utils
     public static float VolumeToDb(float volume)
     {
         if (volume > 0f)
-            return (float) (20f * Math.Log10(volume));
+            return (float)(20f * Math.Log10(volume));
         return -80f;
     }
 
@@ -279,7 +281,7 @@ public static class Utils
 
     public static T ParseEnum<T>(string value)
     {
-        return (T) Enum.Parse(typeof(T), value, true);
+        return (T)Enum.Parse(typeof(T), value, true);
     }
 
     public static void AddColorToString(string s, Color color, out string newString)
@@ -288,4 +290,148 @@ public static class Utils
         colorString = "<color=#" + colorString + ">" + s + "</color>";
         newString = colorString;
     }
+
+    #region Convert StringToNumber and back
+
+    // <summary> Converts it to a string a replaces the "," with "."</summary>
+    public static string NumberToString(double value) => value.ToString().Replace(',', '.');
+    /// <summary> Converts it to a string a replaces the "," with "."</summary>
+    public static string NumberToString(float value) => value.ToString().Replace(',', '.');
+    /// <summary>Converts it to a string a replaces the "," with "."</summary>
+    public static string NumberToString(decimal value) => value.ToString().Replace(',', '.');
+
+    /// <summary>
+    /// Converts a String to a double, takes cares of 2.31 and 2,31
+    /// </summary>
+    /// <param name="doubleString"></param>
+    /// <returns>double value</returns>
+    public static double ConvertStringToDouble(string doubleString)
+    {
+        TryConvertStringToDouble(doubleString, out double parsed);
+        return parsed;
+    }
+
+    /// <summary>
+    /// Converts a String to a double, takes cares of 2.31 and 2,31
+    /// </summary>
+    /// <param name="doubleString">2.31 or 2,31 will be 2.31</param>
+    /// <param name="outValue">double value</param>
+    /// <returns>TRUE IF SUCCES, FALSE IF FAILED</returns>
+    public static bool TryConvertStringToDouble(string doubleString, out double outValue)
+    {
+        if (doubleString.IsNullOrWhiteSpace())
+        {
+            outValue = default;
+            return false;
+        }
+        string changed = doubleString.Replace(',', '.');
+        return Double.TryParse(changed, NumberStyles.Any, CultureInfo.InvariantCulture, out outValue);
+    }
+
+    public static int ConvertStringToInt(string intString)
+    {
+        TryConvertStringToInt(intString, out int parsed);
+        return parsed;
+    }
+
+    public static bool TryConvertStringToInt(string intString, out int outValue)
+    {
+        bool result = TryConvertStringToDouble(intString, out double doubleVal);
+        outValue = (int)doubleVal;
+        return result;
+    }
+    public static uint ConvertStringToUInt(string intString)
+    {
+        TryConvertStringToUInt(intString, out uint parsed);
+        return parsed;
+    }
+
+    public static bool TryConvertStringToUInt(string intString, out uint outValue)
+    {
+        bool result = TryConvertStringToDouble(intString, out double doubleVal);
+        outValue = (uint)doubleVal;
+        return result;
+    }
+    public static long ConvertStringToLong(string longString)
+    {
+        TryConvertStringToLong(longString, out long parsed);
+        return parsed;
+    }
+
+    public static bool TryConvertStringToLong(string longString, out long outValue)
+    {
+        bool result = TryConvertStringToDouble(longString, out double doubleVal);
+        outValue = (long)doubleVal;
+        return result;
+    }
+    public static float ConvertStringToFloat(string floatString)
+    {
+        TryConvertStringToFloat(floatString, out float parsed);
+        return parsed;
+    }
+    public static bool TryConvertStringToFloat(string floatString, out float outValue)
+    {
+        bool result = TryConvertStringToDouble(floatString, out double doubleVal);
+        outValue = (float)doubleVal;
+        return result;
+    }
+
+    #endregion
+
+    public static bool[] ConvertByteArrayToBoolArray(byte[] bytes)
+    {
+        System.Collections.BitArray b = new System.Collections.BitArray(bytes);
+        bool[] bitValues = new bool[b.Count];
+        b.CopyTo(bitValues, 0);
+        Array.Reverse(bitValues);
+        return bitValues;
+    }
+
+    public static byte[] CastStructToBytes<T>(T obj) where T : struct
+    {
+        int size = Marshal.SizeOf(obj);
+        byte[] byteArray = new byte[size];
+        IntPtr ptr = Marshal.AllocHGlobal(size);
+        Marshal.StructureToPtr(obj, ptr, false);
+        Marshal.Copy(ptr, byteArray, 0, size);
+        Marshal.FreeHGlobal(ptr);
+        return byteArray;
+    }
+    public static T CastBytesToStruct<T>(byte[] byteArray) where T : struct
+    {
+        T result = default;
+        int size = Marshal.SizeOf(result);
+        int arrSize = byteArray.Length;
+        size = Math.Min(size, arrSize);
+        IntPtr ptr = Marshal.AllocHGlobal(size);
+        Marshal.Copy(byteArray, 0, ptr, size);
+        result = (T)Marshal.PtrToStructure(ptr, typeof(T));
+        Marshal.FreeHGlobal(ptr);
+        return result;
+    }
+
+    public static bool IsFileLocked(string fileName)
+    {
+        FileStream stream = null;
+        FileInfo file = new FileInfo(fileName);
+        try
+        {
+            stream = file.Open(FileMode.Open, FileAccess.Read, FileShare.None);
+        }
+        catch (IOException)
+        {
+            //the file is unavailable because it is:
+            //still being written to
+            //or being processed by another thread
+            //or does not exist (has already been processed)
+            return true;
+        }
+        finally
+        {
+            stream?.Close();
+        }
+        //file is not locked
+        return false;
+    }
+
 }
