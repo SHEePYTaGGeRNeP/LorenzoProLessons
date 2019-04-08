@@ -133,5 +133,9 @@ namespace Assets.Scripts
                 m_animator.SetTrigger("Jump");
             m_wasGrounded = m_isGrounded;
         }
+
+        public void IncreaseMovementSpeed(float value) => this.m_moveSpeed += value;
+        public void DecreaseMovementSpeed(float value) => this.m_moveSpeed -= value;
+
     }
 }

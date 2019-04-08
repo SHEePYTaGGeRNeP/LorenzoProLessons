@@ -30,8 +30,9 @@ namespace Units
         }
         private void Start()
         {
-            if (this.GetComponent<Player>() != null)
-                Toolbox.Instance.AddToToolbox(nameof(HealthSystem), this._healthSystem);
+            if (this.GetComponent<Player>() == null)
+                return;
+            Toolbox.Instance.AddToToolbox(nameof(HealthSystem), this._healthSystem);
         }
 
         private void _healthSystem_OnHealthChange(object sender, HealthChangeEventArgs e)

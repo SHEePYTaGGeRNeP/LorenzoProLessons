@@ -23,7 +23,7 @@ namespace Assets.Scripts.UI
         {
             this._text.text = $"{e.CurrentHitPoints}/{e.MaxHitPoints} hp";
             this._fill.fillAmount = (float)e.CurrentHitPoints / e.MaxHitPoints;
-            this._color.color = _gradientColor.Evaluate(1 - this._fill.fillAmount);
+            this._color.color = _gradientColor.Evaluate(this._fill.fillAmount);
         }
     }
 }

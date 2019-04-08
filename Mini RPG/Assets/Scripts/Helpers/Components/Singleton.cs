@@ -37,6 +37,7 @@ namespace Assets.Scripts.Helpers.Components
                         // Create new instance if one doesn't already exist.
                         if (_instance == null)
                         {
+                            Debug.LogWarning("Creating Singleton");
                             // Need to create a new GameObject to attach the singleton to.
                             var singletonObject = new GameObject();
                             _instance = singletonObject.AddComponent<T>();

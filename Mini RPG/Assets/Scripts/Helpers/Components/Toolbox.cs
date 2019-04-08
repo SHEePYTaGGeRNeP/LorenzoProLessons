@@ -44,6 +44,7 @@ namespace Assets.Scripts.Helpers.Components
             if (this._components.ContainsKey(componentID))
                 throw new InvalidOperationException($"[Toolbox] Global component ID \"{componentID}\" already exist!");
             this._components.Add(componentID, obj);
+            LogHelper.Log(typeof(Toolbox), $"Added {obj.GetType().Name} to Toolbox.");
         }
 
 
@@ -59,7 +60,7 @@ namespace Assets.Scripts.Helpers.Components
                 throw new InvalidOperationException($"[Toolbox] Trying to remove nonexistent component ID \"{componentID}\"! Typo?");
         }
 
-        public T GetToolboxComponent<T>() => this.GetToolboxComponent<T>(nameof(T));
+        public T GetToolboxComponent<T>() => this.GetToolboxComponent<T>(typeof(T).Name);
         public T GetToolboxComponent<T>(string componentID)
         {
             if (_components.TryGetValue(componentID, out object obj))
