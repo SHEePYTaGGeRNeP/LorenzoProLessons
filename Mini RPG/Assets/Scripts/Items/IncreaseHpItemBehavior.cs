@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Assets.Scripts.Helpers.Components;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,24 +10,17 @@ using UnityEngine;
 namespace Assets.Scripts.Items
 {
     [CreateAssetMenu(fileName = "IncreaseHPItemBehavior", menuName = "Items/Behaviors/CreateHpItemBehavior", order = 0)]
-    public class IncreaseHpItemBehavior : BaseItemBehavior
+    public class IncreaseHpItemBehavior : ItemBehavior
     {
-        [Serializable]
-        public class IncreaseHpItemBehaviorParameters : ItemBehaviorParameters
+        public override void OnEquip()
         {
-            public HealthSystem HealthSystem { get; set; }
+            HealthSystem hs = Toolbox.Instance.GetToolboxComponent<HealthSystem>();
+            hs.MaxHitPoints += (int)parameters.values[0];
         }
-        public override void OnEquip(ItemBehaviorParameters parameters)
+        public override void OnUnequip()
         {
-            if (parameters is IncreaseHpItemBehaviorParameters par)
-                par.HealthSystem.MaxHitPoints += (int)parameters.values[0];
-            else throw new ArgumentException($"must be {nameof(IncreaseHpItemBehaviorParameters)}");
-        }
-        public override void OnUnequip(ItemBehaviorParameters parameters)
-        {
-            if (parameters is IncreaseHpItemBehaviorParameters par)
-                par.HealthSystem.MaxHitPoints -= (int)parameters.values[0];
-            else throw new ArgumentException($"must be {nameof(IncreaseHpItemBehaviorParameters)}");
+            HealthSystem hs = Toolbox.Instance.GetToolboxComponent<HealthSystem>();
+            hs.MaxHitPoints -= (int)parameters.values[0];
         }
     }
 }

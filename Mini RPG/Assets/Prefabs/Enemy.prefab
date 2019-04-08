@@ -104,10 +104,9 @@ MonoBehaviour:
     m_Bits: 0
   debug: 1
   debugOnlyWhenSelected: 0
-  debugOnlyOnImportantValues: 1
+  debugOnlyOnImportantValues: 0
   triggerSense: 1
   collisionSense: 0
-  touchCollider: {fileID: 138275391223173687}
   _parentObject: {fileID: 7883544167619354511}
   touchCount: 0
   _touchingColliders: []
@@ -558,6 +557,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: Assets.Scripts.UnityHealthChangeEvent, Scripts, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  _itemToEquip: {fileID: 0}
   _currentHP: 50 / 50
 --- !u!1 &1963520437470549339
 GameObject:

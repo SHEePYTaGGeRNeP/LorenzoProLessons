@@ -24,21 +24,21 @@ namespace Assets.Scripts.Units
             this._hs = hs;
         }
         public EquippedGear()
-        { this._itemBehaviorParameters = new BaseItemBehavior.ItemBehaviorParameters(); }
+        {}
         public void Equip(ItemSO item)
         {
             ItemSO equippedItem = this.GetItemFromSlot(item.Slot);
             if (equippedItem != null)
                 this.Unequip(equippedItem);
             this._gear[item.Slot] = item;
-            item.OnEquip(this._itemBehaviorParameters);
+            item.OnEquip();
         }
         public void Unequip(ItemSO item)
         {
             if (!this.IsEquipped(item))
                 throw new ArgumentException("Item is not equipped");
             this._gear.Remove(item.Slot);
-            item.OnUnequip(this._itemBehaviorParameters);
+            item.OnUnequip();
         }
         public ItemSO GetItemFromSlot(GearSlot slot)
         {

@@ -935,6 +935,7 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: Assets.Scripts.UnityHealthChangeEvent, Scripts, Version=0.0.0.0, Culture=neutral,
       PublicKeyToken=null
+  _itemToEquip: {fileID: 11400000, guid: 71d0861bffe012948aaee5520ee1429c, type: 2}
   _currentHP: 50 / 50
 --- !u!114 &6570002132977724658
 MonoBehaviour:

@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab6ad2d098b4c414aa6d8de68c64bbf9, type: 3}
   m_Name: IncreaseHPItemBehavior
   m_EditorClassIdentifier: 
+  parameters:
+    values: []

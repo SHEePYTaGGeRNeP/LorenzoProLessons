@@ -24,11 +24,7 @@ public static class Utils
     }
 
 
-    public static bool IsSameOrSubclass(Type potentialDescendant, Type baseType)
-    {
-        return potentialDescendant.IsSubclassOf(baseType)
-               || potentialDescendant == baseType;
-    }
+    public static bool IsSameOrSubclass(Type potentialDescendant, Type baseType) => potentialDescendant.IsSubclassOf(baseType) || potentialDescendant == baseType;
 
 #if (UNITY_EDITOR)
     public static T GetActualObjectForSerializedProperty<T>(FieldInfo fieldInfo, SerializedProperty property)
@@ -277,7 +273,7 @@ public static class Utils
         return rightRay ? angleIndex : -angleIndex;
     }
 
-    public static Vector3 ObjectSide(Transform t1, Vector3 target) => t1.InverseTransformPoint(target);
+    public static Vector3 ObjectSide(Transform t1, Vector3 target) => t1.InverseTransformPoint(target);    
 
     public static T ParseEnum<T>(string value)
     {

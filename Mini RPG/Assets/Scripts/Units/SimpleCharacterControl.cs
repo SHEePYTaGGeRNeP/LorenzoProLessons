@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using Assets.Scripts.Helpers.Components;
 
 namespace Assets.Scripts
 {
@@ -31,6 +32,11 @@ namespace Assets.Scripts
         private bool m_isGrounded;
         private List<Collider> m_collisions = new List<Collider>();
 
+        private void Start()
+        {
+            if (this.GetComponent<Player>() != null)
+                Toolbox.Instance.AddToToolbox(nameof(SimpleCharacterControl), this);
+        }
         private void OnCollisionEnter(Collision collision)
         {
             ContactPoint[] contactPoints = collision.contacts;
