@@ -91,40 +91,10 @@ namespace Assets.Scripts.AI.Sensors
 
         protected override void DebugDrawGizmos()
         {
+            Color c = Color.grey;
             if (Application.isPlaying)
-                Gizmos.color = this.IsTouching ? Color.red : Color.green;
-            else
-                Gizmos.color = Color.grey;
-            if (this._touchCollider is BoxCollider box)
-                Gizmos.DrawWireCube(this.transform.position + box.center, box.size);
-            else if (this._touchCollider is SphereCollider sphere)
-                Gizmos.DrawWireSphere(this.transform.position + sphere.center, sphere.radius);
-            else if (this._touchCollider is CapsuleCollider capsule)
-            {
-                // draw some spheres to fake capsule
-                for (float position = -capsule.height / 2f + capsule.radius;
-                    position < (capsule.height / 2f); position += (int)capsule.radius)
-                {
-                    switch (capsule.direction)
-                    {
-                        case 0: //x
-                            Gizmos.DrawWireSphere(
-                                this.transform.position + capsule.center + (this.transform.right * position),
-                                capsule.radius);
-                            break;
-                        case 1: //y
-                            Gizmos.DrawWireSphere(
-                                this.transform.position + capsule.center + (this.transform.up * position),
-                                capsule.radius);
-                            break;
-                        default: //z
-                            Gizmos.DrawWireSphere(
-                                this.transform.position + capsule.center + (this.transform.forward * position),
-                                capsule.radius);
-                            break;
-                    }
-                }
-            }
+                c = this.IsTouching ? Color.red : Color.green;
+            Utils.DrawColliderGizmo(this._touchCollider, c);
         }
 
         protected override void DebugDrawImportantGizmos()

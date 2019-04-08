@@ -117,7 +117,6 @@ namespace Assets.Scripts
         private void CheckJump()
         {
             bool jumpCooldownOver = (Time.time - m_jumpTimeStamp) >= m_minJumpInterval;
-
             if (jumpCooldownOver && m_isGrounded && Input.GetKey(KeyCode.Space))
             {
                 m_jumpTimeStamp = Time.time;
