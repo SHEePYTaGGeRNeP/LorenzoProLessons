@@ -10,9 +10,10 @@ namespace Assets.Scripts
     class DamageRegion : MonoBehaviour
     {
         [SerializeField]
-        [Range(1,100)]
+        [Range(1, 100)]
         private int _damage = 1;
         [SerializeField]
+        [Range(0.01f, 5)]
         private float _cooldown = 0.2f;
 
         private float _lastDamageTime;
