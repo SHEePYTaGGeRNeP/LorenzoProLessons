@@ -6,7 +6,6 @@ using UnityEngine.Audio;
 
 namespace Assets.Scripts
 {
-
     public class DistortMusic : MonoBehaviour
     {
         [SerializeField]
@@ -19,8 +18,6 @@ namespace Assets.Scripts
 
         private const string _DISTORTION_NAME = "MusicDistortion";
         private const string _PITCH_NAME = "MusicPitch";
-
-
 
         public void OnHealthUpdate(HealthChangeEventArgs e)
         {
