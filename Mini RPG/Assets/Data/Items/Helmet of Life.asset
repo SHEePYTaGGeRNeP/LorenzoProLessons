@@ -9,7 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f68b95efa52b6a643b04d8dce6c4740b, type: 3}
+  m_Script: {fileID: 11500000, guid: 686ba683159c5834cb6c829699167c5c, type: 3}
   m_Name: Helmet of Life
   m_EditorClassIdentifier: 
   _id: 0
@@ -17,4 +17,4 @@ MonoBehaviour:
   _slot: 1
   _isStackable: 0
   _behaviors:
-  - {fileID: 11400000, guid: 1e255d70f49f5ea4d84e359e5ab6621e, type: 2}
+  - {fileID: 11400000, guid: b16e94682636c1748906e60888259f6e, type: 2}
