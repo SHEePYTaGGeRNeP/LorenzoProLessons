@@ -197,6 +197,7 @@ GameObject:
   - component: {fileID: 119972927}
   - component: {fileID: 119972928}
   - component: {fileID: 119972926}
+  - component: {fileID: 119972929}
   m_Layer: 0
   m_Name: _SCRIPTS
   m_TagString: Untagged
@@ -242,6 +243,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 216ee3ef70916fe4481de745509bdc4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &119972929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119972925}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ed7a066f27e314c998a6c67ee44859, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _unpausedSnapshot: {fileID: 24500006, guid: 95bb9b6a17a16694682407ec101dd0fd, type: 2}
+  _pausedSnapshot: {fileID: 1452461042727090818, guid: 95bb9b6a17a16694682407ec101dd0fd,
+    type: 2}
+  _audioMixer: {fileID: 24100000, guid: 95bb9b6a17a16694682407ec101dd0fd, type: 2}
+  _transistionTime: 1
 --- !u!1001 &152631895
 PrefabInstance:
   m_ObjectHideFlags: 0
