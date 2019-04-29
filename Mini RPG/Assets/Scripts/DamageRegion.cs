@@ -18,24 +18,15 @@ namespace Assets.Scripts
 
         private float _lastDamageTime;
 
-        private void OnTriggerEnter(Collider other)
-        {
-            Player p = other.GetComponent<Player>();
-            if (p == null)
-                return;
-            CheckDoDamage(p);
-        }
-        private void OnTriggerStay(Collider other)
-        {
-            Player p = other.GetComponent<Player>();
-            if (p == null)
-                return;
-            CheckDoDamage(p);
-        }
+        private void OnCollisionEnter(Collision collision) => this.CheckDoDamage(collision.collider);
+        private void OnCollisionStay(Collision collision) => this.CheckDoDamage(collision.collider);
+        private void OnTriggerEnter(Collider other) => this.CheckDoDamage(other);
+        private void OnTriggerStay(Collider other) => this.CheckDoDamage(other);
 
-        private void CheckDoDamage(Player p)
+        private void CheckDoDamage(Collider other)
         {
-            if (Time.time - _lastDamageTime < this._cooldown)
+            Player p = other.GetComponent<Player>();
+            if (p == null || Time.time - _lastDamageTime < this._cooldown)
                 return;
             _lastDamageTime = Time.time;
             Unit u = p.GetComponent<Unit>();

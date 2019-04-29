@@ -13,6 +13,7 @@ namespace Assets.Scripts
         [SerializeField] private float m_turnSpeed = 200;
         [SerializeField] private float m_jumpForce = 4;
         [SerializeField] private Animator m_animator;
+        [SerializeField] private bool _useAnimations = true;
         [SerializeField] private Rigidbody m_rigidBody;
 
         private float m_currentV = 0;
@@ -85,6 +86,7 @@ namespace Assets.Scripts
 
         void Update()
         {
+            if (this._useAnimations)
             m_animator.SetBool("Grounded", m_isGrounded);
             if (this._isControllerByPlayer)
                 this.CheckInput();
@@ -111,7 +113,8 @@ namespace Assets.Scripts
             m_currentH = Mathf.Lerp(m_currentH, horizontal, Time.deltaTime * m_interpolation);
             transform.position += transform.forward * m_currentV * m_moveSpeed * Time.deltaTime;
             transform.Rotate(0, m_currentH * m_turnSpeed * Time.deltaTime, 0);
-            m_animator.SetFloat("MoveSpeed", m_currentV);
+            if (this._useAnimations)
+                m_animator.SetFloat("MoveSpeed", m_currentV);
         }
 
         private void CheckJump()
@@ -126,9 +129,9 @@ namespace Assets.Scripts
 
         private void CheckLanding()
         {
-            if (!m_wasGrounded && m_isGrounded)
+            if (!m_wasGrounded && m_isGrounded && this._useAnimations)
                 m_animator.SetTrigger("Land");
-            if (!m_isGrounded && m_wasGrounded)
+            if (!m_isGrounded && m_wasGrounded && this._useAnimations)
                 m_animator.SetTrigger("Jump");
             m_wasGrounded = m_isGrounded;
         }

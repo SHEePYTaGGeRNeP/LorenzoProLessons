@@ -479,7 +479,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 5
+  m_Radius: 10
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &3166337248693258267
 Animator:
@@ -557,7 +557,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc23c282ef69f9748bc91d829a48b2e0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _draw: 1
+  _draw: 0
   _collider: {fileID: 1857258591171526502}
   _color: {r: 1, g: 0, b: 1, a: 1}
 --- !u!1 &3166337248693258270
@@ -572,7 +572,6 @@ GameObject:
   - component: {fileID: 3166337248693258268}
   - component: {fileID: 5426428698625336212}
   - component: {fileID: 3166337248693258271}
-  - component: {fileID: 3166337248693258265}
   - component: {fileID: 3166337248693258264}
   m_Layer: 9
   m_Name: Enemy
@@ -647,25 +646,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &3166337248693258265
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3166337248693258270}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e178703e2e5817a459615de58952b6f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onHealthChanged:
-    m_PersistentCalls:
-      m_Calls: []
-    m_TypeName: Assets.Scripts.UnityHealthChangeEvent, Scripts, Version=0.0.0.0, Culture=neutral,
-      PublicKeyToken=null
-  _itemToEquip: {fileID: 0}
-  _currentHP: 50 / 50
 --- !u!114 &3166337248693258264
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -679,10 +659,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _isControllerByPlayer: 0
-  m_moveSpeed: 1
+  m_moveSpeed: 3
   m_turnSpeed: 200
   m_jumpForce: 4
   m_animator: {fileID: 3166337248693258271}
+  _useAnimations: 1
   m_rigidBody: {fileID: 3166337248693258268}
 --- !u!1 &3207145328395032857
 GameObject:
