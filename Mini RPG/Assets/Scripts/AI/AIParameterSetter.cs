@@ -20,6 +20,8 @@ namespace Assets.Scripts.AI
 
         public Vector3 OriginalPosition { get; private set; }
 
+        public float LastAttackTime { get; set; }
+
         private void Awake()
         {
             Assert.IsNotNull(this._playerTouchSensor3D);

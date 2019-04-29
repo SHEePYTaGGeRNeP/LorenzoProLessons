@@ -19,7 +19,7 @@ namespace Assets.Editor.Tests.Items
         {
             ItemSO data = ScriptableObject.CreateInstance<ItemSO>();
             //data.Name = "";
-            const string name = "_itemTest";
+            //const string name = "_itemTest";
             //AssetDatabase.CreateAsset(data, $"{_ITEM_ASSET_PATH }/{name}.asset");
             //AssetDatabase.DeleteAsset($"{_ITEM_ASSET_PATH }/{name}.asset");
             Assert.IsNotNull(data);
