@@ -87,7 +87,7 @@ namespace Assets.Editor.Tests.Items
             ItemSO item = ScriptableObject.CreateInstance<ItemSO>();
             var behavior = ScriptableObject.CreateInstance<IncreaseHpItemBehavior>();
             const int hpIncrease = 10;
-            behavior.parameters = new ItemBehavior.ItemBehaviorParameters() { values = new[] { (float)hpIncrease } };
+            behavior.HpIncrease = hpIncrease;
             item.Slot = GearSlot.Head;
             item.SetBehaviors(new[] { behavior });
             int currentMaxHp = u.MaxHp;

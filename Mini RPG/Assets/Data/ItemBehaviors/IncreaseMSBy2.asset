@@ -12,6 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17aa80a25b0cb8a4d80ffaba0a027090, type: 3}
   m_Name: IncreaseMSBy2
   m_EditorClassIdentifier: 
-  parameters:
-    values:
-    - 1
+  _movementSpeed: 2

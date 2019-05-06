@@ -17,4 +17,4 @@ MonoBehaviour:
   _slot: 6
   _isStackable: 0
   _behaviors:
-  - {fileID: 11400000, guid: dd9ef325f74d0f44893e9453eeb66068, type: 2}
+  - {fileID: 11400000, guid: 06897392993d89242a9bfffc3bdd47da, type: 2}

@@ -11,15 +11,18 @@ namespace Assets.Scripts.Items.Behaviors
     [CreateAssetMenu(fileName = "IncreaseMovementSpeedBehavior", menuName = "Items/Behaviors/CreateIncreaseMovementSpeedBehavior", order = 0)]
     public class IncreaseMovementSpeedBehavior : ItemBehavior
     {
+        [SerializeField]
+        private float _movementSpeed = 1f;
+        public float MovementSpeed { get => this._movementSpeed; set { this._movementSpeed = value; } }
         public override void OnEquip()
         {
             SimpleCharacterControl hs = Toolbox.Instance.GetToolboxComponent<SimpleCharacterControl>();
-            hs.IncreaseMovementSpeed(parameters.values[0]);
+            hs.IncreaseMovementSpeed(this._movementSpeed);
         }
         public override void OnUnequip()
         {
             SimpleCharacterControl hs = Toolbox.Instance.GetToolboxComponent<SimpleCharacterControl>();
-            hs.DecreaseMovementSpeed(parameters.values[0]);
+            hs.DecreaseMovementSpeed(this._movementSpeed);
         }
     }
 }
