@@ -14,15 +14,11 @@ namespace Assets.Scripts.Items
 
         [SerializeField]
         private string _name;
-        public string Name => this._name;
+        public string Name { get => this._name; set { this._name = value; } }
 
         [SerializeField]
         private GearSlot _slot;
-        public GearSlot Slot
-        {
-            get { return this._slot; }
-            set { this._slot = value; }
-        }
+        public GearSlot Slot { get { return this._slot; } set { this._slot = value; } }
 
         [SerializeField]
         private bool _isStackable;
