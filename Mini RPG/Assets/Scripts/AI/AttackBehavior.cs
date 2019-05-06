@@ -9,6 +9,8 @@ public class AttackBehavior : StateMachineBehaviour
     private AIParameterSetter aiParams;
 
     [SerializeField]
+    private int _damage = 10;
+    [SerializeField]
     private float _attackCooldown = 1f;
 
 
@@ -24,7 +26,7 @@ public class AttackBehavior : StateMachineBehaviour
     {
         if (Time.time - this.aiParams.LastAttackTime < this._attackCooldown)
             return;
-        this.aiParams.Target.Damage(10);
+        this.aiParams.Target.Damage(this._damage);
         LogHelper.Log(typeof(AttackBehavior), "Damaged player");
         this.aiParams.LastAttackTime = Time.time;
     }
