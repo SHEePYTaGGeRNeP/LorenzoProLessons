@@ -5,40 +5,29 @@ using System.Text;
 using System.Threading.Tasks;
 using Assets.Scripts.Items;
 using Units;
-
+using UnityEngine;
 namespace Assets.Scripts.Units
 {
     public class EquippedGear
     {
         private readonly Dictionary<GearSlot, ItemSO> _gear = new Dictionary<GearSlot, ItemSO>();
-
-       // private readonly BaseItemBehavior.ItemBehaviorParameters _itemBehaviorParameters;
-
-        private Unit _unit;
-        private HealthSystem _hs;
-
-
-        public EquippedGear(Unit u, HealthSystem hs)
-        {
-            this._unit = u;
-            this._hs = hs;
-        }
-        public EquippedGear()
-        {}
+        private GameObject _owner;
+        public EquippedGear(GameObject owner)
+        { this._owner = owner; }
         public void Equip(ItemSO item)
         {
             ItemSO equippedItem = this.GetItemFromSlot(item.Slot);
             if (equippedItem != null)
                 this.Unequip(equippedItem);
             this._gear[item.Slot] = item;
-            item.OnEquip();
+            item.OnEquip(this._owner);
         }
         public void Unequip(ItemSO item)
         {
             if (!this.IsEquipped(item))
                 throw new ArgumentException("Item is not equipped");
             this._gear.Remove(item.Slot);
-            item.OnUnequip();
+            item.OnUnequip(this._owner);
         }
         public ItemSO GetItemFromSlot(GearSlot slot)
         {

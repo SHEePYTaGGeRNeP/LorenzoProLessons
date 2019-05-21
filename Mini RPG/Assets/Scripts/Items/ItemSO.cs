@@ -32,19 +32,19 @@ namespace Assets.Scripts.Items
             this._behaviors = behaviors;
         }
 
-        public void OnEquip()
+        public void OnEquip(GameObject owner)
         {
             if (this._behaviors.IsNullOrEmpty())
                 return;
             foreach (ItemBehavior behavior in _behaviors)
-                behavior.OnEquip();
+                behavior.OnEquip(owner);
         }
-        public void OnUnequip()
+        public void OnUnequip(GameObject owner)
         {
             if (this._behaviors.IsNullOrEmpty())
                 return;
             foreach (ItemBehavior behavior in _behaviors)
-                behavior.OnUnequip();
+                behavior.OnUnequip(owner);
         }
 
     }

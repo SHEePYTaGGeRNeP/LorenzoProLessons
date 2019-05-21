@@ -16,16 +16,16 @@ public class CreateItemWindow : EditorWindow
     private List<ItemBehavior> _selectedItemBehaviors = new List<ItemBehavior>();
     static Dictionary<string, ItemBehavior> optionsDic = new Dictionary<string, ItemBehavior>();
 
-    [MenuItem("Window/Items/Open Create Item Window")]
+    [MenuItem("Items/Open Create Item Window")]
     public static void ShowWindow()
     {
-        UpdateAbilityOptions();
         EditorWindow window = GetWindow<CreateItemWindow>();
-        window.position = new Rect(Screen.width / 2, Screen.height / 2, 250, 300);
-        window.minSize = new Vector2(250, 100);
+        window.position = new Rect(Screen.width / 2, Screen.height / 2, 350, 200);
+        window.minSize = new Vector2(350, 200);
         window.Show();
+        UpdateItemOptions();
     }
-    private static void UpdateAbilityOptions()
+    private static void UpdateItemOptions()
     {
         optionsDic.Clear();
         string[] behaviors = AssetDatabase.FindAssets("", new[] { _ITEM_BEHAVIORS_ASSETS_PATH });
@@ -43,7 +43,7 @@ public class CreateItemWindow : EditorWindow
         string[] optionsArray = optionsDic.Keys.ToArray();
         this._behaviorSelectedIndex = EditorGUILayout.Popup("Behaviors", this._behaviorSelectedIndex, optionsArray);
         if (GUILayout.Button("Update options"))
-            UpdateAbilityOptions();
+            UpdateItemOptions();
         GUILayout.BeginHorizontal();
         if (GUILayout.Button("Add Behavior"))
             this.AddBehaviorIfNotExists(optionsArray[this._behaviorSelectedIndex]);
@@ -52,16 +52,16 @@ public class CreateItemWindow : EditorWindow
         if (GUILayout.Button("Clear behaviors"))
             this._selectedItemBehaviors.RemoveAll(x => x);
         GUILayout.EndHorizontal();
-        if (this._selectedItemBehaviors.Count == 0)
-            return;
         GUILayout.Space(20);
         foreach (ItemBehavior ib in this._selectedItemBehaviors)
         {
             GUILayout.Label(ib.name);
         }
         GUILayout.Space(10);
+        EditorGUI.BeginDisabledGroup(String.IsNullOrWhiteSpace(this._itemName));
         if (GUILayout.Button("Create item asset"))
             CreateAsset(optionsArray[this._behaviorSelectedIndex]);
+        EditorGUI.EndDisabledGroup();
     }
     private void AddBehaviorIfNotExists(string name)
     {
@@ -89,6 +89,6 @@ public class CreateItemWindow : EditorWindow
     {
         this._selectedItemBehaviors.Clear();
         this._itemName = default;
-        this._gearSlot = GearSlot.Head;
+        this._gearSlot = GearSlot.None;
     }
 }

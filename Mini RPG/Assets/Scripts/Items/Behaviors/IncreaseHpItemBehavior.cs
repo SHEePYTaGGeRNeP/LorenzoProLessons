@@ -15,14 +15,15 @@ namespace Assets.Scripts.Items
         [SerializeField]
         private int _hpIncrease = 20;
         public int HpIncrease { get => this._hpIncrease; set { this._hpIncrease = value; } } 
-        public override void OnEquip()
+        public override void OnEquip(GameObject owner)
         {
-            HealthSystem hs = Toolbox.Instance.GetToolboxComponent<HealthSystem>();
-            hs.MaxHitPoints += this._hpIncrease;
+            HealthSystem hs = owner.GetComponentInChildren<Unit>().HealthSystem;
+            hs.MaxHitPoints += this.HpIncrease;
+            hs.Heal(this.HpIncrease);
         }
-        public override void OnUnequip()
+        public override void OnUnequip(GameObject owner)
         {
-            HealthSystem hs = Toolbox.Instance.GetToolboxComponent<HealthSystem>();
+            HealthSystem hs = owner.GetComponentInChildren<Unit>().HealthSystem;
             hs.MaxHitPoints -= this._hpIncrease;
         }
     }

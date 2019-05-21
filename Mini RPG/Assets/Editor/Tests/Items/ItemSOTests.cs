@@ -28,7 +28,7 @@ namespace Assets.Editor.Tests.Items
         [Test]
         public void Can_Equip_Item()
         {
-            EquippedGear eg = new EquippedGear();
+            EquippedGear eg = new EquippedGear(null);
             ItemSO item = ScriptableObject.CreateInstance<ItemSO>();
             item.Slot = GearSlot.Head;
             eg.Equip(item);
@@ -38,7 +38,7 @@ namespace Assets.Editor.Tests.Items
         [Test]
         public void Can_UnEquip_EquippedItem()
         {
-            EquippedGear eg = new EquippedGear();
+            EquippedGear eg = new EquippedGear(null);
             ItemSO item = ScriptableObject.CreateInstance<ItemSO>();
             item.Slot = GearSlot.Head;
             eg.Equip(item);
@@ -51,7 +51,7 @@ namespace Assets.Editor.Tests.Items
         [Test]
         public void EquippingASecondItem_Unequips_FirstItem()
         {
-            EquippedGear eg = new EquippedGear();
+            EquippedGear eg = new EquippedGear(null);
             ItemSO item1 = ScriptableObject.CreateInstance<ItemSO>();
             item1.Slot = GearSlot.Head;
             eg.Equip(item1);
@@ -67,14 +67,14 @@ namespace Assets.Editor.Tests.Items
         [Test]
         public void GetItemFromSlot_NotEquipped_ReturnsNull()
         {
-            EquippedGear gear = new EquippedGear();
+            EquippedGear gear = new EquippedGear(null);
             Assert.IsNull(gear.GetItemFromSlot(GearSlot.Head));
         }
 
         [Test]
         public void Unequipping_NonEquippedItem_ThrowsException()
         {
-            EquippedGear eg = new EquippedGear();
+            EquippedGear eg = new EquippedGear(null);
             ItemSO item = ScriptableObject.CreateInstance<ItemSO>();
             item.Slot = GearSlot.Head;
             Assert.Throws<ArgumentException>(() => eg.Unequip(item));

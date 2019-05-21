@@ -10,7 +10,7 @@ namespace Assets.Scripts.Items
 {
     public abstract class ItemBehavior : ScriptableObject
     {
-        public abstract void OnEquip();
-        public abstract void OnUnequip();
+        public abstract void OnEquip(GameObject owner);
+        public abstract void OnUnequip(GameObject owner);
     }
 }

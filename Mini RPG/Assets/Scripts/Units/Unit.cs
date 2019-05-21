@@ -10,6 +10,7 @@ namespace Units
     public class Unit : MonoBehaviour
     {
         private HealthSystem _healthSystem;
+        public HealthSystem HealthSystem => this._healthSystem;
         public EquippedGear EquippedGear { get; private set; }
 
         public UnityHealthChangeEvent onHealthChanged;
@@ -26,7 +27,7 @@ namespace Units
         private void Awake()
         {
             this._healthSystem = new HealthSystem(50, 50, this._healthSystem_OnHealthChange);
-            this.EquippedGear = new EquippedGear(this, this._healthSystem);
+            this.EquippedGear = new EquippedGear(this.gameObject);
         }
         private void Start()
         {

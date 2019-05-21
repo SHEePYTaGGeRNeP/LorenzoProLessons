@@ -14,14 +14,14 @@ namespace Assets.Scripts.Items.Behaviors
         [SerializeField]
         private float _movementSpeed = 1f;
         public float MovementSpeed { get => this._movementSpeed; set { this._movementSpeed = value; } }
-        public override void OnEquip()
+        public override void OnEquip(GameObject owner)
         {
-            SimpleCharacterControl hs = Toolbox.Instance.GetToolboxComponent<SimpleCharacterControl>();
+            SimpleCharacterControl hs = owner.GetComponentInChildren<SimpleCharacterControl>();
             hs.IncreaseMovementSpeed(this._movementSpeed);
         }
-        public override void OnUnequip()
+        public override void OnUnequip(GameObject owner)
         {
-            SimpleCharacterControl hs = Toolbox.Instance.GetToolboxComponent<SimpleCharacterControl>();
+            SimpleCharacterControl hs = owner.GetComponentInChildren<SimpleCharacterControl>();
             hs.DecreaseMovementSpeed(this._movementSpeed);
         }
     }

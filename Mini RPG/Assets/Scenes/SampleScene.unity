@@ -3001,7 +3001,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _itemToEquip
       value: 
-      objectReference: {fileID: 11400000, guid: 977e3cccf061c4b4fadfd29788c92abb,
+      objectReference: {fileID: 11400000, guid: 7255f421197fe574e9e8c9c4f82aa383,
         type: 2}
     - target: {fileID: 8750794698829141578, guid: e173d1d2d713c584b96990b89de967e2,
         type: 3}
